@@ -31,8 +31,10 @@ Are the words ending with 'er'/'or' have some common features?
 
 **5.** Identify root and suffix in the following words:
 
-`kissed<br/>
-stronger<br/>
-goodness<br/>
-teacher<br/>
-achievement`
+```
+kissed
+stronger
+goodness
+teacher
+achievement
+```
