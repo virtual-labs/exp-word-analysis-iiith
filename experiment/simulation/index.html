@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!--Google Tag Manager-->
-        <meta charset="utf-8" />
-        <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-        <link href="vendors/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
-        <!-- Custom CSS -->
-        <link href="css/style.css" rel="stylesheet" />
-        <link href="css/override.css" rel="stylesheet" />
-        <style type="text/css">
-            table,
+<head>
+    <!--Google Tag Manager-->
+    <meta charset="utf-8" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="vendors/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/override.css" rel="stylesheet" />
+    <style type="text/css">
+        table,
             th,
             td {
                 border: 1px solid black;
                 border-collapse: collapse;
             }
-        </style>
+    </style>
 
-        <script src="js/jquery-1.7.1.min.js"></script>
-    </head>
+    <script src="js/jquery-1.7.1.min.js"></script>
+</head>
 
-    <body class="index" id="page-top">
-        --&gt;
+<body class="index" id="page-top">
+    --&gt;
 
-        <script type="text/javascript">
-            $(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
                 //the function is called once the document loads
 
-                $("#hidden-content").load("default.html #experiment", function (response, status, xhr) {
+                $("#hidden-content").load("default.html #experiment", 
+                function (response, status, xhr) {
                     //loads the default.html #lab section into the
                     //#hidden-content
 
-                    $("#container").load("content.html #experiment", function (response, status, xhr) {
+                    $("#container").load("content.html #experiment", 
+                    function (response, status, xhr) {
                         //loads the content.html #lab section into the
                         //#container
 
@@ -63,8 +66,10 @@
                             headerId = $("#" + sectionId + "-heading").html();
                             iconId = $("#" + sectionId + "-icon").html();
 
-                            $("#container #experiment-article-navigation ul").append("<li> <a href='#' id='" + sectionId + "-menu'>" + iconId + "<br />" + headerId + "</a></li>");
-                        });
+                            $("#container #experiment-article-navigation ul").
+                            append("<li> <a href='#' id='" + sectionId + 
+                            "-menu'>" + iconId + "<br />" + headerId + "</a></li>");
+                            });
 
                         $("#experiment-article-sections section").hide();
                         //hide all the experiment sections
@@ -73,7 +78,8 @@
                         //show only the first experiment section when
                         //the experiment page loads
 
-                        $("#experiment-article-navigation ul > li a").live("click", function () {
+                        $("#experiment-article-navigation ul > li a").live("click", 
+                        function () {
                             //enables the navigation
 
                             menuId = $(this).attr("id");
@@ -125,39 +131,53 @@
                 }
                 $("#option").load("exp1_opt.php?lang=" + lang + "&script=" + scr);
             }
-        </script>
-
-        <div class="col-md-10 lab-list-col-10">
-            <!--edit -->
-            <h1 class="text-h1-lightblue">Word Analysis</h1>
-            <div class="content" id="experiment-article-section-4-content">
-                <table style="margin-left: 0px;" width="100%">
-                    <tbody>
-                        <tr>
-                            <td align="center">
-                                <p style="font-style: italic; color: blue;">Select a Language which you know better</p>
-                                <select autocomplete="off" name="lang" onchange="getOption(this.value);">
+    </script>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-67558473-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <div class="col-md-10 lab-list-col-10">
+        <!--edit -->
+        <h1 class="text-h1-lightblue">Word Analysis</h1>
+        <div class="content" id="experiment-article-section-4-content">
+            <table style="margin-left: 0px;" width="100%">
+                <tbody>
+                    <tr>
+                        <td align="center">
+                            <p style="font-style: italic; color: blue;">Select a Language which you know better</p>
+                            <select autocomplete="off" name="lang" onchange="getOption(this.value);">
                                     <option value="null_null">---Select Language---</option>
                                     <option value="en_roman">English</option>
                                     <option value="hi_devanagiri">Hindi</option>
                                 </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br />
-                <div align="center" id="option"></div>
-                <br />
-                <div align="center" id="fldiv"></div>
-            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <div align="center" id="option"></div>
+            <br />
+            <div align="center" id="fldiv"></div>
         </div>
+    </div>
 
-        <script src="js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
-        <!-- Custom Theme JavaScript -->
-        <script src="js/custom.js"></script>
-    </body>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.js"></script>
+</body>
+
 </html>
