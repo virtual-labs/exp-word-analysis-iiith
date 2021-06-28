@@ -1,0 +1,246 @@
+.vlabs-page {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.vlabs-header {
+  border-bottom: 8px solid #ff6600;
+  font-family: "Raleway", sans-serif;
+}
+
+.vlabs-page-main {
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+.vlabs-lab-name {
+  font-size: 1.7rem;
+}
+
+.vlabs-footer {
+  font-size: 14px;
+  background: rgb(17, 17, 17);
+  font-family: "Raleway", sans-serif;
+}
+
+.vlabs-footer-sect-name {
+  border-width: 0.15rem;
+  border-style: solid;
+  border-image: linear-gradient(to right, #3ec1d5 20%, #555 0%) 0% 0% 100% 0%;
+}
+
+.vlabs-lab-name {
+  color: #2c99ce;
+}
+
+.vlabs-page-content {
+  font-size: 1.2rem;
+  overflow-y: hidden;
+  font-family: "Raleway", sans-serif;
+}
+
+.social-links > a {
+  color: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.sidebar a {
+  color: #3e6389;
+}
+
+.sidebar .tasks a {
+  color: #5c5c5c;
+}
+
+.sidebar a.current-item {
+  color: #ff6600;
+}
+
+.sidebar .tasks {
+  font-size: 1rem;
+}
+
+.sidebar {
+  border-right: 2px dotted #89a7c4;
+  font-size: 1.2rem;
+  font-weight: bold;
+  overflow-x: hidden;
+  box-sizing: content-box;
+}
+
+.vlabs-header a {
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  color: #2c98cd;
+}
+
+.vlabs-header #headerNavbar a:hover {
+  background: #77bb41;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.vlabs-header #headerNavbar a {
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.breadcrumbs,
+.breadcrumbs a,
+.breadcrumbs span {
+  font-size: 1.6rem;
+  color: #337ab7;
+}
+
+.page-name {
+  color: #337ab7;
+}
+
+/*pre-test and post-test page styling fix*/
+
+.answers {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.question {
+  font-weight: 900;
+}
+
+/* feedback */
+#feedback-btn {
+  color: #2c99ce;
+  border-color: #2c99ce;
+}
+
+/* to override markdown styling */
+.markdown-body {
+  font-family: "Raleway", sans-serif;
+  color: #000000;
+  text-align: justify;
+}
+
+/* to fix the  extended lines*/
+.markdown-body table tr {
+  border-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: #2c99ce;
+}
+
+h2 {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: #333333;
+  padding-top: 1rem;
+  text-decoration: underline;
+}
+
+/* for ds experiments - video iframes */
+iframe {
+  width: 100%;
+  height: calc(100vw / 3);
+}
+
+.simulation-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.visible {
+  width: max-content;
+}
+
+.hidden {
+  width: 0px;
+  border-width: 0px;
+  padding: 0px;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  display: none;
+  margin-left: 20px;
+  color: #337ab7;
+  text-decoration: underline;
+  text-align: right;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/* .active,
+.accordion:hover {
+} */
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  display: none;
+  background-color: #eee;
+  color: #444;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* .form-check input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  margin: 5px 10px 0px 0px;
+} */
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+#difficulty-container,
+.form-check {
+  display: flex;
+  align-items: center;
+}
+
+.form-check input[type="checkbox"] {
+  margin: 0.5em;
+  transform: scale(1.5);
+}
