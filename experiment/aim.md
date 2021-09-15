@@ -4,7 +4,4 @@ A word can be simple or complex. For example, the word 'cat' is simple because o
 
 <p style="text-align: center;"><img src="images/morph1.gif"></p>
 
-
-#### Objective
-
 The objective of the experiment is to learn about morphological features of a word by analysing it.
