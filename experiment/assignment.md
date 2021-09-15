@@ -23,8 +23,11 @@ B. When the suffix -en is attached to a word, what part of speech is the resulti
 
 ```
 List 1: taller, shorter, higher, lower, smarter
+
 List 2: mower, teacher, sailor, caller, operator
+
 List 3: never, cover, finger, river
+
 ```
 
 Are the words ending with 'er'/'or' have some common features?
@@ -33,8 +36,13 @@ Are the words ending with 'er'/'or' have some common features?
 
 ```
 kissed
+
 stronger
+
 goodness
+
 teacher
+
 achievement
+
 ```
