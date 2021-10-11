@@ -1,0 +1,53 @@
+{
+  "unit-type": "lu",
+  "label": "",
+  "basedir": ".",
+  "units": [
+    {
+      "unit-type": "aim"
+    },
+    {
+      "target": "theory.html",
+      "source": "theory.md",
+      "label": "Theory",
+      "unit-type": "task",
+      "content-type": "text"
+    },
+    {
+      "target": "objective.html",
+      "source": "objective.md",
+      "label": "Objective",
+      "unit-type": "task",
+      "content-type": "text"
+    },
+    {
+      "target": "procedure.html",
+      "source": "procedure.md",
+      "label": "Procedure",
+      "unit-type": "task",
+      "content-type": "text"
+    },
+    {
+      "target": "simulation.html",
+      "source": "simulation/index.html",
+      "label": "Simulation",
+      "unit-type": "task",
+      "content-type": "simulation"
+    },
+    {
+      "target": "assignment.html",
+      "source": "assignment.md",
+      "label": "Assignment",
+      "unit-type": "task",
+      "content-type": "text"
+    },
+    {
+      "target": "references.html",
+      "source": "references.md",
+      "label": "References",
+      "unit-type": "task",
+      "content-type": "text"
+    }
+  ]
+}
+
