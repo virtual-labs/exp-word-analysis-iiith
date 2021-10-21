@@ -21,11 +21,11 @@ B. When the suffix -en is attached to a word, what part of speech is the resulti
 
 **4.** Refer to the following data and answer the question below:
 
-    List 1: taller, shorter, higher, lower, smarter
+    List 1: taller, shorter, higher, lower, smarter <br>
 
-    List 2: mower, teacher, sailor, caller, operator
+    List 2: mower, teacher, sailor, caller, operator <br>
 
-    List 3: never, cover, finger, river
+    List 3: never, cover, finger, river <br>
 
 
 Are the words ending with 'er'/'or' have some common features?
