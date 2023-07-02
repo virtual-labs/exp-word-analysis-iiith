@@ -1,0 +1,278 @@
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/jquery.js
+   19:199  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   20:9    warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   20:486  warning  Unnecessary escape character: \[                                 no-useless-escape
+   20:488  warning  Unnecessary escape character: \.                                 no-useless-escape
+   22:49   warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   22:285  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   26:277  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   27:191  warning  Empty block statement                                            no-empty
+   28:289  warning  Unnecessary escape character: \/                                 no-useless-escape
+   28:385  warning  Unnecessary escape character: \-                                 no-useless-escape
+   32:189  warning  Unnecessary escape character: \/                                 no-useless-escape
+   32:235  warning  Unnecessary escape character: \/                                 no-useless-escape
+   35:257  warning  Empty block statement                                            no-empty
+   44:325  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   48:523  warning  Unnecessary escape character: \.                                 no-useless-escape
+   48:525  warning  Unnecessary escape character: \|                                 no-useless-escape
+   49:211  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   49:423  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   51:171  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   51:331  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   52:271  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   53:487  warning  Empty block statement                                            no-empty
+   54:261  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   54:327  warning  Empty block statement                                            no-empty
+   60:185  warning  Empty block statement                                            no-empty
+   69:272  warning  Empty block statement                                            no-empty
+   70:573  warning  Unnecessary escape character: \[                                 no-useless-escape
+   74:59   warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   75:47   warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   76:201  warning  Unnecessary escape character: \*                                 no-useless-escape
+   76:403  warning  Unnecessary escape character: \)                                 no-useless-escape
+   76:412  warning  Unnecessary escape character: \(                                 no-useless-escape
+   76:414  warning  Unnecessary escape character: \)                                 no-useless-escape
+   77:141  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   77:498  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   78:395  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   84:204  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   84:287  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+   84:304  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   86:378  warning  Unnecessary escape character: \[                                 no-useless-escape
+   86:390  warning  Unnecessary escape character: \(                                 no-useless-escape
+   89:427  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   91:447  warning  Empty block statement                                            no-empty
+   93:83   warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   93:210  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  109:483  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  113:444  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  116:263  warning  Move function declaration to function body root                  no-inner-declarations
+  117:475  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  119:438  warning  Unnecessary escape character: \/                                 no-useless-escape
+  123:283  warning  Empty block statement                                            no-empty
+  125:414  warning  Empty block statement                                            no-empty
+  128:269  warning  Empty block statement                                            no-empty
+  130:21   warning  Empty block statement                                            no-empty
+  131:28   warning  Empty block statement                                            no-empty
+  146:267  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  152:362  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  152:458  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/js/bootstrap.js
+    17:3  warning  'jQuery' is not defined                                     no-undef
+    77:3  warning  'jQuery' is not defined                                     no-undef
+   172:3  warning  'jQuery' is not defined                                     no-undef
+   293:3  warning  'jQuery' is not defined                                     no-undef
+   531:3  warning  'jQuery' is not defined                                     no-undef
+   661:7  warning  Unexpected newline between object and [ of property access  no-unexpected-multiline
+   743:3  warning  'jQuery' is not defined                                     no-undef
+   909:3  warning  'jQuery' is not defined                                     no-undef
+  1247:3  warning  'jQuery' is not defined                                     no-undef
+  1762:3  warning  'jQuery' is not defined                                     no-undef
+  1871:3  warning  'jQuery' is not defined                                     no-undef
+  2044:3  warning  'jQuery' is not defined                                     no-undef
+  2200:3  warning  'jQuery' is not defined                                     no-undef
+  2363:3  warning  'jQuery' is not defined                                     no-undef
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/js/jquery-1.4.2.min.js
+   19:199  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   20:9    warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   20:486  warning  Unnecessary escape character: \[                                 no-useless-escape
+   20:488  warning  Unnecessary escape character: \.                                 no-useless-escape
+   22:49   warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   22:285  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   26:277  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   27:191  warning  Empty block statement                                            no-empty
+   28:289  warning  Unnecessary escape character: \/                                 no-useless-escape
+   28:385  warning  Unnecessary escape character: \-                                 no-useless-escape
+   32:189  warning  Unnecessary escape character: \/                                 no-useless-escape
+   32:235  warning  Unnecessary escape character: \/                                 no-useless-escape
+   35:257  warning  Empty block statement                                            no-empty
+   44:325  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   48:523  warning  Unnecessary escape character: \.                                 no-useless-escape
+   48:525  warning  Unnecessary escape character: \|                                 no-useless-escape
+   49:211  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   49:423  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   51:171  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   51:331  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   52:271  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   53:487  warning  Empty block statement                                            no-empty
+   54:261  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   54:327  warning  Empty block statement                                            no-empty
+   60:185  warning  Empty block statement                                            no-empty
+   69:272  warning  Empty block statement                                            no-empty
+   70:573  warning  Unnecessary escape character: \[                                 no-useless-escape
+   74:59   warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   75:47   warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   76:201  warning  Unnecessary escape character: \*                                 no-useless-escape
+   76:403  warning  Unnecessary escape character: \)                                 no-useless-escape
+   76:412  warning  Unnecessary escape character: \(                                 no-useless-escape
+   76:414  warning  Unnecessary escape character: \)                                 no-useless-escape
+   77:141  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   77:498  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   78:395  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   84:204  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   84:287  warning  Expected a 'break' statement before 'case'                       no-fallthrough
+   84:304  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   86:378  warning  Unnecessary escape character: \[                                 no-useless-escape
+   86:390  warning  Unnecessary escape character: \(                                 no-useless-escape
+   89:427  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   91:447  warning  Empty block statement                                            no-empty
+   93:83   warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+   93:210  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  109:483  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  113:444  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  116:263  warning  Move function declaration to function body root                  no-inner-declarations
+  117:475  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  119:438  warning  Unnecessary escape character: \/                                 no-useless-escape
+  123:283  warning  Empty block statement                                            no-empty
+  125:414  warning  Empty block statement                                            no-empty
+  128:269  warning  Empty block statement                                            no-empty
+  130:21   warning  Empty block statement                                            no-empty
+  131:28   warning  Empty block statement                                            no-empty
+  146:267  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  152:362  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+  152:458  warning  Expected a conditional expression and instead saw an assignment  no-cond-assign
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/js/jquery-old.js
+  2:58     warning  'module' is not defined                                                    no-undef
+  2:73     warning  'module' is not defined                                                    no-undef
+  2:6372   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:6583   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:6598   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:7074   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:7306   warning  Empty block statement                                                      no-empty
+  2:7871   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:9868   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:11292  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:11888  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:11926  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:12330  warning  Empty block statement                                                      no-empty
+  2:12893  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:13205  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:15004  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:15242  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:15390  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:15728  warning  Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  2:16409  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:18795  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:18884  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:18944  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:20204  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:20779  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:20887  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:22906  warning  Unnecessary escape character: \[                                           no-useless-escape
+  2:22908  warning  Unnecessary escape character: \.                                           no-useless-escape
+  2:30599  warning  Empty block statement                                                      no-empty
+  2:31841  warning  Empty block statement                                                      no-empty
+  3:4837   warning  Empty block statement                                                      no-empty
+  3:7838   warning  Empty block statement                                                      no-empty
+  3:10458  warning  Empty block statement                                                      no-empty
+  3:19747  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  3:19874  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  3:22019  warning  Empty block statement                                                      no-empty
+  3:26143  warning  Move function declaration to function body root                            no-inner-declarations
+  3:29909  warning  Empty block statement                                                      no-empty
+  4:1882   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  4:4336   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  4:10429  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  4:12325  warning  Empty block statement                                                      no-empty
+  4:13624  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  4:14068  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  4:14482  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  4:15585  warning  Unnecessary escape character: \/                                           no-useless-escape
+  4:16076  warning  'ActiveXObject' is not defined                                             no-undef
+  4:16460  warning  Unnecessary escape character: \/                                           no-useless-escape
+  4:16472  warning  Unnecessary escape character: \/                                           no-useless-escape
+  4:16771  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  4:19260  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  4:21151  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  4:26098  warning  Empty block statement                                                      no-empty
+  4:26175  warning  Empty block statement                                                      no-empty
+  4:31348  warning  'define' is not defined                                                    no-undef
+  4:31360  warning  'define' is not defined                                                    no-undef
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/js/jquery.js
+  2:71     warning  'module' is not defined                                                    no-undef
+  2:86     warning  'module' is not defined                                                    no-undef
+  2:5615   warning  Unexpected control character(s) in regular expression: \x1f, \x1f          no-control-regex
+  2:6098   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:6322   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:6830   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:7600   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:9866   warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:10176  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:12190  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:12758  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:12796  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:13779  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:14091  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:15919  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:16190  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:16388  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:16762  warning  Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  2:17452  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:19272  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:19372  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:19432  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:19616  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:20785  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:22057  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:22168  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:24334  warning  Unnecessary escape character: \/                                           no-useless-escape
+  2:33946  warning  Empty block statement                                                      no-empty
+  2:37691  warning  Unnecessary escape character: \/                                           no-useless-escape
+  2:39340  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:39456  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:39716  warning  Empty block statement                                                      no-empty
+  2:49400  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:50960  warning  Empty block statement                                                      no-empty
+  2:59283  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:60452  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:66084  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:67827  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:67893  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:68197  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:68263  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:68670  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:68947  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:74372  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:75966  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:76746  warning  'r.href' is assigned to itself                                             no-self-assign
+  2:81551  warning  Empty block statement                                                      no-empty
+  2:84667  warning  Expected a conditional expression and instead saw an assignment            no-cond-assign
+  2:89180  warning  'define' is not defined                                                    no-undef
+  2:89192  warning  'define' is not defined                                                    no-undef
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/js/main.js
+   1:5   warning  'index' is defined but never used             no-unused-vars
+   3:18  warning  'getSelectedValue' is defined but never used  no-unused-vars
+  14:13  warning  '$' is not defined                            no-undef
+  18:13  warning  'src' is defined but never used               no-unused-vars
+  20:18  warning  'getOption' is defined but never used         no-unused-vars
+  21:13  warning  'temp1' is not defined                        no-undef
+  22:20  warning  'temp1' is not defined                        no-undef
+  23:13  warning  'scr' is not defined                          no-undef
+  23:19  warning  'temp1' is not defined                        no-undef
+  31:13  warning  '$' is not defined                            no-undef
+  31:74  warning  'scr' is not defined                          no-undef
+  44:9   warning  'ga' is not defined                           no-undef
+  45:9   warning  'ga' is not defined                           no-undef
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/js/npm.js
+   2:1  warning  'require' is not defined  no-undef
+   3:1  warning  'require' is not defined  no-undef
+   4:1  warning  'require' is not defined  no-undef
+   5:1  warning  'require' is not defined  no-undef
+   6:1  warning  'require' is not defined  no-undef
+   7:1  warning  'require' is not defined  no-undef
+   8:1  warning  'require' is not defined  no-undef
+   9:1  warning  'require' is not defined  no-undef
+  10:1  warning  'require' is not defined  no-undef
+  11:1  warning  'require' is not defined  no-undef
+  12:1  warning  'require' is not defined  no-undef
+  13:1  warning  'require' is not defined  no-undef
+
+✖ 261 problems (0 errors, 261 warnings)
+
