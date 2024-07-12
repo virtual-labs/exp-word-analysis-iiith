@@ -54,7 +54,7 @@ $rootWord;
 function getOptionValue($str)
 {
 	$fp=fopen("features.txt","r");
-	$root=array();
+	$root=[];
 	$flag=0;
 	while(!feof($fp))
 	{
@@ -78,7 +78,7 @@ function getOptionValue($str)
 function getOptionValueRestrict($str)
 {
 	$fp=fopen("features.txt","r");
-	$word=array();
+	$word=[];
 	while(!feof($fp))
 	{
 		$string=fgets($fp);
@@ -107,7 +107,7 @@ function showList($list,$val,$ansStr,$word)
 function check($val,$word,$cat)
 {
 	$fp=fopen("features.txt","r");
-	$wor=array();
+	$wor=[];
 	while(!feof($fp))
 	{
 		$str=fgets($fp);
@@ -139,7 +139,7 @@ if(isset($_GET['index']))
 	$I=$_GET['index'];
 
 $fp=fopen("features.txt","r");
-$root=array();
+$root=[];
 while(!feof($fp))
 {
 	$str=fgets($fp);
@@ -166,7 +166,7 @@ $flag=1;
 if($_GET['root']=="%")
 {
 	$flag=0;
-	$cROOT=$listROOT[rand(0,sizeof($listROOT)-1)];
+	$cROOT=$listROOT[random_int(0,sizeof($listROOT)-1)];
 }
 else
 	$cROOT=$_GET['root'];
@@ -175,7 +175,7 @@ $cCATEGORY;
 if($_GET['category']=="%")
 {
 	$flag=0;
-	$cCATEGORY=$listCATEGORY[rand(0,sizeof($listCATEGORY)-1)];
+	$cCATEGORY=$listCATEGORY[random_int(0,sizeof($listCATEGORY)-1)];
 }
 else
 	$cCATEGORY=$_GET['category'];
@@ -184,7 +184,7 @@ $cGENDER;
 if($_GET['gender']=="%")
 {
 	$flag=0;
-	$cGENDER=$listGENDER[rand(0,sizeof($listGENDER)-1)];
+	$cGENDER=$listGENDER[random_int(0,sizeof($listGENDER)-1)];
 }
 else
 	$cGENDER=$_GET['gender'];
@@ -193,7 +193,7 @@ $cFORM;
 if($_GET['form']=="%")
 {
 	$flag=0;
-	$cFORM=$listFORM[rand(0,sizeof($listFORM)-1)];
+	$cFORM=$listFORM[random_int(0,sizeof($listFORM)-1)];
 }
 else
 	$cFORM=$_GET['form'];
@@ -202,7 +202,7 @@ $cPERSON;
 if($_GET['person']=="%")
 {
 	$flag=0;
-	$cPERSON=$listPERSON[rand(0,sizeof($listPERSON)-1)];
+	$cPERSON=$listPERSON[random_int(0,sizeof($listPERSON)-1)];
 }
 else
 	$cPERSON=$_GET['person'];
@@ -211,7 +211,7 @@ $cTENSE;
 if($_GET['tense']=="%")
 {
 	$flag=0;
-	$cTENSE=$listTENSE[rand(0,sizeof($listTENSE)-1)];
+	$cTENSE=$listTENSE[random_int(0,sizeof($listTENSE)-1)];
 }
 else
 	$cTENSE=$_GET['tense'];
@@ -220,7 +220,7 @@ $cREFERENCE;
 if($_GET['reference']=="%")
 {
 	$flag=0;
-	$cREFERENCE=$listREFERENCE[rand(0,sizeof($listREFERENCE)-1)];
+	$cREFERENCE=$listREFERENCE[random_int(0,sizeof($listREFERENCE)-1)];
 }
 else
 	$cREFERENCE=$_GET['reference'];
@@ -276,7 +276,7 @@ $(this).removeClass('hidden');
 }
 
 
-$default_option = array("root"=>$cROOT, "category"=>$cCATEGORY, "gender"=>$cGENDER, "form"=>$cFORM, "person"=>$cPERSON, "tense"=>$cTENSE, "reference"=>$cREFERENCE);
+$default_option = ["root"=>$cROOT, "category"=>$cCATEGORY, "gender"=>$cGENDER, "form"=>$cFORM, "person"=>$cPERSON, "tense"=>$cTENSE, "reference"=>$cREFERENCE];
 
 print "<tr>";
 echo "<td>WORD</td>";
