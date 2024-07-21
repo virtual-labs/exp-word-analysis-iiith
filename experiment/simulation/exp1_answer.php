@@ -11,7 +11,7 @@ if(isset($_GET['word']))
 	$word=$_GET['word'];
 
 $fp=fopen("features.txt","r");
-$wor=array();
+$wor=[];
 
 print "<br/><table id='outputT' width=\"100%\" bgcolor=#FFD4A8 >
 <tr>
