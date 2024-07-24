@@ -8,7 +8,7 @@ $script=$_GET['script'];
 
 $fp=fopen("features.txt","r");
 
-$word=array();
+$word=[];
 while(!feof($fp))
 {
 	
