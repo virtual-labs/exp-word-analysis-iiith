@@ -1,209 +1,94 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="utf-8"/>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-
-
-    <!-- Custom CSS -->
-    <!-- <link href="css/style.css" rel="stylesheet"/> -->
-    <!--<link href="../css/style-main.scss" rel="stylesheet"/>-->
-    <!-- <link href="css/override.css" rel="stylesheet"/> -->
-    <style type="text/css">
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
-
-    <!-- <script type="text/javascript" src='jquery.js'></script>
-	<script type="text/javascript" src="js/modernizr-1.5.min.js"></script>-->
-    <!-- <script src="js/jquery-1.7.1.min.js"></script> -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Analysis Simulation</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
-
-<body class="index" id="page-top">
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            //the function is called once the document loads     
-
-            $('#hidden-content').load('default.html #experiment',
-                function(response, status, xhr) {
-                    //loads the default.html #lab section into the
-                    //#hidden-content
-
-                    $('#container').load('content.html #experiment',
-                        function(response, status, xhr) {
-                            //loads the content.html #lab section into the
-                            //#container
-
-                            homePage = $("div#experiment-header-heading a").html();
-
-                            thisPage = $("article#experiment-article header#experiment-article-heading").html();
-
-                            breadcrumb = "<font color='white'>" + "<a href='../../index.html'>Home<a/> \> <a href='../index.html'>" + homePage + "</a> \> <a href='index.html'>" + thisPage + "</a>" + "</font>";
-
-                            $("article#experiment-article div#experiment-article-breadcrumb").html(breadcrumb);
-
-                            $("#container .default").each(function() {
-                                // Extracts all elements with class = "default"
-                                // and top down
-
-                                sectionId = $(this).attr('id');
-                                sectionContent = $("#hidden-content #" +
-                                    sectionId).html();
-                                $("#container #" + sectionId).html(sectionContent);
-                            });
-
-                            $("#container #experiment-article-sections > section").each(function() {
-                                // loads all the content in the respective
-                                // sections with the corresponding section headings 
-
-                                sectionId = $(this).attr('id');
-                                headerId = $("#" + sectionId + "-heading").html();
-                                iconId = $("#" + sectionId + "-icon").html();
-
-                                $("#container #experiment-article-navigation ul").
-                                append("<li> <a href=\'#\' id=\'" + sectionId +
-                                    "-menu\'>" + iconId + "<br />" +
-                                    headerId + "</a></li>");
-                            });
-
-                            /*			
-          $("#experiment-article-sections").after(
-            "<div id='experiment-article-sections-view'> </div>");
-	  $("#experiment-article-sections-view").html($(
-            "#experiment-article-sections section:first").html()); */
-
-                            $("#experiment-article-sections section").hide();
-                            //hide all the experiment sections
-
-                            $("#experiment-article-sections section:first").show();
-                            //show only the first experiment section when
-                            //the experiment page loads
-
-                            $("#experiment-article-navigation ul > li a").live('click',
-                                function() {
-                                    //enables the navigation
-
-                                    menuId = $(this).attr('id');
-                                    // this points to the current element
-
-                                    sectionId = menuId.replace(/-menu/i, "");
-                                    /*
-	    $("#experiment-article-sections-view").html($(
-            "#experiment-article-sections #" + 
-            sectionId).html());
-	    */
-
-                                    $("#experiment-article-sections section").hide();
-                                    $("#experiment-article-sections #" + sectionId).show();
-                                });
-                        });
-                });
-        });
-
-        var index;
-
-        function getSelectedValue() {
-            getdata(document.getElementById('userWord').value);
-            return false;
-        }
-
-        function getdata(ind) {
-            if (ind == 'null') {
-                alert("Select word");
-                document.getElementById("fldiv").innerHTML = "";
-                return;
-            }
-            $('#fldiv').load('exp1.php?index=' + ind + '&root=%&category=%&gender=%&form=%&person=%&tense=%&reference=%&turn=%');
-        }
-
-        var lang;
-        var src;
-
-        function getOption(temp) {
-            temp1 = temp.split("_");
-            lang = temp1[0];
-            scr = temp1[1];
-            document.getElementById("option").innerHTML = "";
-            document.getElementById("fldiv").innerHTML = "";
-
-            if (lang == "null") {
-                alert("Select language");
-                return;
-            }
-            $('#option').load('exp1_opt.php?lang=' + lang + '&script=' + scr);
-        }
-    </script>
-
-
-    <div id="top">
+<body>
+    <div class="container">
+        <h1>Word Analysis Simulation</h1>
         
-        <div id="content">
-        
-            <!-- =================================================================================================================================== -->
-            <div class="container-fluid" style="margin-left: 35px; margin-right: 35px;">
-                
-                <div class="row">
-                    
-                    <div class="col-md-10 lab-list-col-10">
+        <div class="simulation-container">
+            <div class="step-container">
+                <h2>Step 1: Select Language</h2>
+                <select id="language" class="select-box">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </div>
 
-                        <!--edit -->
-                        <!-- <h1 class="text-h1-lightblue">Word Analysis</h1> -->
-                        <div class="content" id="experiment-article-section-4-content">
-                            <table style="margin-left:0px;" width="100%">
-                                <tbody>
-                                    <tr>
-                                        <td align="center">
-                                            <p style="font-style:italic;color:blue">Select a Language which you know better</p>
-                                            <select autocomplete="off" name="lang" onchange="getOption(this.value);">
-                                                <option value="null_null">---Select Language---</option>
-                                                <option value="en_roman">English</option>
-                                                <option value="hi_devanagiri">Hindi</option>
+            <div class="step-container">
+                <h2>Step 2: Select Word</h2>
+                <select id="word" class="select-box" disabled>
+                    <option value="">Select a word...</option>
+                </select>
+            </div>
+
+            <div class="step-container">
+                <h2>Step 3: Select Features</h2>
+                <div class="features-grid">
+                    <div class="feature-group">
+                        <label for="root">Root:</label>
+                        <select id="root" class="select-box" disabled>
+                            <option value="">Select root...</option>
+                        </select>
+                    </div>
+
+                    <div class="feature-group">
+                        <label for="category">Category:</label>
+                        <select id="category" class="select-box" disabled>
+                            <option value="">Select category...</option>
+                        </select>
+                    </div>
+
+                    <div class="feature-group">
+                        <label for="gender">Gender:</label>
+                        <select id="gender" class="select-box" disabled>
+                            <option value="">Select gender...</option>
+                        </select>
+                    </div>
+
+                    <div class="feature-group">
+                        <label for="number">Number:</label>
+                        <select id="number" class="select-box" disabled>
+                            <option value="">Select number...</option>
+                        </select>
+                    </div>
+
+                    <div class="feature-group">
+                        <label for="person">Person:</label>
+                        <select id="person" class="select-box" disabled>
+                            <option value="">Select person...</option>
                                             </select>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <br/>
-                            <div align="center" id="option"></div>
-                            <br/>
-                            <div align="center" id="fldiv"></div>
+                    </div>
 
+                    <div class="feature-group">
+                        <label for="case">Case:</label>
+                        <select id="case" class="select-box" disabled>
+                            <option value="">Select case...</option>
+                        </select>
                         </div>
+
+                    <div class="feature-group">
+                        <label for="tense">Tense:</label>
+                        <select id="tense" class="select-box" disabled>
+                            <option value="">Select tense...</option>
+                        </select>
                     </div>
                 </div>
             </div>
-            <!-- =================================================================================================================================== -->
 
+            <div class="button-container">
+                <button id="checkButton" class="primary-button" disabled>Check Answer</button>
+                <button id="showAnswerButton" class="secondary-button" disabled>Show Answer</button>
+            </div>
+
+            <div id="feedback" class="feedback-container"></div>
+            <div id="answer" class="answer-container"></div>
         </div>
-        <!-- content div -->
-
-
     </div>
-    <!-- top div -->
-
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <!-- <script src="js/bootstrap.min.js"></script> -->
-
-    <!-- Custom Theme JavaScript -->
-    <!-- <script src="js/custom.js"></script> -->
-
-   
-
-
-
-
-
-
-
-
-
-
-</body><!-- jQuery --></html>
+    <script src="js/main.js"></script>
+</body>
+</html>
