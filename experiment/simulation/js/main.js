@@ -65,26 +65,14 @@ const answerContainer = document.getElementById('answer');
 
 // Common feature values for distractors
 const commonFeatures = {
-    gender: ['male', 'female', 'neuter'],
+    gender: ['male', 'female'],
     number: ['singular', 'plural'],
     person: ['first', 'second', 'third'],
-    case: ['roman', 'giri'],
-    tense: [
-        'simple-present',
-        'simple-past',
-        'simple-future',
-        'present-continuous',
-        'past-continuous',
-        'future-continuous',
-        'present-perfect',
-        'past-perfect',
-        'future-perfect',
-        'present-perfect-continuous',
-        'past-perfect-continuous',
-        'future-perfect-continuous'
-    ],
     category: ['noun', 'verb', 'adjective', 'adverb', 'pronoun', 'preposition', 'conjunction']
 };
+
+// Store all unique tenses from features.txt
+let allTenses = new Set();
 
 // Function to get distractors for a feature
 function getDistractors(featureType, correctValue, count = 3) {
@@ -93,17 +81,21 @@ function getDistractors(featureType, correctValue, count = 3) {
     return distractors.sort(() => Math.random() - 0.5).slice(0, count);
 }
 
-// Function to generate root distractors
-function getRootDistractors(correctRoot) {
-    const variations = [
-        correctRoot + 'ed',
-        correctRoot + 'ing',
-        correctRoot + 's',
-        correctRoot.replace(/ing$/, ''),
-        correctRoot.replace(/ed$/, ''),
-        correctRoot.replace(/s$/, '')
-    ];
-    return variations.filter(v => v !== correctRoot).sort(() => Math.random() - 0.5).slice(0, 3);
+// Function to generate root distractors (now: all word forms sharing the same root and language)
+function getRootDistractors(selectedWord) {
+    // Get the word info for the selected word
+    const wordInfo = wordData.get(selectedWord);
+    if (!wordInfo) return [];
+    const root = Array.from(wordInfo.root)[0];
+    const lang = wordInfo.language;
+    if (!root || !lang) return [];
+    // Find all words in wordData that share this root and language
+    const similarWords = Array.from(wordData.entries())
+        .filter(([word, info]) => info.language === lang && info.root.has(root))
+        .map(([word, _]) => word)
+        .filter(word => word && word !== 'na');
+    // Remove duplicates and sort
+    return Array.from(new Set(similarWords)).sort();
 }
 
 // Initialize the application
@@ -154,7 +146,10 @@ function processFeaturesData(text) {
         if (number && number !== 'na') wordInfo.number.add(number);
         if (person && person !== 'na') wordInfo.person.add(person);
         if (script && script !== 'na') wordInfo.case.add(script);
-        if (tense && tense !== 'na') wordInfo.tense.add(tense);
+        if (tense && tense !== 'na') {
+            wordInfo.tense.add(tense);
+            allTenses.add(tense);
+        }
         
         wordInfo.features.push({
             root: root !== 'na' ? root : '',
@@ -243,30 +238,78 @@ function clearAllFeatures() {
 }
 
 // Populate a feature select dropdown with distractors
+function capitalizeFirst(str) {
+    if (!str) return str;
+    if (str === 'NA') return str;
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function populateFeatureSelect(select, values, featureType) {
     select.innerHTML = '<option value="">Select...</option>';
-    
+    const valueArr = Array.from(values);
+    // If 'na' is present, add 'NA' as an option
+    if (valueArr.includes('na')) {
+        const naOption = document.createElement('option');
+        naOption.value = 'NA';
+        naOption.textContent = 'NA';
+        select.appendChild(naOption);
+    }
+    // Special handling for script/case dropdown
+    if (featureType === 'case') {
+        // Always show Devanagari and Roman
+        ['Devanagari', 'Roman'].forEach(val => {
+            const option = document.createElement('option');
+            option.value = val;
+            option.textContent = capitalizeFirst(val);
+            select.appendChild(option);
+        });
+        return;
+    }
+    // Special handling for tense dropdown
+    if (featureType === 'tense') {
+        // Use all unique tenses from features.txt
+        Array.from(allTenses).sort().forEach(val => {
+            if (val && val !== 'na') {
+                const option = document.createElement('option');
+                option.value = val;
+                option.textContent = capitalizeFirst(val);
+                select.appendChild(option);
+            }
+        });
+        return;
+    }
     // Get the first valid value as the correct answer
-    const correctValue = Array.from(values).find(v => v && v !== 'na');
-    if (!correctValue) return;
-    
-    // Add the correct value
-    const correctOption = document.createElement('option');
-    correctOption.value = correctValue;
-    correctOption.textContent = correctValue;
-    select.appendChild(correctOption);
-    
-    // Add distractors
-    const distractors = featureType === 'root' 
-        ? getRootDistractors(correctValue)
-        : getDistractors(featureType, correctValue);
-    
-    distractors.forEach(value => {
-        const option = document.createElement('option');
-        option.value = value;
-        option.textContent = value;
-        select.appendChild(option);
-    });
+    const correctValue = valueArr.find(v => v && v !== 'na');
+    if (!correctValue && !valueArr.includes('na')) return;
+    // Add the correct value (if not NA)
+    if (correctValue) {
+        const correctOption = document.createElement('option');
+        correctOption.value = correctValue;
+        correctOption.textContent = capitalizeFirst(correctValue);
+        select.appendChild(correctOption);
+    }
+    // Add distractors/options
+    if (featureType === 'root') {
+        const similarWords = getRootDistractors(currentWord);
+        similarWords.forEach(word => {
+            if (word !== correctValue && word !== 'na') {
+                const option = document.createElement('option');
+                option.value = word;
+                option.textContent = capitalizeFirst(word);
+                select.appendChild(option);
+            }
+        });
+    } else {
+        const distractors = getDistractors(featureType, correctValue);
+        distractors.forEach(value => {
+            if (value !== 'na') {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = capitalizeFirst(value);
+                select.appendChild(option);
+            }
+        });
+    }
 }
 
 // Handle word selection change
@@ -276,11 +319,8 @@ function handleWordChange() {
         clearAllFeatures();
         return;
     }
-    
     currentWord = selectedWord;
     const wordInfo = wordData.get(selectedWord);
-    
-    // Populate feature dropdowns with distractors
     populateFeatureSelect(rootSelect, wordInfo.root, 'root');
     populateFeatureSelect(categorySelect, wordInfo.category, 'category');
     populateFeatureSelect(genderSelect, wordInfo.gender, 'gender');
@@ -288,17 +328,12 @@ function handleWordChange() {
     populateFeatureSelect(personSelect, wordInfo.person, 'person');
     populateFeatureSelect(caseSelect, wordInfo.case, 'case');
     populateFeatureSelect(tenseSelect, wordInfo.tense, 'tense');
-    
-    // Enable feature selects
     [rootSelect, categorySelect, genderSelect, numberSelect, personSelect, caseSelect, tenseSelect].forEach(select => {
         select.disabled = false;
     });
-    
-    // Enable buttons
+    checkButton.style.display = '';
     checkButton.disabled = false;
     showAnswerButton.disabled = false;
-    
-    // Clear previous feedback and answers
     clearFeedback();
 }
 
@@ -370,10 +405,19 @@ function checkAnswer() {
 // Show the correct answer
 function showAnswer() {
     if (!currentWord) return;
-    
     const wordInfo = wordData.get(currentWord);
     const firstFeature = wordInfo.features[0];
-    
+    // Set dropdowns to the correct answer
+    rootSelect.value = firstFeature.root || '';
+    categorySelect.value = firstFeature.category || '';
+    genderSelect.value = firstFeature.gender || '';
+    numberSelect.value = firstFeature.number || '';
+    personSelect.value = firstFeature.person || '';
+    caseSelect.value = firstFeature.case || '';
+    tenseSelect.value = firstFeature.tense || '';
+    // Hide/disable check answer button
+    checkButton.style.display = 'none';
+    // Show the answer as before
     const answerHTML = `
         <h3>Correct Features for "${currentWord}":</h3>
         <ul>
@@ -386,7 +430,6 @@ function showAnswer() {
             <li><strong>Tense:</strong> ${firstFeature.tense || 'N/A'}</li>
         </ul>
     `;
-    
     answerContainer.innerHTML = answerHTML;
     answerContainer.classList.add('show');
 }
