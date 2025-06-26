@@ -105,6 +105,7 @@ async function init() {
         const text = await response.text();
         processFeaturesData(text);
         setupEventListeners();
+        setupInstructionsPanel();
     } catch (error) {
         console.error('Error loading features data:', error);
         showFeedback('Error loading features data. Please try again.', 'error');
@@ -405,6 +406,9 @@ function checkAnswer() {
 // Show the correct answer
 function showAnswer() {
     if (!currentWord) return;
+    clearFeedback(); // Remove any feedback
+    feedbackContainer.textContent = '';
+    feedbackContainer.className = 'feedback-container';
     const wordInfo = wordData.get(currentWord);
     const firstFeature = wordInfo.features[0];
     // Set dropdowns to the correct answer
@@ -444,6 +448,68 @@ function showFeedback(message, type) {
 function clearFeedback() {
     feedbackContainer.className = 'feedback-container';
     answerContainer.className = 'answer-container';
+}
+
+// Setup instructions panel functionality
+function setupInstructionsPanel() {
+    const toggleBtn = document.getElementById('toggleInstructions');
+    const instructionsContent = document.getElementById('instructionsContent');
+    if (toggleBtn && instructionsContent) {
+        // Collapsed by default
+        instructionsContent.classList.add('collapsed');
+        toggleBtn.textContent = 'Show Instructions';
+        toggleBtn.addEventListener('click', () => {
+            const isCollapsed = instructionsContent.classList.contains('collapsed');
+            if (isCollapsed) {
+                instructionsContent.classList.remove('collapsed');
+                toggleBtn.textContent = 'Hide Instructions';
+            } else {
+                instructionsContent.classList.add('collapsed');
+                toggleBtn.textContent = 'Show Instructions';
+            }
+        });
+    }
+}
+
+// Add event listener for Reset button
+document.addEventListener('DOMContentLoaded', function() {
+    const resetButton = document.getElementById('resetButton');
+    if (resetButton) {
+        resetButton.addEventListener('click', resetSimulation);
+    }
+});
+
+function resetSimulation() {
+    // Reset language and word selects
+    languageSelect.selectedIndex = 0;
+    wordSelect.innerHTML = '<option value="">Select a word...</option>';
+    wordSelect.disabled = true;
+    // Reset all feature selects
+    [rootSelect, categorySelect, genderSelect, numberSelect, personSelect, caseSelect, tenseSelect].forEach(select => {
+        select.innerHTML = '<option value="">Select...</option>';
+        select.disabled = true;
+    });
+    // Hide feedback and answer
+    clearFeedback();
+    feedbackContainer.textContent = '';
+    feedbackContainer.className = 'feedback-container';
+    answerContainer.innerHTML = '';
+    answerContainer.classList.remove('show');
+    // Reset buttons
+    checkButton.disabled = true;
+    showAnswerButton.disabled = true;
+    checkButton.style.display = '';
+    // Reset current word
+    currentWord = null;
+    // Reset instructions panel to collapsed
+    const instructionsContent = document.getElementById('instructionsContent');
+    const toggleBtn = document.getElementById('toggleInstructions');
+    if (instructionsContent && toggleBtn) {
+        instructionsContent.classList.add('collapsed');
+        toggleBtn.textContent = 'Show Instructions';
+    }
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Initialize the application when the DOM is loaded

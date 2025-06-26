@@ -1,11 +1,42 @@
 :root {
-    --primary-color: #2196F3;
-    --secondary-color: #FFC107;
-    --success-color: #4CAF50;
-    --error-color: #F44336;
-    --text-color: #333;
-    --background-color: #f5f5f5;
-    --border-color: #ddd;
+    --color-primary: #4361ee;
+    --color-primary-light: #4895ef;
+    --color-primary-dark: #3a0ca3;
+    --color-secondary: #4cc9f0;
+    --color-secondary-light: #72efdd;
+    --color-secondary-dark: #3f8efc;
+    --color-accent: #f72585;
+    --color-accent-light: #ff8fab;
+    --color-accent-dark: #b5179e;
+    --color-success: #4CAF50;
+    --color-error: #F44336;
+    --color-neutral-50: #f8fafc;
+    --color-neutral-100: #f1f5f9;
+    --color-neutral-200: #e2e8f0;
+    --color-neutral-300: #cbd5e1;
+    --color-neutral-400: #94a3b8;
+    --color-neutral-500: #64748b;
+    --color-neutral-600: #475569;
+    --color-neutral-700: #334155;
+    --color-neutral-800: #1e293b;
+    --color-neutral-900: #0f172a;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --shadow-md: 0 4px 6px -1px rgba(67, 97, 238, 0.08), 0 2px 4px -1px rgba(67, 97, 238, 0.04);
+    --shadow-lg: 0 10px 15px -3px rgba(67, 97, 238, 0.10), 0 4px 6px -2px rgba(67, 97, 238, 0.05);
+    
+    /* Legacy variables for backward compatibility */
+    --primary-color: var(--color-primary);
+    --secondary-color: var(--color-secondary);
+    --success-color: var(--color-success);
+    --error-color: var(--color-error);
+    --text-color: var(--color-neutral-800);
+    --background-color: var(--color-neutral-50);
+    --border-color: var(--color-neutral-200);
+    --info-color: var(--color-primary);
+    --hint-color: var(--color-neutral-600);
+    --pane-bg: #fff;
+    --pane-border: var(--color-neutral-200);
 }
 
 * {
@@ -17,143 +48,435 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
+    color: var(--color-neutral-800);
+    background-color: var(--color-neutral-50);
+    font-size: 1rem;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1.2rem 0.5rem;
 }
 
 h1 {
     text-align: center;
-    color: var(--primary-color);
+    color: var(--color-primary-dark);
     margin-bottom: 2rem;
+    font-weight: 700;
+    font-size: 2.2em;
+    letter-spacing: 0.01em;
 }
 
-.simulation-container {
-    background: white;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.step-container {
-    margin-bottom: 2rem;
-}
-
-h2 {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-.select-box {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 1rem;
-    background-color: white;
-}
-
-.select-box:disabled {
-    background-color: #f5f5f5;
-    cursor: not-allowed;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* 3-Pane Layout */
+.three-pane-layout {
+    display: flex;
     gap: 1rem;
+    margin-top: 1rem;
+    min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.pane {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: break-word;
+    padding: 1rem 0.5rem;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--pane-border);
+}
+.pane-left, .pane-middle, .pane-right {
+    min-width: 180px;
+    max-width: 320px;
+    width: 100%;
+}
+.pane-label {
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    font-size: 1em;
 }
 
-.feature-group {
+/* Info Icon and Tooltip */
+.info-icon {
+    color: var(--color-primary-dark);
+    margin-left: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: var(--color-secondary-light);
+    border-radius: 50%;
+    width: 1.3em;
+    height: 1.3em;
+    text-align: center;
+    line-height: 1.3em;
+    font-weight: bold;
+    border: 1px solid var(--color-primary-light);
+    font-size: 0.9rem;
+}
+.info-icon:focus {
+    outline: 2px solid var(--color-primary);
+}
+.info-icon[title]:hover:after, .info-icon[title]:focus:after {
+    content: attr(title);
+    position: absolute;
+    left: 120%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    color: var(--color-neutral-800);
+    border: 1px solid var(--color-primary-light);
+    border-radius: var(--radius-md);
+    padding: 0.5rem 1rem;
+    white-space: pre-line;
+    font-size: 0.95rem;
+    z-index: 10;
+    min-width: 220px;
+    box-shadow: 0 2px 8px rgba(67, 97, 238, 0.08);
+}
+
+/* Responsive Layout */
+@media (max-width: 1100px) {
+    .main-content, .instructions-panel, .three-pane-layout {
+        max-width: 100vw;
+        width: 100vw;
+        margin: 0;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .three-pane-layout {
+        gap: 1rem;
+    }
+    .pane-left, .pane-middle, .pane-right {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+@media (max-width: 900px) {
+    .main-content, .instructions-panel, .three-pane-layout {
+        max-width: 100vw;
+        width: 100vw;
+        margin: 0;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+    }
+    .three-pane-layout {
+        flex-direction: column;
+        gap: 0.7rem;
+        width: 100vw;
+    }
+    .pane, .pane-left, .pane-middle, .pane-right {
+        max-width: 100vw;
+        min-width: 0;
+        width: 100vw;
+        padding: 0.7rem 0.1rem;
+    }
+    .pane-middle .features-grid {
+        flex-direction: column;
+        gap: 0.3rem;
+        width: 100vw;
+    }
+    .pane-middle .feature-group {
+        max-width: 100vw;
+        min-width: 0;
+        width: 100vw;
+    }
+    .button-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.3rem;
+        width: 100vw;
+    }
+    #resetButton {
+        margin-left: 0;
+        margin-top: 0.3rem;
+    }
+}
+@media (max-width: 600px), (orientation: landscape) and (max-width: 900px) {
+    .main-content, .instructions-panel, .three-pane-layout {
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+        max-width: 100vw;
+        width: 100vw;
+    }
+    .pane, .pane-left, .pane-middle, .pane-right {
+        padding: 0.5rem 0.1rem;
+        max-width: 100vw;
+        min-width: 0;
+        width: 100vw;
+    }
+    .pane-label, .feature-group label {
+        font-size: 1em;
+    }
+    .select-box, .pane-left .select-box, .pane-middle .select-box {
+        font-size: 1em;
+        padding: 0.18rem 0.3rem;
+        min-width: 0;
+        max-width: 100vw;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .pane-middle .features-grid {
+        flex-direction: column;
+        gap: 0.12rem;
+        width: 100vw;
+    }
+    .pane-middle .feature-group {
+        max-width: 100vw;
+        min-width: 0;
+        width: 100vw;
+    }
+    .button-container {
+        gap: 0.12rem;
+        width: 100vw;
+    }
+    .primary-button, .secondary-button {
+        padding: 0.38rem 0.7rem;
+        font-size: 1em;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .instructions-list {
+        font-size: 1em;
+    }
+    .info-icon {
+        min-width: 1.7em;
+        min-height: 1.7em;
+        font-size: 1.1em;
+    }
+}
+
+/* Instructions Panel: Collapsed by default, toggle label */
+.instructions-panel {
+    margin-bottom: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+.instructions-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(90deg, var(--color-secondary-light) 0%, var(--color-primary-light) 100%);
+    border-bottom: 1px solid var(--color-neutral-200);
+    cursor: pointer;
+    transition: background 0.2s;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.instructions-header:hover {
+    background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+}
+.instructions-header h3 {
+    margin: 0 0 0 0.5rem;
+    color: var(--color-primary-dark);
+    flex-grow: 1;
+    font-weight: 700;
+    font-size: 1.15em;
+}
+.toggle-btn {
+    background: none;
+    border: none;
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.toggle-btn:hover {
+    background-color: rgba(67, 97, 238, 0.1);
+    transform: translateY(-1px);
+}
+.instructions-content {
+    padding: 0.7rem 0.5rem;
+}
+.instructions-content.collapsed {
+    display: none;
+}
+
+.instructions-list {
+    list-style: disc inside;
+    margin: 0.2em 0 0.2em 1em;
+    padding: 0;
+    font-size: 1em;
+    color: var(--color-neutral-800);
+    line-height: 1.5;
+}
+.instructions-list li {
+    margin-bottom: 0.3em;
+}
+
+.word-selection-block {
+    margin-top: 0.7em;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-}
-
-.feature-group label {
-    font-weight: 500;
-    color: var(--text-color);
+    gap: 0.3em;
 }
 
 .button-container {
     display: flex;
-    gap: 1rem;
-    margin: 2rem 0;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 0.5rem 0;
+    justify-content: flex-start;
+}
+#resetButton {
+    margin-left: auto;
+    background: linear-gradient(90deg, var(--color-neutral-300) 60%, var(--color-secondary-light) 100%);
+    color: var(--color-primary-dark);
+    font-weight: 600;
+}
+#resetButton:hover {
+    background: linear-gradient(90deg, var(--color-secondary-light) 60%, var(--color-accent-light) 100%);
+    color: var(--color-accent-dark);
 }
 
-.primary-button, .secondary-button {
-    padding: 0.75rem 1.5rem;
+/* Remove old instruction-step/step-number styles */
+.instruction-step, .step-number { display: none !important; }
+
+@media (max-width: 900px) {
+    .button-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.3rem;
+    }
+    #resetButton {
+        margin-left: 0;
+        margin-top: 0.3rem;
+    }
+}
+@media (max-width: 600px) {
+    .instructions-list {
+        font-size: 0.93em;
+    }
+    .word-selection-block {
+        gap: 0.15em;
+    }
+    .button-container {
+        gap: 0.15rem;
+    }
+    .instructions-panel {
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+    }
+}
+
+/* Middle Pane: Compact Features Block */
+.pane-middle .features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.2rem;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 0;
+    margin: 0;
+}
+.pane-middle .feature-group {
+    flex: 1 1 120px;
+    min-width: 120px;
+    max-width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    margin: 0;
+    padding: 0;
+    background: none;
     border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
+}
+.pane-middle .feature-group label {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.1rem;
+}
+.pane-middle .select-box {
+    width: 100%;
+    min-width: 100px;
+    max-width: 160px;
+    font-size: 0.98rem;
+    padding: 0.35rem 0.5rem;
+    margin: 0;
 }
 
-.primary-button {
-    background-color: var(--primary-color);
-    color: white;
+/* Remove extra padding/margin from features block */
+.pane-middle {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.primary-button:hover {
-    background-color: #1976D2;
-}
-
-.secondary-button {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-}
-
-.secondary-button:hover {
-    background-color: #FFA000;
-}
-
-.primary-button:disabled, .secondary-button:disabled {
-    background-color: var(--border-color);
-    cursor: not-allowed;
-}
-
-.feedback-container {
-    margin-top: 2rem;
-    padding: 1rem;
-    border-radius: 4px;
-    display: none;
-}
-
-.feedback-container.show {
-    display: block;
-}
-
-.feedback-container.success {
-    background-color: #E8F5E9;
-    border: 1px solid var(--success-color);
-    color: var(--success-color);
-}
-
-.feedback-container.error {
-    background-color: #FFEBEE;
-    border: 1px solid var(--error-color);
-    color: var(--error-color);
-}
-
-.answer-container {
-    margin-top: 2rem;
-    padding: 1rem;
-    border-radius: 4px;
-    background-color: #E3F2FD;
-    border: 1px solid var(--primary-color);
-    display: none;
-}
-
-.answer-container.show {
-    display: block;
+/* Responsive: stack feature groups vertically on mobile, but keep compact */
+@media (max-width: 600px) {
+    .container {
+        padding: 0.2rem;
+    }
+    .three-pane-layout {
+        gap: 0.3rem;
+    }
+    .pane {
+        padding: 0.5rem 0.1rem;
+    }
+    .features-grid {
+        gap: 0.2rem;
+    }
+    .feature-group {
+        padding: 0.2rem 0.1rem;
+        gap: 0.1rem;
+    }
+    .pane-label, .feature-group label {
+        font-size: 0.93em;
+    }
+    .select-box {
+        font-size: 0.93em;
+        padding: 0.15rem 0.3rem;
+    }
+    .button-container {
+        gap: 0.2rem;
+    }
+    .primary-button, .secondary-button {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.93em;
+    }
+    .instructions-panel {
+        margin-bottom: 0.5rem;
+        padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+    }
+    .instructions-content {
+        padding: 0.3rem 0.2rem;
+    }
+    .instruction-step {
+        margin-bottom: 0.2rem;
+        padding: 0.2rem 0.2rem;
+    }
+    .step-number {
+        width: 18px;
+        height: 18px;
+        font-size: 0.8rem;
+        margin-right: 0.4rem;
+    }
+    .step-header h2, .step-header .step-title {
+        font-size: 0.98em;
+    }
+    .simulation-container, .step-container, .feedback-container, .answer-container {
+        padding: 0.3rem 0.1rem;
+        font-size: 0.93em;
+    }
+    .info-icon[title]:hover:after, .info-icon[title]:focus:after {
+        left: auto !important;
+        right: 110% !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        min-width: 180px;
+        max-width: 90vw;
+        white-space: normal;
+        text-align: left;
+        box-sizing: border-box;
+        z-index: 100;
+    }
 }
 
 @media (max-width: 768px) {
@@ -165,11 +488,128 @@ h2 {
         padding: 1rem;
     }
     
+    .step-container {
+        padding: 1rem;
+    }
+    
     .features-grid {
         grid-template-columns: 1fr;
     }
     
     .button-container {
         flex-direction: column;
+    }
+    
+    .instruction-step {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .step-number {
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+    }
+    
+    .step-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .step-help {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Pane 1 dropdowns match Pane 2 */
+.pane-left .select-box {
+    width: 100%;
+    min-width: 120px;
+    max-width: 220px;
+    font-size: 0.98rem;
+    padding: 0.35rem 0.5rem;
+    margin: 0;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-neutral-300);
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-800);
+    transition: all 0.2s;
+}
+
+/* Instructions panel width matches panes */
+.instructions-panel {
+    max-width: 1100px;
+    margin: 0 auto 1rem auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1100px) {
+    .instructions-panel {
+        max-width: 100%;
+    }
+}
+@media (max-width: 900px) {
+    .pane-middle .features-grid {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    .pane-middle .feature-group {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+@media (max-width: 600px) {
+    .pane-middle .features-grid {
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+    .pane-middle .feature-group {
+        max-width: 100%;
+        min-width: 0;
+    }
+    .instructions-panel {
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+    }
+}
+
+.main-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+}
+.instructions-panel {
+    width: 100%;
+    max-width: none;
+    margin: 0 0 1rem 0;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+}
+.three-pane-layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+}
+@media (max-width: 1100px) {
+    .main-content, .three-pane-layout {
+        max-width: 100%;
+    }
+    .instructions-panel {
+        max-width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .main-content {
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+    }
+    .instructions-panel {
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
     }
 } 
