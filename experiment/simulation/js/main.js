@@ -249,7 +249,7 @@ function populateFeatureSelect(select, values, featureType) {
     select.innerHTML = '<option value="">Select...</option>';
     const valueArr = Array.from(values);
     // If 'na' is present, add 'NA' as an option
-    if (valueArr.includes('na')) {
+    if (valueArr.includes('na') || valueArr.length === 0) {
         const naOption = document.createElement('option');
         naOption.value = 'NA';
         naOption.textContent = 'NA';
@@ -421,18 +421,23 @@ function showAnswer() {
     tenseSelect.value = firstFeature.tense || '';
     // Hide/disable check answer button
     checkButton.style.display = 'none';
-    // Show the answer as before
+    // Map script/case codes to display names
+    function displayCase(val) {
+        if (!val || val === 'NA' || val === 'na') return 'N/A';
+        if (val.toLowerCase() === 'deva' || val.toLowerCase() === 'devanagari') return 'Devanagari';
+        if (val.toLowerCase() === 'roman') return 'Roman';
+        return val;
+    }
+    // Show the answer as a clean block (no bullets)
     const answerHTML = `
         <h3>Correct Features for "${currentWord}":</h3>
-        <ul>
-            <li><strong>Root:</strong> ${firstFeature.root || 'N/A'}</li>
-            <li><strong>Category:</strong> ${firstFeature.category || 'N/A'}</li>
-            <li><strong>Gender:</strong> ${firstFeature.gender || 'N/A'}</li>
-            <li><strong>Number:</strong> ${firstFeature.number || 'N/A'}</li>
-            <li><strong>Person:</strong> ${firstFeature.person || 'N/A'}</li>
-            <li><strong>Case:</strong> ${firstFeature.case || 'N/A'}</li>
-            <li><strong>Tense:</strong> ${firstFeature.tense || 'N/A'}</li>
-        </ul>
+        <div><strong>Root:</strong> ${firstFeature.root || 'N/A'}</div>
+        <div><strong>Category:</strong> ${firstFeature.category || 'N/A'}</div>
+        <div><strong>Gender:</strong> ${firstFeature.gender || 'N/A'}</div>
+        <div><strong>Number:</strong> ${firstFeature.number || 'N/A'}</div>
+        <div><strong>Person:</strong> ${firstFeature.person || 'N/A'}</div>
+        <div><strong>Case:</strong> ${displayCase(firstFeature.case)}</div>
+        <div><strong>Tense:</strong> ${firstFeature.tense || 'N/A'}</div>
     `;
     answerContainer.innerHTML = answerHTML;
     answerContainer.classList.add('show');
