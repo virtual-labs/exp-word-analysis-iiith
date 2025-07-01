@@ -1,5 +1,3 @@
-### Experiment Objectives
-
 After completing this experiment, students will be able to:
 
 1. **Analyze Word Structure**: Identify and decompose words into their morphological components (root + affixes) with 80% accuracy across different word categories (nouns, verbs, adjectives).
@@ -11,6 +9,7 @@ After completing this experiment, students will be able to:
 4. **Practice Morphological Analysis**: Develop hands-on skills in performing systematic morphological analysis using the interactive simulation, applying theoretical knowledge to practical word analysis tasks.
 
 #### Learning Focus
+
 - Decompose words into root and affix components
 - Identify grammatical features that modify word forms
 - Compare morphological patterns across English and Hindi
