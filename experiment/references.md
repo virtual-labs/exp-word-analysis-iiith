@@ -1,4 +1,4 @@
-## Textbooks
+### Textbooks
 
 **1. Speech and Language Processing - An Introduction to Natural Language Processing, Computational Linguistics and Speech Recognition**<br/>
 BY: Daniel Jurafsky and James H. Martin - Chapter 3<br/>
@@ -16,7 +16,7 @@ BY: Victoria Fromkin, Robert Rodman, and Nina Hyams - Chapter 3<br/>
 BY: Adrian Akmajian, Richard A. Demers, Ann K. Farmer, and Robert M. Harnish<br/>
 *Comprehensive coverage of linguistic concepts including morphology.*
 
-## Video Lectures and Online Courses
+### Video Lectures and Online Courses
 
 **NPTEL Courses:**
 - [Natural Language Processing](https://nptel.ac.in/courses/106/105/106105184/) - IIT Bombay
@@ -30,7 +30,7 @@ BY: Adrian Akmajian, Richard A. Demers, Ann K. Farmer, and Robert M. Harnish<br/
 - [Crash Course Linguistics](https://www.youtube.com/playlist?list=PL8dPuuaLjXtP5mp25nStsuDzk2blncJDW) - Morphology episodes
 - [The Virtual Linguistics Campus](https://www.youtube.com/user/VirtualLinguistics) - University of Marburg
 
-## Research Papers and Articles
+### Research Papers and Articles
 
 **1. Morphological Analysis for Indian Languages: A Survey**<br/>
 BY: Akshar Bharati, Vineet Chaitanya, and Rajeev Sangal<br/>
@@ -44,7 +44,7 @@ BY: Kemal Oflazer<br/>
 BY: Pushpak Bhattacharyya<br/>
 *Proceedings of COLING, 2010*
 
-## Online Resources and Tools
+### Online Resources and Tools
 
 **Academic Resources:**
 - [Linguistic Data Consortium (LDC)](https://www.ldc.upenn.edu/) - Language resources and corpora
@@ -59,7 +59,7 @@ BY: Pushpak Bhattacharyya<br/>
 - [Hindi Grammar](https://hindilanguage.info/hindi-grammar/) - Comprehensive Hindi grammar guide
 - [English Morphology](https://www.thoughtco.com/morphology-words-term-1691407) - ThoughtCo guide
 
-## Additional Reading
+### Additional Reading
 
 **For Advanced Study:**
 - "Morphology" by Francis Katamba - Detailed textbook on morphological theory
@@ -71,7 +71,7 @@ BY: Pushpak Bhattacharyya<br/>
 - "Hindi Morphology" by Usha R. Jain
 - "Computational Morphology for Indian Languages" by Pushpak Bhattacharyya
 
-## Practice Resources
+### Practice Resources
 
 **Corpora and Datasets:**
 - [Hindi WordNet](http://www.cfilt.iitb.ac.in/wordnet/webhwn/)

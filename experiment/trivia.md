@@ -1,4 +1,4 @@
-## Fascinating Facts About Morphology
+### Fascinating Facts About Morphology
 
 **1. The Most Morphologically Complex Language**
 Turkish is considered one of the most morphologically complex languages, where a single word can contain multiple suffixes. For example, "evlerinizden" means "from your houses" and contains: ev (house) + ler (plural) + iniz (your) + den (from).
@@ -19,7 +19,7 @@ The morphological complexity of languages often reflects their historical develo
 **5. Psycholinguistic Insights**
 Studies show that native speakers process morphologically complex words differently than simple words. For example, "happiness" is processed as "happy" + "-ness" in the brain, not as a completely separate word.
 
-## Real-World Applications
+### Real-World Applications
 
 **Natural Language Processing (NLP)**
 - **Google Translate** uses morphological analysis to understand word relationships
@@ -35,7 +35,7 @@ Studies show that native speakers process morphologically complex words differen
 - **Language documentation** for preserving endangered languages
 - **Computational lexicography** for creating digital dictionaries
 
-## Interesting Language Comparisons
+### Interesting Language Comparisons
 
 **Agglutinative Languages** (like Turkish, Finnish)
 - Words are formed by adding many suffixes
@@ -54,7 +54,7 @@ Studies show that native speakers process morphologically complex words differen
 - Single words can express entire sentences
 - Example: "tawakiqutiqarpiit" = "Do you have any tobacco for sale?"
 
-## Modern Computational Challenges
+### Modern Computational Challenges
 
 **Neural Networks and Morphology**
 - Modern AI systems struggle with morphological analysis

@@ -1,15 +1,15 @@
-## Morphological Analysis: Theory & Practice
+### Morphological Analysis: Theory & Practice
 
 Morphological analysis is a foundational task in Natural Language Processing (NLP). It involves breaking down a word into its root and affix(es), which is essential for understanding word structure and meaning in any language.
 
 ---
 
-### 1. What is Morphological Analysis?
+#### 1. What is Morphological Analysis?
 
 > **Definition:**
 > Analysis of a word into root and affix(es) is called *morphological analysis* of a word. Identifying the root of a word is mandatory for any NLP task.
 
-#### Example: Word Forms Across Languages
+##### Example: Word Forms Across Languages
 - **English:**
   - Root: 'play'
   - Forms: 'play', 'plays', 'played', 'playing'
@@ -26,7 +26,7 @@ Morphological analysis is a foundational task in Natural Language Processing (NL
 
 ---
 
-### 2. Morphological Richness
+#### 2. Morphological Richness
 
 The number of forms a root word can take varies across languages. Indian languages are generally considered *morphologically rich*, meaning words can have many forms due to inflections and derivations.
 
@@ -35,13 +35,13 @@ The number of forms a root word can take varies across languages. Indian languag
 
 ---
 
-### 3. Types of Morphology
+#### 3. Types of Morphology
 
-#### **Inflectional Morphology**
+##### **Inflectional Morphology**
 - Deals with word forms of a root where there is **no change in lexical category**.
 - Example: 'played' is an inflection of 'play' (both are verbs).
 
-#### **Derivational Morphology**
+##### **Derivational Morphology**
 - Deals with word forms of a root where there **is a change in lexical category**.
 - Example: 'happiness' is a derivation of 'happy' (adjective → noun).
 
@@ -51,14 +51,14 @@ The number of forms a root word can take varies across languages. Indian languag
 
 ---
 
-### 4. Morphological Features
+#### 4. Morphological Features
 
 During morphological analysis, each word is assigned a *lexical category* and may take suffixes for features such as gender, number, person, case, tense, aspect, and modality.
 
-#### **Nouns & Pronouns**
+##### **Nouns & Pronouns**
 - Can take suffixes for: **gender, number, person, case**
 
-##### Example Analyses
+###### Example Analyses
 | Language | Input Word | Output Analysis |
 |---|---|---|
 | Hindi | लडके (ladake) | rt=लड़का(ladakaa), cat=n, gen=m, num=sg, case=obl |
@@ -67,10 +67,10 @@ During morphological analysis, each word is assigned a *lexical category* and ma
 | English | boy | rt=boy, cat=n, gen=m, num=sg |
 | English | boys | rt=boy, cat=n, gen=m, num=pl |
 
-#### **Verbs**
+##### **Verbs**
 - Can take suffixes for: **tense, aspect, modality, gender, number, person**
 
-##### Example Analyses
+###### Example Analyses
 | Language | Input Word | Output Analysis |
 |---|---|---|
 | Hindi | हँसी(hansii) | rt=हँस(hans), cat=v, gen=fem, num=sg/pl, per=1/2/3 tense=past, aspect=pft |
@@ -82,7 +82,7 @@ During morphological analysis, each word is assigned a *lexical category* and ma
 
 ---
 
-### 5. Feature Glossary
+#### 5. Feature Glossary
 
 - **rt**: root
 - **cat**: lexical category (noun, verb, adjective, pronoun, adverb, preposition)
@@ -102,7 +102,7 @@ During morphological analysis, each word is assigned a *lexical category* and ma
 
 ---
 
-### 6. Summary
+#### 6. Summary
 
 Morphological analysis is crucial for understanding and processing natural language, especially in morphologically rich languages like Hindi and Telugu. By breaking words into their roots and features, we can better analyze, translate, and generate language computationally.
 

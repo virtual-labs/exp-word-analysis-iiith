@@ -1,4 +1,4 @@
-## Core Morphological Terms
+### Core Morphological Terms
 
 **Morphology**: The study of the internal structure of words and how they are formed from smaller meaningful units called morphemes.
 
@@ -12,7 +12,7 @@
 
 **Derivational Morphology**: Word formation that creates new words, often changing the grammatical category (e.g., "happy" → "happiness").
 
-## Grammatical Features
+### Grammatical Features
 
 **Gender**: A grammatical category that classifies nouns and related words. In this experiment: male, female, or NA (not applicable).
 
@@ -29,7 +29,7 @@
 
 **Aspect**: Indicates how an action is viewed in terms of its completion or duration (perfect, continuous, habitual).
 
-## Language-Specific Terms
+### Language-Specific Terms
 
 **Devanagari**: The writing system used for Hindi and several other Indian languages.
 
@@ -41,7 +41,7 @@
 
 **Direct Case**: A grammatical case used when no postposition follows a noun in Hindi.
 
-## Analysis Terms
+### Analysis Terms
 
 **Morphological Analysis**: The process of breaking down words into their constituent morphemes and identifying their grammatical features.
 

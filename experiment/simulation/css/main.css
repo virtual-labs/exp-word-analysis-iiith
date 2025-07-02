@@ -59,6 +59,12 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 1.2rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 h1, .experiment-title {
@@ -90,18 +96,19 @@ h3 {
     box-sizing: border-box;
     grid-row: 2;
     grid-column: 1 / -1;
+    justify-items: center;
 }
 .pane {
     box-sizing: border-box;
     width: 100%;
     min-width: 0;
-    max-width: none;
+    max-width: 340px;
     overflow-wrap: break-word;
     padding: 1rem 0.5rem;
     box-shadow: var(--shadow-md);
     border-radius: var(--radius-md);
     border: 1px solid var(--pane-border);
-    margin: 0;
+    margin: 0 auto;
 }
 .pane-left, .pane-middle, .pane-right {
     min-width: 180px;
@@ -155,19 +162,14 @@ h3 {
 
 /* Responsive Layout */
 @media (max-width: 1100px) {
-    .main-content, .instructions-panel, .three-pane-layout {
+    .container, .main-content, .instructions-panel, .three-pane-layout {
         max-width: 100vw;
         width: 100vw;
-        margin: 0;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
-    .three-pane-layout {
-        gap: 1rem;
-    }
-    .pane-left, .pane-middle, .pane-right {
-        max-width: 100%;
-        min-width: 0;
+    .pane, .pane-left, .pane-middle, .pane-right {
+        max-width: 98vw;
     }
 }
 @media (max-width: 900px) {
@@ -185,19 +187,47 @@ h3 {
         padding-right: 0;
     }
     .three-pane-layout {
-        grid-template-columns: 1fr;
-        gap: 0.7rem;
+        display: block !important;
         width: 100vw;
+        gap: 0;
+        justify-items: unset;
+        grid-template-columns: unset;
     }
     .pane, .pane-left, .pane-middle, .pane-right {
-        max-width: 100vw;
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
         min-width: 0;
-        width: 100vw;
+        margin: 0 auto 1.2rem auto;
         padding: 0.7rem 0.1rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
+    }
+    .pane:last-child, .pane-right:last-child {
+        margin-bottom: 0;
+    }
+    .pane-label, .feature-group label {
+        font-size: 1em;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    .button-container {
+        gap: 0.12rem;
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .primary-button, .secondary-button {
+        padding: 0.38rem 0.7rem;
+        font-size: 1em;
+        width: 100% !important;
+        box-sizing: border-box;
     }
 }
 @media (max-width: 600px), (orientation: landscape) and (max-width: 900px) {
-    .main-content, .instructions-panel, .three-pane-layout {
+    .container, .main-content, .instructions-panel, .three-pane-layout {
         padding-left: 0.1rem;
         padding-right: 0.1rem;
         max-width: 100vw;
@@ -205,48 +235,46 @@ h3 {
     }
     .pane, .pane-left, .pane-middle, .pane-right {
         padding: 0.5rem 0.1rem;
-        max-width: 100vw;
+        max-width: 100% !important;
         min-width: 0;
-        width: 100vw;
+        width: 100% !important;
+        margin: 0 auto;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
     .pane-label, .feature-group label {
         font-size: 1em;
-    }
-    .select-box, .pane-left .select-box, .pane-middle .select-box {
-        font-size: 1em;
-        padding: 0.18rem 0.3rem;
-        min-width: 0;
-        max-width: 100vw;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .pane-middle .features-grid {
-        flex-direction: column;
-        gap: 0.12rem;
-        width: 100vw;
-    }
-    .pane-middle .feature-group {
-        max-width: 100vw;
-        min-width: 0;
-        width: 100vw;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
     .button-container {
         gap: 0.12rem;
-        width: 100vw;
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
     }
     .primary-button, .secondary-button {
         padding: 0.38rem 0.7rem;
         font-size: 1em;
-        width: 100%;
+        width: 100% !important;
         box-sizing: border-box;
     }
-    .instructions-list {
-        font-size: 1em;
+}
+
+@media (max-width: 480px) {
+    .container, .main-content, .instructions-panel, .three-pane-layout {
+        padding-left: 0;
+        padding-right: 0;
     }
-    .info-icon {
-        min-width: 1.7em;
-        min-height: 1.7em;
-        font-size: 1.1em;
+    .pane, .pane-left, .pane-middle, .pane-right {
+        padding: 0.3rem 0.05rem;
+        max-width: 100vw;
+        width: 100vw;
+    }
+    .primary-button, .secondary-button {
+        font-size: 0.97em;
+        padding: 0.3rem 0.5rem;
     }
 }
 
@@ -259,6 +287,7 @@ h3 {
     padding-right: 0;
     width: 100%;
     box-sizing: border-box;
+    justify-self: center;
 }
 .instructions-header {
     display: flex;
@@ -585,6 +614,7 @@ h3 {
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
+    justify-items: center;
 }
 .instructions-panel {
     grid-row: 1;
@@ -594,6 +624,7 @@ h3 {
     padding-right: 0;
     width: 100%;
     box-sizing: border-box;
+    justify-self: center;
 }
 .three-pane-layout {
     display: grid;
@@ -603,13 +634,14 @@ h3 {
     box-sizing: border-box;
     grid-row: 2;
     grid-column: 1 / -1;
+    justify-items: center;
 }
 .pane, .pane-left, .pane-middle, .pane-right {
     width: 100%;
     min-width: 0;
-    max-width: none;
+    max-width: 340px;
     box-sizing: border-box;
-    margin: 0;
+    margin: 0 auto;
 }
 @media (max-width: 1100px) {
     .main-content, .three-pane-layout {

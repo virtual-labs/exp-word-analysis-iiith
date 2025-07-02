@@ -110,13 +110,26 @@
                             </select>
                         </div>
                         <div class="feature-group">
-                            <label for="case">Case:
+                            <label for="script">Script:
                                 <span class="info-icon" tabindex="0" title="Script type: Devanagari or Roman">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            </label>
+                            <select id="script" class="select-box" disabled>
+                                <option value="">Select script...</option>
+                            </select>
+                        </div>
+                        <div class="feature-group">
+                            <label for="case">Case:
+                                <span class="info-icon" tabindex="0" title="Grammatical case: Direct, Oblique, or N/A (not applicable)">
                                     <i class="fas fa-info-circle"></i>
                                 </span>
                             </label>
                             <select id="case" class="select-box" disabled>
                                 <option value="">Select case...</option>
+                                <option value="Direct">Direct</option>
+                                <option value="Oblique">Oblique</option>
+                                <option value="NA">N/A</option>
                             </select>
                         </div>
                         <div class="feature-group">
