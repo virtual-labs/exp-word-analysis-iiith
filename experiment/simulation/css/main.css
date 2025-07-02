@@ -56,14 +56,14 @@ body {
 }
 
 .container {
-    max-width: 1100px;
+    width: 90vw;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 1.2rem 0.5rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
     box-sizing: border-box;
 }
 
@@ -89,20 +89,20 @@ h3 {
 
 /* 3-Pane Layout */
 .three-pane-layout {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    grid-row: 2;
-    grid-column: 1 / -1;
+    gap: 2rem;
     justify-items: center;
 }
 .pane {
     box-sizing: border-box;
     width: 100%;
-    min-width: 0;
-    max-width: 340px;
+    min-width: 300px;
+    max-width: 480px;
     overflow-wrap: break-word;
     padding: 1rem 0.5rem;
     box-shadow: var(--shadow-md);
@@ -111,8 +111,13 @@ h3 {
     margin: 0 auto;
 }
 .pane-left, .pane-middle, .pane-right {
-    min-width: 180px;
-    max-width: 320px;
+    min-width: 300px;
+    max-width: 480px;
+    width: 100%;
+}
+.pane-middle {
+    min-width: 650px;
+    max-width: 800px;
     width: 100%;
 }
 .pane-label {
@@ -142,23 +147,8 @@ h3 {
 .info-icon:focus {
     outline: 2px solid var(--color-primary);
 }
-.info-icon[title]:hover:after, .info-icon[title]:focus:after {
-    content: attr(title);
-    position: absolute;
-    left: 120%;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #fff;
-    color: var(--color-neutral-800);
-    border: 1px solid var(--color-primary-light);
-    border-radius: var(--radius-md);
-    padding: 0.5rem 1rem;
-    white-space: pre-line;
-    font-size: 0.95rem;
-    z-index: 10;
-    min-width: 220px;
-    box-shadow: 0 2px 8px rgba(67, 97, 238, 0.08);
-}
+/* Remove hover-based feedback for info icons */
+.info-icon[title]:hover:after { display: none !important; }
 
 /* Responsive Layout */
 @media (max-width: 1100px) {
@@ -280,14 +270,16 @@ h3 {
 
 /* Instructions Panel: Collapsed by default, toggle label */
 .instructions-panel {
-    grid-row: 1;
-    grid-column: 1 / -1;
-    margin-bottom: 1rem;
-    padding-left: 0;
-    padding-right: 0;
     width: 100%;
+    max-width: 1040px;
+    margin: 1.2rem auto 1.2rem auto;
     box-sizing: border-box;
-    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0;
+    border-radius: 0;
 }
 .instructions-header {
     display: flex;
@@ -498,7 +490,7 @@ h3 {
         padding: 0.3rem 0.1rem;
         font-size: 0.93em;
     }
-    .info-icon[title]:hover:after, .info-icon[title]:focus:after {
+    .info-icon[title]:hover:after {
         left: auto !important;
         right: 110% !important;
         top: 50% !important;
@@ -571,8 +563,8 @@ h3 {
 
 /* Instructions panel width matches panes */
 .instructions-panel {
-    max-width: 1100px;
-    margin: 0 auto 1rem auto;
+    max-width: 1040px;
+    margin: 1.2rem auto 1.2rem auto;
     width: 100%;
     box-sizing: border-box;
 }
@@ -608,13 +600,13 @@ h3 {
 }
 
 .main-content {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    max-width: 1100px;
-    margin: 0 auto;
     width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     box-sizing: border-box;
     justify-items: center;
+    display: grid;
+    grid-template-rows: auto 1fr;
 }
 .instructions-panel {
     grid-row: 1;
@@ -629,7 +621,7 @@ h3 {
 .three-pane-layout {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
+    gap: 2rem;
     width: 100%;
     box-sizing: border-box;
     grid-row: 2;
@@ -713,4 +705,33 @@ h3 {
 .answer-container div {
     margin-bottom: 0.2em;
     padding-left: 0.1em;
+}
+
+@media (min-width: 900px) {
+    .main-content {
+        width: 90vw;
+        max-width: 1040px;
+        margin: 0 auto;
+    }
+    .instructions-panel, .three-pane-layout {
+        width: 100%;
+        max-width: 1040px;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.pane-middle .step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.pane-middle .step-title {
+    flex: 0 1 auto;
+    margin-right: 0.5rem;
+}
+.pane-middle .info-icon {
+    margin-left: 0;
 } 

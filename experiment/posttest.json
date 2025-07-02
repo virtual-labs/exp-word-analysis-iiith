@@ -153,6 +153,108 @@
       },
       "correctAnswer": "b",
       "difficulty": "advanced"
+    },
+    {
+      "question": "Why is morphological analysis important in natural language processing?",
+      "answers": {
+        "a": "It helps in understanding word structure and meaning",
+        "b": "It is only used for translation tasks",
+        "c": "It is not relevant for computational linguistics",
+        "d": "It is only useful for English language analysis"
+      },
+      "explanations": {
+        "a": "Correct! Morphological analysis is crucial for understanding how words are formed and how they function in sentences, which is essential for many NLP tasks.",
+        "b": "Incorrect. While translation is one application, morphological analysis is broadly useful in NLP.",
+        "c": "Incorrect. It is a core part of computational linguistics.",
+        "d": "Incorrect. Morphological analysis is important for many languages, not just English."
+      },
+      "correctAnswer": "a",
+      "difficulty": "theory"
+    },
+    {
+      "question": "What is the difference between inflectional and derivational morphology?",
+      "answers": {
+        "a": "Inflectional changes grammatical features, derivational creates new words",
+        "b": "Both are the same",
+        "c": "Derivational is only for verbs",
+        "d": "Inflectional is only for nouns"
+      },
+      "explanations": {
+        "a": "Correct! Inflectional morphology changes grammatical features (like tense, number), while derivational morphology creates new words or changes the word class.",
+        "b": "Incorrect. They serve different linguistic functions.",
+        "c": "Incorrect. Derivational morphology applies to many word classes.",
+        "d": "Incorrect. Inflectional morphology applies to various word classes."
+      },
+      "correctAnswer": "a",
+      "difficulty": "theory"
+    },
+    {
+      "question": "Which of the following is an example of a morphologically rich language?",
+      "answers": {
+        "a": "Hindi",
+        "b": "English",
+        "c": "Chinese",
+        "d": "All of the above"
+      },
+      "explanations": {
+        "a": "Correct! Hindi is considered morphologically rich due to its extensive inflectional system.",
+        "b": "Incorrect. English is less morphologically rich compared to Hindi.",
+        "c": "Incorrect. Chinese is considered morphologically poor.",
+        "d": "Incorrect. Only Hindi fits the description."
+      },
+      "correctAnswer": "a",
+      "difficulty": "theory"
+    },
+    {
+      "question": "How does morphological analysis help in machine translation?",
+      "answers": {
+        "a": "By providing information about word structure and grammatical features",
+        "b": "By ignoring word endings",
+        "c": "By focusing only on syntax",
+        "d": "By translating word-for-word without context"
+      },
+      "explanations": {
+        "a": "Correct! Morphological analysis helps machine translation systems understand the structure and features of words, leading to more accurate translations.",
+        "b": "Incorrect. Word endings are important in many languages.",
+        "c": "Incorrect. Syntax is important, but morphology provides crucial information.",
+        "d": "Incorrect. Context and morphology are both important for accurate translation."
+      },
+      "correctAnswer": "a",
+      "difficulty": "conceptual"
+    },
+    {
+      "question": "What is the role of case marking in Hindi?",
+      "answers": {
+        "a": "It indicates the grammatical function of nouns in a sentence",
+        "b": "It changes the meaning of verbs",
+        "c": "It is only used in poetry",
+        "d": "It is not important for understanding sentences"
+      },
+      "explanations": {
+        "a": "Correct! Case marking in Hindi shows the grammatical role of nouns (subject, object, etc.) in a sentence.",
+        "b": "Incorrect. Case marking does not change verb meaning.",
+        "c": "Incorrect. It is used in all types of language, not just poetry.",
+        "d": "Incorrect. Case marking is crucial for understanding sentence structure."
+      },
+      "correctAnswer": "a",
+      "difficulty": "conceptual"
+    },
+    {
+      "question": "Why is it important to identify the root of a word in NLP tasks?",
+      "answers": {
+        "a": "Because it helps in grouping related word forms and understanding meaning",
+        "b": "Because it is only needed for spelling correction",
+        "c": "Because roots are always verbs",
+        "d": "Because it is not important"
+      },
+      "explanations": {
+        "a": "Correct! Identifying the root helps in grouping word forms, understanding meaning, and improving NLP applications like search and translation.",
+        "b": "Incorrect. Root identification is useful for many NLP tasks, not just spelling correction.",
+        "c": "Incorrect. Roots can be of any word class.",
+        "d": "Incorrect. Root identification is fundamental in NLP."
+      },
+      "correctAnswer": "a",
+      "difficulty": "conceptual"
     }
   ]
 }

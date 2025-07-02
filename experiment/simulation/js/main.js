@@ -66,12 +66,12 @@ const answerContainer = document.getElementById('answer');
 
 // Common feature values for distractors
 const commonFeatures = {
-    gender: ['male', 'female', 'NA'],
+    gender: ['male', 'female', 'N/A'],
     number: ['singular', 'plural'],
-    person: ['first', 'second', 'third', 'NA'],
+    person: ['first', 'second', 'third', 'N/A'],
     category: ['noun', 'verb', 'adjective', 'adverb', 'pronoun', 'preposition', 'conjunction'],
-    case: ['Direct', 'Oblique', 'NA'],
-    script: ['Devanagari', 'Roman']
+    case: ['Direct', 'Oblique', 'N/A'],
+    script: ['devanagari', 'Roman']
 };
 
 // Store all unique tenses from features.txt
@@ -83,7 +83,7 @@ let previouslyIncorrect = false;
 // Function to get distractors for a feature
 function getDistractors(featureType, correctValue, count = 3) {
     const allValues = commonFeatures[featureType] || [];
-    const distractors = allValues.filter(value => value !== correctValue && value !== 'na');
+    const distractors = allValues.filter(value => value !== correctValue && value !== 'N/A');
     return distractors.sort(() => Math.random() - 0.5).slice(0, count);
 }
 
@@ -99,7 +99,7 @@ function getRootDistractors(selectedWord) {
     const similarWords = Array.from(wordData.entries())
         .filter(([word, info]) => info.language === lang && info.root.has(root))
         .map(([word, _]) => word)
-        .filter(word => word && word !== 'na');
+        .filter(word => word && word !== 'N/A');
     // Remove duplicates and sort
     return Array.from(new Set(similarWords)).sort();
 }
@@ -127,7 +127,7 @@ function processFeaturesData(text) {
         const [word, root, category, gender, number, case_, person, lang, script, tense] = line.split('\t');
         
         // Skip empty or invalid entries
-        if (!word || !lang || lang === 'na') return;
+        if (!word || !lang || lang === 'N/A') return;
         
         if (!wordData.has(word)) {
             wordData.set(word, {
@@ -146,29 +146,29 @@ function processFeaturesData(text) {
         
         const wordInfo = wordData.get(word);
         
-        // Only add non-NA values
-        if (root && root !== 'na') wordInfo.root.add(root);
-        if (category && category !== 'na') wordInfo.category.add(category);
-        if (gender && gender !== 'na') wordInfo.gender.add(gender);
-        if (number && number !== 'na') wordInfo.number.add(number);
-        if (person && person !== 'na') wordInfo.person.add(person);
-        if (script && script !== 'na') wordInfo.script.add(script);
-        if (tense && tense !== 'na') {
+        // Only add non-N/A values
+        if (root && root !== 'N/A') wordInfo.root.add(root);
+        if (category && category !== 'N/A') wordInfo.category.add(category);
+        if (gender && gender !== 'N/A') wordInfo.gender.add(gender);
+        if (number && number !== 'N/A') wordInfo.number.add(number);
+        if (person && person !== 'N/A') wordInfo.person.add(person);
+        if (script && script !== 'N/A') wordInfo.script.add(script);
+        if (tense && tense !== 'N/A') {
             wordInfo.tense.add(tense);
             allTenses.add(tense);
         }
-        // No case info in data, so just add NA by default
-        wordInfo.case.add('NA');
+        // No case info in data, so just add N/A by default
+        wordInfo.case.add('N/A');
         
         wordInfo.features.push({
-            root: root !== 'na' ? root : '',
-            category: category !== 'na' ? category : '',
-            gender: gender !== 'na' ? gender : '',
-            number: number !== 'na' ? number : '',
-            person: person !== 'na' ? person : '',
-            script: script !== 'na' ? script : '',
-            case: 'NA',
-            tense: tense !== 'na' ? tense : ''
+            root: root !== 'N/A' ? root : '',
+            category: category !== 'N/A' ? category : '',
+            gender: gender !== 'N/A' ? gender : '',
+            number: number !== 'N/A' ? number : '',
+            person: person !== 'N/A' ? person : '',
+            script: script !== 'N/A' ? script : '',
+            case: 'N/A',
+            tense: tense !== 'N/A' ? tense : ''
         });
     });
     
@@ -180,7 +180,7 @@ function processFeaturesData(text) {
 function populateLanguageSelect() {
     const languages = new Set();
     wordData.forEach((info, word) => {
-        if (info.language && info.language !== 'na') {
+        if (info.language && info.language !== 'N/A' && info.language !== 'na') {
             languages.add(info.language);
         }
     });
@@ -223,6 +223,11 @@ function setupEventListeners() {
     languageSelect.addEventListener('change', () => {
         populateWordSelect();
         clearAllFeatures();
+        // Reset feedback and answer containers
+        feedbackContainer.textContent = '';
+        feedbackContainer.className = 'feedback-container';
+        answerContainer.innerHTML = '';
+        answerContainer.className = 'answer-container';
     });
     wordSelect.addEventListener('change', handleWordChange);
     rootSelect.addEventListener('change', handleFeatureChange);
@@ -251,21 +256,20 @@ function clearAllFeatures() {
 // Populate a feature select dropdown with distractors
 function capitalizeFirst(str) {
     if (!str) return str;
-    if (str === 'NA') return str;
+    if (str === 'N/A') return str;
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function populateFeatureSelect(select, values, featureType) {
     select.innerHTML = '<option value="">Select...</option>';
-    let valueArr = Array.from(values);
+    let valueArr = Array.from(values).filter(v => v && v.toLowerCase() !== 'na');
     // Always add N/A for gender, person, tense, and case
     if (["gender", "person", "tense", "case"].includes(featureType)) {
-        if (!valueArr.includes('NA')) valueArr.push('NA');
+        if (!valueArr.includes('N/A')) valueArr.push('N/A');
     }
     if (featureType === 'root') {
-        // For root, show all possible roots for the selected word
         valueArr.forEach(val => {
-            if (val && val !== 'na') {
+            if (val && val !== 'N/A') {
                 const option = document.createElement('option');
                 option.value = val;
                 option.textContent = capitalizeFirst(val);
@@ -275,7 +279,7 @@ function populateFeatureSelect(select, values, featureType) {
         return;
     }
     if (featureType === 'case') {
-        ['Direct', 'Oblique', 'NA'].forEach(val => {
+        ['Direct', 'Oblique', 'N/A'].forEach(val => {
             const option = document.createElement('option');
             option.value = val;
             option.textContent = val;
@@ -284,32 +288,34 @@ function populateFeatureSelect(select, values, featureType) {
         return;
     }
     if (featureType === 'script') {
-        ['Devanagari', 'Roman'].forEach(val => {
+        ['devanagari', 'Roman'].forEach(val => {
             const option = document.createElement('option');
             option.value = val;
-            option.textContent = val;
+            option.textContent = val.charAt(0).toUpperCase() + val.slice(1);
             select.appendChild(option);
         });
         return;
     }
     if (featureType === 'tense') {
         Array.from(allTenses).sort().forEach(val => {
-            if (val && val !== 'na') {
+            if (val && val !== 'N/A' && val.toLowerCase() !== 'na' && val.toLowerCase() !== 'roman') {
                 const option = document.createElement('option');
                 option.value = val;
                 option.textContent = capitalizeFirst(val);
                 select.appendChild(option);
             }
         });
-        // Add N/A
+        // Add N/A as an option (not default)
         const naOption = document.createElement('option');
-        naOption.value = 'NA';
+        naOption.value = 'N/A';
         naOption.textContent = 'N/A';
         select.appendChild(naOption);
+        // Always set default to empty (Select...)
+        select.value = '';
         return;
     }
     // Add correct and distractor options for other features
-    const correctValue = valueArr.find(v => v && v !== 'na');
+    const correctValue = valueArr.find(v => v && v !== 'N/A');
     if (correctValue) {
         const correctOption = document.createElement('option');
         correctOption.value = correctValue;
@@ -318,13 +324,15 @@ function populateFeatureSelect(select, values, featureType) {
     }
     const distractors = getDistractors(featureType, correctValue);
     distractors.forEach(value => {
-        if (value !== 'na') {
+        if (value !== 'N/A') {
             const option = document.createElement('option');
             option.value = value;
             option.textContent = capitalizeFirst(value);
             select.appendChild(option);
         }
     });
+    // Always set default to empty (Select...) for all feature dropdowns
+    select.value = '';
 }
 
 // Handle word selection change
@@ -409,85 +417,78 @@ function checkAnswer() {
         tense: tenseSelect.value
     };
     const wordInfo = wordData.get(currentWord);
-    const correctFeatures = wordInfo.features.find(feature => 
-        feature.root === userAnswer.root &&
-        feature.category === userAnswer.category &&
-        feature.gender === userAnswer.gender &&
-        feature.number === userAnswer.number &&
-        feature.person === userAnswer.person &&
-        // Fix script comparison: case-insensitive, trimmed
-        feature.script && userAnswer.script && feature.script.trim().toLowerCase() === userAnswer.script.trim().toLowerCase() &&
-        feature.case === userAnswer.case &&
-        feature.tense === userAnswer.tense
-    );
-    if (correctFeatures) {
-        if (previouslyIncorrect) {
-            showFeedback('Correct! Well done after correction.', 'success');
-        } else {
-            showFeedback('Correct! All features match.', 'success');
+    // Strictly check all features: must match exactly
+    let incorrectFeatures = [];
+    let foundMatch = false;
+    for (const feature of wordInfo.features) {
+        let allMatch = true;
+        if (feature.root !== userAnswer.root) allMatch = false;
+        if (feature.category !== userAnswer.category) allMatch = false;
+        if (feature.gender !== userAnswer.gender) allMatch = false;
+        if (feature.number !== userAnswer.number) allMatch = false;
+        if (feature.person !== userAnswer.person) allMatch = false;
+        // Script: case-insensitive, trimmed
+        if (!feature.script || !userAnswer.script || feature.script.trim().toLowerCase() !== userAnswer.script.trim().toLowerCase()) allMatch = false;
+        if (feature.case !== userAnswer.case) allMatch = false;
+        if (feature.tense !== userAnswer.tense) allMatch = false;
+        if (allMatch) {
+            foundMatch = true;
+            break;
         }
-        previouslyIncorrect = false;
+    }
+    if (foundMatch) {
+        showFeedback('Correct! All features match.', 'success');
     } else {
-        previouslyIncorrect = true;
-        // Check which features are incorrect
-        const incorrectFeatures = [];
-        if (userAnswer.root && !wordInfo.root.has(userAnswer.root)) {
-            incorrectFeatures.push('Root');
-        }
-        if (userAnswer.category && !wordInfo.category.has(userAnswer.category)) {
-            incorrectFeatures.push('Category');
-        }
-        if (userAnswer.gender && !wordInfo.gender.has(userAnswer.gender)) {
-            incorrectFeatures.push('Gender');
-        }
-        if (userAnswer.number && !wordInfo.number.has(userAnswer.number)) {
-            incorrectFeatures.push('Number');
-        }
-        if (userAnswer.person && !wordInfo.person.has(userAnswer.person)) {
-            incorrectFeatures.push('Person');
-        }
-        // Fix script comparison for feedback: case-insensitive, trimmed
-        const scriptSet = new Set(Array.from(wordInfo.script).map(s => s.trim().toLowerCase()));
-        if (userAnswer.script && !scriptSet.has(userAnswer.script.trim().toLowerCase())) {
-            incorrectFeatures.push('Script');
-        }
-        // Case is always NA in data, so only check if user selected something else
-        if (userAnswer.case && userAnswer.case !== 'NA') {
-            incorrectFeatures.push('Case');
-        }
-        if (userAnswer.tense && !wordInfo.tense.has(userAnswer.tense)) {
-            incorrectFeatures.push('Tense');
-        }
+        // Identify all incorrect features
+        const correct = wordInfo.features[0];
+        if (userAnswer.root !== correct.root) incorrectFeatures.push('Root');
+        if (userAnswer.category !== correct.category) incorrectFeatures.push('Category');
+        if (userAnswer.gender !== correct.gender) incorrectFeatures.push('Gender');
+        if (userAnswer.number !== correct.number) incorrectFeatures.push('Number');
+        if (userAnswer.person !== correct.person) incorrectFeatures.push('Person');
+        if (!correct.script || !userAnswer.script || correct.script.trim().toLowerCase() !== userAnswer.script.trim().toLowerCase()) incorrectFeatures.push('Script');
+        if (userAnswer.case !== correct.case) incorrectFeatures.push('Case');
+        if (userAnswer.tense !== correct.tense) incorrectFeatures.push('Tense');
         const feedback = incorrectFeatures.length > 0
             ? `Incorrect. Please check: ${incorrectFeatures.join(', ')}`
             : 'Incorrect. Please try again or show the answer.';
         showFeedback(feedback, 'error');
+        // Always set scriptSelect.value to user's selection if present
+        if ([...scriptSelect.options].some(opt => opt.value === userAnswer.script)) {
+            scriptSelect.value = userAnswer.script;
+        }
     }
 }
 
 // Show the correct answer
 function showAnswer() {
     if (!currentWord) return;
-    clearFeedback(); // Remove any feedback
+    clearFeedback();
     feedbackContainer.textContent = '';
     feedbackContainer.className = 'feedback-container';
     const wordInfo = wordData.get(currentWord);
     const firstFeature = wordInfo.features[0];
-    // Set dropdowns to the correct answer
     rootSelect.value = firstFeature.root || '';
     categorySelect.value = firstFeature.category || '';
     genderSelect.value = firstFeature.gender || '';
     numberSelect.value = firstFeature.number || '';
     personSelect.value = firstFeature.person || '';
-    scriptSelect.value = firstFeature.script || '';
-    caseSelect.value = firstFeature.case || 'NA';
-    tenseSelect.value = firstFeature.tense || '';
-    // Hide/disable check answer button
+    // Set scriptSelect to correct value if present in options, else keep user's selection
+    if (firstFeature.script && [...scriptSelect.options].some(opt => opt.value === firstFeature.script)) {
+        scriptSelect.value = firstFeature.script;
+    }
+    caseSelect.value = firstFeature.case || 'N/A';
+    // Only set tense if present, else leave as 'Select...'
+    if (firstFeature.tense && [...tenseSelect.options].some(opt => opt.value === firstFeature.tense)) {
+        tenseSelect.value = firstFeature.tense;
+    } else {
+        tenseSelect.value = '';
+    }
     checkButton.style.display = 'none';
     // Map script/case codes to display names
     function displayCase(val) {
-        if (!val || val === 'NA' || val === 'na') return 'N/A';
-        if (val.toLowerCase() === 'deva' || val.toLowerCase() === 'devanagari') return 'Devanagari';
+        if (!val || val === 'N/A') return 'N/A';
+        if (val.toLowerCase() === 'devanagari') return 'Devanagari';
         if (val.toLowerCase() === 'roman') return 'Roman';
         return val;
     }
