@@ -1,0 +1,26 @@
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/js/main.js
+    1:5   warning  'index' is defined but never used                         no-unused-vars
+    3:18  warning  'getSelectedValue' is defined but never used              no-unused-vars
+   14:13  warning  '$' is not defined                                        no-undef
+   18:13  warning  'src' is defined but never used                           no-unused-vars
+   20:18  warning  'getOption' is defined but never used                     no-unused-vars
+   21:13  warning  'temp1' is not defined                                    no-undef
+   22:20  warning  'temp1' is not defined                                    no-undef
+   23:13  warning  'scr' is not defined                                      no-undef
+   23:19  warning  'temp1' is not defined                                    no-undef
+   31:13  warning  '$' is not defined                                        no-undef
+   31:74  warning  'scr' is not defined                                      no-undef
+   44:9   warning  'ga' is not defined                                       no-undef
+   45:9   warning  'ga' is not defined                                       no-undef
+   81:5   warning  'previouslyIncorrect' is assigned a value but never used  no-unused-vars
+   91:10  warning  'getRootDistractors' is defined but never used            no-unused-vars
+  100:19  warning  'word' is defined but never used                          no-unused-vars
+  101:22  warning  '_' is defined but never used                             no-unused-vars
+  127:54  warning  'case_' is assigned a value but never used                no-unused-vars
+  182:29  warning  'word' is defined but never used                          no-unused-vars
+  207:19  warning  '_' is defined but never used                             no-unused-vars
+  208:22  warning  '_' is defined but never used                             no-unused-vars
+
+✖ 21 problems (0 errors, 21 warnings)
+
