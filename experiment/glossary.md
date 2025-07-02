@@ -19,6 +19,7 @@
 **Number**: Indicates whether a word refers to one (singular) or more than one (plural) entity.
 
 **Person**: Indicates the relationship between the speaker, listener, and the subject of the sentence:
+
 - First person: speaker (I, we)
 - Second person: listener (you)
 - Third person: others (he, she, they)
@@ -49,4 +50,4 @@
 
 **Word Form**: A specific inflectional or derivational variant of a root word.
 
-**Morphological Richness**: The degree to which a language uses inflectional morphology to encode grammatical information. 
+**Morphological Richness**: The degree to which a language uses inflectional morphology to encode grammatical information.

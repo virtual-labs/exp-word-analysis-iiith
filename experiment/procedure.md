@@ -13,9 +13,11 @@ Follow these steps to perform morphological analysis of words using the interact
 - **Note**: Each word has specific morphological features that you need to identify
 
 ### Step 3: Feature Analysis
+
 For the selected word, analyze and select the appropriate features:
 
 #### 3.1 Root Analysis
+
 - **Action**: Click on the "Root" dropdown
 - **Task**: Identify the base form of the word (e.g., for "playing" → "play")
 - **Options**: All word forms sharing the same root will be available
@@ -36,14 +38,14 @@ Analyze the following features based on the word's properties:
 
 ### Step 4: Answer Verification
 - **Action**: Click the "Check Answer" button
-- **Expected Result**: 
+- **Expected Result**:
   - ✅ Correct features will be marked with a green check
   - ❌ Incorrect features will be marked with a red cross
   - Feedback message will appear indicating success or areas for improvement
 
 ### Step 5: Learning Enhancement (Optional)
 - **Action**: Click the "Show Answer" button
-- **Expected Result**: 
+- **Expected Result**:
   - All dropdowns will be set to the correct answers
   - Detailed explanation of the word's morphological analysis will be displayed
   - The "Check Answer" button will be hidden

@@ -2,4 +2,4 @@
 
 This experiment aims to help students develop proficiency in identifying and analyzing the morphological components of words, including roots, affixes, and grammatical features such as gender, number, person, case, and tense. Through hands-on interaction with words from English and Hindi, students will learn to decompose complex word forms into their constituent parts and understand how morphological features vary across languages.
 
-<p style="text-align: center;"><img src="simulation/images/morph1.gif" alt="Morphological analysis: word input and feature output"></p>
+<p style="text-align: center;"><img src="images/morph-flow.png" alt="Morphological analysis: word input and feature output"></p>

@@ -2,24 +2,28 @@
 
 #### 1. Comparative Morphological Analysis
 **Activity**: Compare morphological patterns across multiple languages
+
 - **Task**: Analyze the same concept (e.g., "to play") in English, Hindi, and another language of your choice
 - **Learning Goal**: Understand how different languages encode the same grammatical information
 - **Tools**: Use online dictionaries and morphological analyzers for different languages
 
 #### 2. Morphological Complexity Analysis
 **Activity**: Measure and compare morphological complexity
+
 - **Task**: Count the number of different forms for common verbs in English vs. Hindi
 - **Learning Goal**: Quantify morphological richness differences
 - **Method**: Create a spreadsheet with verb forms and their features
 
 #### 3. Historical Morphology Study
 **Activity**: Trace morphological changes over time
+
 - **Task**: Compare Old English, Middle English, and Modern English word forms
 - **Learning Goal**: Understand how morphological systems evolve
 - **Resources**: Online etymological dictionaries and historical corpora
 
 #### 4. Computational Morphology Project
 **Activity**: Build a simple morphological analyzer
+
 - **Task**: Create a program that can identify roots and affixes in words
 - **Learning Goal**: Apply theoretical knowledge to practical implementation
 - **Tools**: Python with NLTK library, or any programming language of choice
@@ -27,6 +31,7 @@
 ### Research Topics for Advanced Study
 
 #### 1. Morphological Processing in the Brain
+
 - **Research Question**: How does the brain process morphologically complex words?
 - **Methods**: Psycholinguistic experiments, brain imaging studies
 - **Applications**: Understanding language disorders, improving language learning
@@ -49,8 +54,10 @@
 ### Practical Applications to Explore
 
 #### 1. Language Documentation
+
 **Project**: Document morphological patterns in an understudied language
-- **Activities**: 
+
+- **Activities**:
   - Interview native speakers
   - Record and analyze word forms
   - Create morphological paradigms
@@ -58,6 +65,7 @@
 
 #### 2. Educational Technology Development
 **Project**: Create educational tools for morphological learning
+
 - **Activities**:
   - Design interactive exercises
   - Develop assessment tools
@@ -66,6 +74,7 @@
 
 #### 3. Natural Language Processing Applications
 **Project**: Apply morphological analysis to real-world problems
+
 - **Activities**:
   - Build a spell checker
   - Create a search engine with morphological awareness
@@ -75,6 +84,7 @@
 ### Online Resources for Continued Learning
 
 #### Interactive Platforms
+
 - **Linguistics Games**: [Linguistics Olympiad Training](https://ioling.org/problems/)
 - **Language Learning Apps**: Duolingo, Memrise (focus on grammar patterns)
 - **Online Courses**: Coursera, edX linguistics courses
@@ -85,16 +95,18 @@
 - **Professional Organizations**: Linguistic Society of America, Association for Computational Linguistics
 
 #### Tools and Software
-- **Morphological Analyzers**: 
+
+- **Morphological Analyzers**:
   - [Morfessor](https://github.com/aalto-speech/morfessor) for unsupervised morphology learning
   - [Stanford Morphological Analyzer](https://nlp.stanford.edu/software/morphology.html)
-- **Corpus Analysis Tools**: 
+- **Corpus Analysis Tools**:
   - [AntConc](https://www.laurenceanthony.net/software/antconc/) for text analysis
   - [LancsBox](http://corpora.lancs.ac.uk/lancsbox/) for corpus linguistics
 
 ### Capstone Project Ideas
 
 #### 1. Multilingual Morphological Database
+
 **Goal**: Create a comprehensive database of morphological patterns across multiple languages
 **Deliverables**: Database schema, sample entries, analysis tools
 
@@ -113,6 +125,7 @@
 ### Career Paths in Morphology
 
 #### Academic Research
+
 - **Linguistics Professor**: Teach and research morphological theory
 - **Computational Linguist**: Develop algorithms for morphological analysis
 - **Language Documentation Specialist**: Preserve and analyze endangered languages
@@ -125,4 +138,4 @@
 #### Education and Outreach
 - **Language Teacher**: Apply morphological knowledge in language instruction
 - **Educational Content Developer**: Create materials for linguistics education
-- **Language Policy Advisor**: Contribute to language planning and policy 
+- **Language Policy Advisor**: Contribute to language planning and policy
