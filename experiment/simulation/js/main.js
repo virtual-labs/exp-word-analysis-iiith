@@ -490,19 +490,19 @@ function showAnswer() {
         if (!val || val === 'N/A') return 'N/A';
         if (val.toLowerCase() === 'devanagari') return 'Devanagari';
         if (val.toLowerCase() === 'roman') return 'Roman';
-        return val;
+        return capitalizeCamelCase(val);
     }
     // Show the answer as a clean block (no bullets)
     const answerHTML = `
         <h3>Correct Features for "${currentWord}":</h3>
-        <div><strong>Root:</strong> ${firstFeature.root || 'N/A'}</div>
-        <div><strong>Category:</strong> ${firstFeature.category || 'N/A'}</div>
-        <div><strong>Gender:</strong> ${firstFeature.gender || 'N/A'}</div>
-        <div><strong>Number:</strong> ${firstFeature.number || 'N/A'}</div>
-        <div><strong>Person:</strong> ${firstFeature.person || 'N/A'}</div>
-        <div><strong>Script:</strong> ${firstFeature.script || 'N/A'}</div>
+        <div><strong>Root:</strong> ${capitalizeCamelCase(firstFeature.root) || 'N/A'}</div>
+        <div><strong>Category:</strong> ${capitalizeCamelCase(firstFeature.category) || 'N/A'}</div>
+        <div><strong>Gender:</strong> ${capitalizeCamelCase(firstFeature.gender) || 'N/A'}</div>
+        <div><strong>Number:</strong> ${capitalizeCamelCase(firstFeature.number) || 'N/A'}</div>
+        <div><strong>Person:</strong> ${capitalizeCamelCase(firstFeature.person) || 'N/A'}</div>
+        <div><strong>Script:</strong> ${capitalizeCamelCase(firstFeature.script) || 'N/A'}</div>
         <div><strong>Case:</strong> ${displayCase(firstFeature.case)}</div>
-        <div><strong>Tense:</strong> ${firstFeature.tense || 'N/A'}</div>
+        <div><strong>Tense:</strong> ${capitalizeCamelCase(firstFeature.tense) || 'N/A'}</div>
     `;
     answerContainer.innerHTML = answerHTML;
     answerContainer.classList.add('show');
@@ -585,3 +585,15 @@ function resetSimulation() {
 
 // Initialize the application when the DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
+
+// Utility to split camel case and capitalize each word
+function capitalizeCamelCase(str) {
+    if (!str || str === 'N/A') return str;
+    // Split camelCase or PascalCase into words, capitalize each
+    return str
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        .replace(/([A-Z])([A-Z][a-z])/g, '$1 $2')
+        .split(' ')
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ');
+}
