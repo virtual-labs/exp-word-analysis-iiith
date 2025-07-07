@@ -412,7 +412,6 @@ function checkAnswer() {
         tense: tenseSelect.value
     };
     const wordInfo = wordData.get(currentWord);
-    // Strictly check all features: must match exactly
     let incorrectFeatures = [];
     let foundMatch = false;
     for (const feature of wordInfo.features) {
@@ -422,7 +421,6 @@ function checkAnswer() {
         if (feature.gender !== userAnswer.gender) allMatch = false;
         if (feature.number !== userAnswer.number) allMatch = false;
         if (feature.person !== userAnswer.person) allMatch = false;
-        // Script: case-insensitive, trimmed
         if (!feature.script || !userAnswer.script || feature.script.trim().toLowerCase() !== userAnswer.script.trim().toLowerCase()) allMatch = false;
         if (feature.case !== userAnswer.case) allMatch = false;
         if (feature.tense !== userAnswer.tense) allMatch = false;
@@ -431,7 +429,6 @@ function checkAnswer() {
             break;
         }
     }
-    // Identify all incorrect features (always, for feedback)
     const correct = wordInfo.features[0];
     if (userAnswer.root !== correct.root) incorrectFeatures.push('Root');
     if (userAnswer.category !== correct.category) incorrectFeatures.push('Category');
@@ -441,7 +438,6 @@ function checkAnswer() {
     if (!correct.script || !userAnswer.script || correct.script.trim().toLowerCase() !== userAnswer.script.trim().toLowerCase()) incorrectFeatures.push('Script');
     if (userAnswer.case !== correct.case) incorrectFeatures.push('Case');
     if (userAnswer.tense !== correct.tense) incorrectFeatures.push('Tense');
-    // Highlight incorrect dropdowns
     [
         {el: rootSelect, key: 'Root'},
         {el: categorySelect, key: 'Category'},
@@ -460,13 +456,35 @@ function checkAnswer() {
     });
     if (foundMatch && incorrectFeatures.length === 0) {
         showFeedback('Correct! All features match.', 'success');
+        // Show the correct features block only if correct
+        function displayCase(val) {
+            if (!val || val === 'N/A') return 'N/A';
+            if (val.toLowerCase() === 'devanagari') return 'Devanagari';
+            if (val.toLowerCase() === 'roman') return 'Roman';
+            return capitalizeCamelCase(val);
+        }
+        const answerHTML = `
+            <h3>Correct Features for "${currentWord}":</h3>
+            <div><strong>Root:</strong> ${capitalizeCamelCase(correct.root) || 'N/A'}</div>
+            <div><strong>Category:</strong> ${capitalizeCamelCase(correct.category) || 'N/A'}</div>
+            <div><strong>Gender:</strong> ${capitalizeCamelCase(correct.gender) || 'N/A'}</div>
+            <div><strong>Number:</strong> ${capitalizeCamelCase(correct.number) || 'N/A'}</div>
+            <div><strong>Person:</strong> ${capitalizeCamelCase(correct.person) || 'N/A'}</div>
+            <div><strong>Script:</strong> ${capitalizeCamelCase(correct.script) || 'N/A'}</div>
+            <div><strong>Case:</strong> ${displayCase(correct.case)}</div>
+            <div><strong>Tense:</strong> ${capitalizeCamelCase(correct.tense) || 'N/A'}</div>
+        `;
+        answerContainer.innerHTML = answerHTML;
+        answerContainer.classList.add('show');
     } else {
         const feedback = incorrectFeatures.length > 0
             ? `Incorrect. Please check: ${incorrectFeatures.join(', ')}`
             : 'Incorrect. Please try again or show the answer.';
         showFeedback(feedback, 'error');
+        // Do not show the correct features block if incorrect
+        answerContainer.innerHTML = '';
+        answerContainer.classList.remove('show');
     }
-    // Do NOT disable dropdowns after checking; user can retry
 }
 
 // Show the correct answer
