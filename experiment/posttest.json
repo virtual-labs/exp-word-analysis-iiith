@@ -161,7 +161,7 @@
         "b": "It is only used for translation tasks",
         "c": "It is not relevant for computational linguistics",
         "d": "It is only useful for English language analysis"
-      },
+    },
       "explanations": {
         "a": "Correct! Morphological analysis is crucial for understanding how words are formed and how they function in sentences, which is essential for many NLP tasks.",
         "b": "Incorrect. While translation is one application, morphological analysis is broadly useful in NLP.",

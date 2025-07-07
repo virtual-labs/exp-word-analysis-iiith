@@ -12,10 +12,9 @@
         <div class="main-content">
             <!-- Instructions Panel -->
             <div class="instructions-panel">
-                <div class="instructions-header">
-                    <i class="fas fa-info-circle"></i>
+                <div class="instructions-header clickable" id="instructionsTab">
                     <h3>Instructions</h3>
-                    <button id="toggleInstructions" class="toggle-btn">Show Instructions</button>
+                    <i class="fas fa-info-circle"></i>
                 </div>
                 <div id="instructionsContent" class="instructions-content collapsed">
                     <ul class="instructions-list">
@@ -59,7 +58,7 @@
                         </span>
                     </div>
                     <div class="features-grid">
-                        <div class="feature-group">
+                        <div class="feature-group pane-left">
                             <label for="root">Root:
                                 <span class="info-icon" tabindex="0" title="The base form of the word (e.g., 'play' in 'playing'):">
                                     <i class="fas fa-info-circle"></i>
@@ -69,7 +68,7 @@
                                 <option value="">Select root...</option>
                             </select>
                         </div>
-                        <div class="feature-group">
+                        <div class="feature-group pane-left">
                             <label for="category">Category:
                                 <span class="info-icon" tabindex="0" title="Grammatical class (noun, verb, adjective, etc.):">
                                     <i class="fas fa-info-circle"></i>
@@ -79,7 +78,7 @@
                                 <option value="">Select category...</option>
                             </select>
                         </div>
-                        <div class="feature-group">
+                        <div class="feature-group pane-left">
                             <label for="gender">Gender:
                                 <span class="info-icon" tabindex="0" title="Male, female, or N/A if not applicable:">
                                     <i class="fas fa-info-circle"></i>
@@ -89,7 +88,7 @@
                                 <option value="">Select gender...</option>
                             </select>
                         </div>
-                        <div class="feature-group">
+                        <div class="feature-group pane-left">
                             <label for="number">Number:
                                 <span class="info-icon" tabindex="0" title="Singular or plural:">
                                     <i class="fas fa-info-circle"></i>
@@ -99,7 +98,7 @@
                                 <option value="">Select number...</option>
                             </select>
                         </div>
-                        <div class="feature-group">
+                        <div class="feature-group pane-left">
                             <label for="person">Person:
                                 <span class="info-icon" tabindex="0" title="First, second, third person, or N/A:">
                                     <i class="fas fa-info-circle"></i>
@@ -109,7 +108,7 @@
                                 <option value="">Select person...</option>
                             </select>
                         </div>
-                        <div class="feature-group">
+                        <div class="feature-group pane-left">
                             <label for="script">Script:
                                 <span class="info-icon" tabindex="0" title="Script type: Devanagari or Roman:">
                                     <i class="fas fa-info-circle"></i>
@@ -119,7 +118,7 @@
                                 <option value="">Select script...</option>
                             </select>
                         </div>
-                        <div class="feature-group">
+                        <div class="feature-group pane-left">
                             <label for="case">Case:
                                 <span class="info-icon" tabindex="0" title="Grammatical case: Direct, Oblique, or N/A (not applicable):">
                                     <i class="fas fa-info-circle"></i>
@@ -132,7 +131,7 @@
                                 <option value="N/A">N/A</option>
                             </select>
                         </div>
-                        <div class="feature-group">
+                        <div class="feature-group pane-left">
                             <label for="tense">Tense:
                                 <span class="info-icon" tabindex="0" title="Time reference (for verbs) or N/A:">
                                     <i class="fas fa-info-circle"></i>

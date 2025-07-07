@@ -77,6 +77,9 @@ const commonFeatures = {
 // Store all unique tenses from features.txt
 let allTenses = new Set();
 
+// Store all unique categories from features.txt
+let allCategories = new Set();
+
 // Track if user previously submitted an incorrect answer
 let previouslyIncorrect = false;
 
@@ -148,7 +151,7 @@ function processFeaturesData(text) {
         
         // Only add non-N/A values
         if (root && root !== 'N/A') wordInfo.root.add(root);
-        if (category && category !== 'N/A') wordInfo.category.add(category);
+        if (category && category !== 'N/A' && category !== 'na') allCategories.add(category);
         if (gender && gender !== 'N/A') wordInfo.gender.add(gender);
         if (number && number !== 'N/A') wordInfo.number.add(number);
         if (person && person !== 'N/A') wordInfo.person.add(person);
@@ -315,21 +318,11 @@ function populateFeatureSelect(select, values, featureType) {
         return;
     }
     // Add correct and distractor options for other features
-    const correctValue = valueArr.find(v => v && v !== 'N/A');
-    if (correctValue) {
-        const correctOption = document.createElement('option');
-        correctOption.value = correctValue;
-        correctOption.textContent = capitalizeFirst(correctValue);
-        select.appendChild(correctOption);
-    }
-    const distractors = getDistractors(featureType, correctValue);
-    distractors.forEach(value => {
-        if (value !== 'N/A') {
-            const option = document.createElement('option');
-            option.value = value;
-            option.textContent = capitalizeFirst(value);
-            select.appendChild(option);
-        }
+    valueArr.forEach(value => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = capitalizeFirst(value);
+        select.appendChild(option);
     });
     // Always set default to empty (Select...) for all feature dropdowns
     select.value = '';
@@ -380,8 +373,10 @@ function handleWordChange() {
     if (similarForms.size === 0 && wordInfo) {
         wordInfo.root.forEach(r => similarForms.add(r));
     }
+    // Always use the correct sets for each feature
     populateFeatureSelect(rootSelect, similarForms, 'root');
-    populateFeatureSelect(categorySelect, wordInfo.category, 'category');
+    // Use allCategories for the category dropdown
+    populateFeatureSelect(categorySelect, allCategories, 'category');
     populateFeatureSelect(genderSelect, wordInfo.gender, 'gender');
     populateFeatureSelect(numberSelect, wordInfo.number, 'number');
     populateFeatureSelect(personSelect, wordInfo.person, 'person');
@@ -436,28 +431,42 @@ function checkAnswer() {
             break;
         }
     }
-    if (foundMatch) {
+    // Identify all incorrect features (always, for feedback)
+    const correct = wordInfo.features[0];
+    if (userAnswer.root !== correct.root) incorrectFeatures.push('Root');
+    if (userAnswer.category !== correct.category) incorrectFeatures.push('Category');
+    if (userAnswer.gender !== correct.gender) incorrectFeatures.push('Gender');
+    if (userAnswer.number !== correct.number) incorrectFeatures.push('Number');
+    if (userAnswer.person !== correct.person) incorrectFeatures.push('Person');
+    if (!correct.script || !userAnswer.script || correct.script.trim().toLowerCase() !== userAnswer.script.trim().toLowerCase()) incorrectFeatures.push('Script');
+    if (userAnswer.case !== correct.case) incorrectFeatures.push('Case');
+    if (userAnswer.tense !== correct.tense) incorrectFeatures.push('Tense');
+    // Highlight incorrect dropdowns
+    [
+        {el: rootSelect, key: 'Root'},
+        {el: categorySelect, key: 'Category'},
+        {el: genderSelect, key: 'Gender'},
+        {el: numberSelect, key: 'Number'},
+        {el: personSelect, key: 'Person'},
+        {el: scriptSelect, key: 'Script'},
+        {el: caseSelect, key: 'Case'},
+        {el: tenseSelect, key: 'Tense'}
+    ].forEach(({el, key}) => {
+        if (incorrectFeatures.includes(key)) {
+            el.classList.add('highlight-incorrect');
+        } else {
+            el.classList.remove('highlight-incorrect');
+        }
+    });
+    if (foundMatch && incorrectFeatures.length === 0) {
         showFeedback('Correct! All features match.', 'success');
     } else {
-        // Identify all incorrect features
-        const correct = wordInfo.features[0];
-        if (userAnswer.root !== correct.root) incorrectFeatures.push('Root');
-        if (userAnswer.category !== correct.category) incorrectFeatures.push('Category');
-        if (userAnswer.gender !== correct.gender) incorrectFeatures.push('Gender');
-        if (userAnswer.number !== correct.number) incorrectFeatures.push('Number');
-        if (userAnswer.person !== correct.person) incorrectFeatures.push('Person');
-        if (!correct.script || !userAnswer.script || correct.script.trim().toLowerCase() !== userAnswer.script.trim().toLowerCase()) incorrectFeatures.push('Script');
-        if (userAnswer.case !== correct.case) incorrectFeatures.push('Case');
-        if (userAnswer.tense !== correct.tense) incorrectFeatures.push('Tense');
         const feedback = incorrectFeatures.length > 0
             ? `Incorrect. Please check: ${incorrectFeatures.join(', ')}`
             : 'Incorrect. Please try again or show the answer.';
         showFeedback(feedback, 'error');
-        // Always set scriptSelect.value to user's selection if present
-        if ([...scriptSelect.options].some(opt => opt.value === userAnswer.script)) {
-            scriptSelect.value = userAnswer.script;
-        }
     }
+    // Do NOT disable dropdowns after checking; user can retry
 }
 
 // Show the correct answer
@@ -468,31 +477,13 @@ function showAnswer() {
     feedbackContainer.className = 'feedback-container';
     const wordInfo = wordData.get(currentWord);
     const firstFeature = wordInfo.features[0];
-    rootSelect.value = firstFeature.root || '';
-    categorySelect.value = firstFeature.category || '';
-    genderSelect.value = firstFeature.gender || '';
-    numberSelect.value = firstFeature.number || '';
-    personSelect.value = firstFeature.person || '';
-    // Set scriptSelect to correct value if present in options, else keep user's selection
-    if (firstFeature.script && [...scriptSelect.options].some(opt => opt.value === firstFeature.script)) {
-        scriptSelect.value = firstFeature.script;
-    }
-    caseSelect.value = firstFeature.case || 'N/A';
-    // Only set tense if present, else leave as 'Select...'
-    if (firstFeature.tense && [...tenseSelect.options].some(opt => opt.value === firstFeature.tense)) {
-        tenseSelect.value = firstFeature.tense;
-    } else {
-        tenseSelect.value = '';
-    }
-    checkButton.style.display = 'none';
-    // Map script/case codes to display names
+    // Always show the correct features from the data, not from the dropdowns
     function displayCase(val) {
         if (!val || val === 'N/A') return 'N/A';
         if (val.toLowerCase() === 'devanagari') return 'Devanagari';
         if (val.toLowerCase() === 'roman') return 'Roman';
         return capitalizeCamelCase(val);
     }
-    // Show the answer as a clean block (no bullets)
     const answerHTML = `
         <h3>Correct Features for "${currentWord}":</h3>
         <div><strong>Root:</strong> ${capitalizeCamelCase(firstFeature.root) || 'N/A'}</div>
@@ -506,6 +497,33 @@ function showAnswer() {
     `;
     answerContainer.innerHTML = answerHTML;
     answerContainer.classList.add('show');
+    // Optionally, highlight incorrect dropdowns for user clarity
+    const userAnswer = {
+        root: rootSelect.value,
+        category: categorySelect.value,
+        gender: genderSelect.value,
+        number: numberSelect.value,
+        person: personSelect.value,
+        script: scriptSelect.value,
+        case: caseSelect.value,
+        tense: tenseSelect.value
+    };
+    [
+        {el: rootSelect, key: 'root'},
+        {el: categorySelect, key: 'category'},
+        {el: genderSelect, key: 'gender'},
+        {el: numberSelect, key: 'number'},
+        {el: personSelect, key: 'person'},
+        {el: scriptSelect, key: 'script'},
+        {el: caseSelect, key: 'case'},
+        {el: tenseSelect, key: 'tense'}
+    ].forEach(({el, key}) => {
+        if ((firstFeature[key] || '').toLowerCase() !== (userAnswer[key] || '').toLowerCase()) {
+            el.classList.add('highlight-incorrect');
+        } else {
+            el.classList.remove('highlight-incorrect');
+        }
+    });
 }
 
 // Show feedback message
@@ -522,20 +540,17 @@ function clearFeedback() {
 
 // Setup instructions panel functionality
 function setupInstructionsPanel() {
-    const toggleBtn = document.getElementById('toggleInstructions');
+    const tab = document.getElementById('instructionsTab');
     const instructionsContent = document.getElementById('instructionsContent');
-    if (toggleBtn && instructionsContent) {
+    if (tab && instructionsContent) {
         // Collapsed by default
         instructionsContent.classList.add('collapsed');
-        toggleBtn.textContent = 'Show Instructions';
-        toggleBtn.addEventListener('click', () => {
+        tab.addEventListener('click', () => {
             const isCollapsed = instructionsContent.classList.contains('collapsed');
             if (isCollapsed) {
                 instructionsContent.classList.remove('collapsed');
-                toggleBtn.textContent = 'Hide Instructions';
             } else {
                 instructionsContent.classList.add('collapsed');
-                toggleBtn.textContent = 'Show Instructions';
             }
         });
     }
@@ -573,10 +588,9 @@ function resetSimulation() {
     currentWord = null;
     // Reset instructions panel to collapsed
     const instructionsContent = document.getElementById('instructionsContent');
-    const toggleBtn = document.getElementById('toggleInstructions');
-    if (instructionsContent && toggleBtn) {
+    const tab = document.getElementById('instructionsTab');
+    if (instructionsContent && tab) {
         instructionsContent.classList.add('collapsed');
-        toggleBtn.textContent = 'Show Instructions';
     }
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
