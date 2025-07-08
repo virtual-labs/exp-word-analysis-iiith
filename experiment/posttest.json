@@ -2,156 +2,156 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "In the word analysis simulation, what is the first step in analyzing a word?",
+      "question": "What is a morpheme in linguistics?",
       "answers": {
-        "a": "Selecting the word's features",
-        "b": "Choosing the language",
-        "c": "Identifying the root",
-        "d": "Determining the tense"
+        "a": "A complete sentence",
+        "b": "The smallest meaningful unit of language",
+        "c": "A type of grammar rule",
+        "d": "A writing system"
       },
       "explanations": {
-        "a": "Incorrect. Feature selection comes after choosing the language and word.",
-        "b": "Correct! The simulation requires selecting the language first to determine available words and features.",
-        "c": "Incorrect. Root identification is part of feature analysis, which comes later.",
-        "d": "Incorrect. Tense is one of the features analyzed after word selection."
+        "a": "Incorrect. A sentence is made up of many morphemes.",
+        "b": "Correct! A morpheme is the smallest meaningful unit of language that cannot be divided further while retaining meaning.",
+        "c": "Incorrect. Grammar rules govern how morphemes combine, but are not morphemes themselves.",
+        "d": "Incorrect. Writing systems represent morphemes but are not morphemes themselves."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "What happens when you select a language in the simulation?",
+      "question": "In the word 'cats', how many morphemes are there?",
       "answers": {
-        "a": "All feature options become available immediately",
-        "b": "The word selection dropdown becomes enabled",
-        "c": "The correct answer is shown",
-        "d": "The simulation resets"
+        "a": "One",
+        "b": "Two",
+        "c": "Three",
+        "d": "Four"
       },
       "explanations": {
-        "a": "Incorrect. Features are only available after selecting a word.",
-        "b": "Correct! Language selection enables the word dropdown, allowing you to choose from available words in that language.",
-        "c": "Incorrect. The answer is only shown when requested after feature selection.",
-        "d": "Incorrect. The simulation maintains its state after language selection."
+        "a": "Incorrect. 'Cats' contains more than one meaningful unit.",
+        "b": "Correct! 'Cats' has two morphemes: 'cat' (the root) and '-s' (the plural marker).",
+        "c": "Incorrect. There are only two meaningful units in 'cats'.",
+        "d": "Incorrect. 'Cats' does not contain four morphemes."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "Which feature is NOT available for analysis in the simulation?",
+      "question": "What is the root of the word 'unhappiness'?",
       "answers": {
-        "a": "Gender",
-        "b": "Font style",
-        "c": "Number",
-        "d": "Tense"
+        "a": "un-",
+        "b": "happy",
+        "c": "-ness",
+        "d": "unhappy"
       },
       "explanations": {
-        "a": "Incorrect. Gender is a key feature analyzed in the simulation.",
-        "b": "Correct! Font style is a presentation feature, not a linguistic feature analyzed in the simulation.",
-        "c": "Incorrect. Number (singular/plural) is a fundamental feature in the analysis.",
-        "d": "Incorrect. Tense is an important feature for verb analysis."
+        "a": "Incorrect. 'un-' is a prefix, not the root.",
+        "b": "Correct! 'Happy' is the root word that carries the core meaning, with 'un-' as prefix and '-ness' as suffix.",
+        "c": "Incorrect. '-ness' is a suffix that creates nouns from adjectives.",
+        "d": "Incorrect. 'Unhappy' includes the prefix 'un-' and is not the root."
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "How does the simulation handle feature selection for different word categories?",
+      "question": "Which of the following demonstrates inflectional morphology?",
       "answers": {
-        "a": "All features are always available for every word",
-        "b": "Features are dynamically filtered based on the word's category",
-        "c": "Only three features can be selected at a time",
-        "d": "Features are randomly assigned to words"
+        "a": "happy → happiness",
+        "b": "walk → walked",
+        "c": "teach → teacher",
+        "d": "kind → kindness"
       },
       "explanations": {
-        "a": "Incorrect. Not all features apply to all word categories.",
-        "b": "Correct! The simulation shows relevant features based on the word's category (e.g., tense for verbs, gender for nouns).",
-        "c": "Incorrect. The number of features depends on the word's category and language.",
-        "d": "Incorrect. Features are systematically determined by the word's properties."
+        "a": "Incorrect. This is derivational morphology as it changes the word class from adjective to noun.",
+        "b": "Correct! Adding '-ed' to 'walk' shows inflectional morphology as it changes the tense without changing the word class.",
+        "c": "Incorrect. This is derivational morphology as it creates a new word with a different meaning and class.",
+        "d": "Incorrect. This is derivational morphology as it changes the word class from adjective to noun."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "What is the purpose of the 'Check Answer' button in the simulation?",
+      "question": "In Hindi, what does the case marker 'को' (ko) typically indicate?",
       "answers": {
-        "a": "To show the correct answer immediately",
-        "b": "To verify if selected features match the word's actual properties",
-        "c": "To reset the simulation",
-        "d": "To skip to the next word"
+        "a": "Subject of the sentence",
+        "b": "Direct object or goal",
+        "c": "Possessive relationship",
+        "d": "Location"
       },
       "explanations": {
-        "a": "Incorrect. The 'Show Answer' button reveals the correct answer.",
-        "b": "Correct! The 'Check Answer' button validates if your selected features match the word's actual grammatical properties.",
-        "c": "Incorrect. The button is for validation, not resetting.",
-        "d": "Incorrect. The simulation doesn't automatically advance to the next word."
+        "a": "Incorrect. Subjects in Hindi typically don't take the 'को' marker.",
+        "b": "Correct! 'को' (ko) is used to mark direct objects, goals, or recipients in Hindi sentences.",
+        "c": "Incorrect. Possessive relationships are marked by 'का/की/के' (ka/ki/ke).",
+        "d": "Incorrect. Location is typically marked by 'में' (mein) or other locative markers."
       },
       "correctAnswer": "b",
       "difficulty": "intermediate"
     },
     {
-      "question": "How does the simulation handle language-specific features?",
+      "question": "What is the difference between free and bound morphemes?",
       "answers": {
-        "a": "All languages use the same feature set",
-        "b": "Features are adapted based on the selected language's grammatical system",
-        "c": "Only English features are available",
-        "d": "Features are randomly assigned for each language"
+        "a": "Free morphemes can stand alone, bound morphemes cannot",
+        "b": "Free morphemes are longer than bound morphemes",
+        "c": "Bound morphemes are always prefixes",
+        "d": "There is no difference between them"
       },
       "explanations": {
-        "a": "Incorrect. Different languages have different grammatical features.",
-        "b": "Correct! The simulation adapts available features based on the selected language's grammatical system (e.g., gender in Hindi, case in both languages).",
-        "c": "Incorrect. The simulation supports multiple languages with their specific features.",
-        "d": "Incorrect. Features are systematically determined by each language's grammar."
+        "a": "Correct! Free morphemes can function as independent words (like 'cat'), while bound morphemes must attach to other morphemes (like '-s' in 'cats').",
+        "b": "Incorrect. Length is not the distinguishing factor between free and bound morphemes.",
+        "c": "Incorrect. Bound morphemes can be prefixes, suffixes, or infixes.",
+        "d": "Incorrect. There is a clear distinction between free and bound morphemes."
       },
-      "correctAnswer": "b",
+      "correctAnswer": "a",
       "difficulty": "intermediate"
     },
     {
-      "question": "What is the significance of the 'script' feature in the simulation?",
+      "question": "In agglutinative languages like Turkish, morphological analysis is particularly challenging because:",
       "answers": {
-        "a": "It only affects the visual display of words",
-        "b": "It determines the writing system and influences available features",
-        "c": "It's only relevant for English words",
-        "d": "It's automatically set and cannot be changed"
+        "a": "Words have no internal structure",
+        "b": "Multiple morphemes can be chained together in a single word",
+        "c": "All words are monosyllabic",
+        "d": "There are no grammatical rules"
       },
       "explanations": {
-        "a": "Incorrect. Script is more than just visual display.",
-        "b": "Correct! The script feature (roman/devanagari) determines the writing system and affects which features are available for analysis.",
-        "c": "Incorrect. Script is relevant for all supported languages.",
-        "d": "Incorrect. Script is determined by the language selection."
+        "a": "Incorrect. Agglutinative languages have complex internal word structure.",
+        "b": "Correct! Agglutinative languages allow extensive morpheme chaining, creating words with many grammatical markers that must be analyzed separately.",
+        "c": "Incorrect. Agglutinative languages often have polysyllabic words due to morpheme chaining.",
+        "d": "Incorrect. Agglutinative languages have systematic grammatical rules for morpheme combination."
       },
       "correctAnswer": "b",
       "difficulty": "advanced"
     },
     {
-      "question": "How does the simulation handle feature dependencies?",
+      "question": "What is morphological ambiguity and why is it problematic for NLP systems?",
       "answers": {
-        "a": "All features are independent of each other",
-        "b": "Some features are interdependent (e.g., gender affecting number forms)",
-        "c": "Features are always selected in a specific order",
-        "d": "Dependencies are randomly generated"
+        "a": "When a word has multiple possible morphological analyses",
+        "b": "When words are spelled incorrectly",
+        "c": "When languages use different scripts",
+        "d": "When sentences are too long"
       },
       "explanations": {
-        "a": "Incorrect. Many features are grammatically interdependent.",
-        "b": "Correct! The simulation maintains grammatical dependencies between features (e.g., gender-number agreement, person-tense relationships).",
-        "c": "Incorrect. While there's a logical order, it's not strictly enforced.",
-        "d": "Incorrect. Dependencies are based on linguistic rules, not randomness."
+        "a": "Correct! Morphological ambiguity occurs when a word form can be analyzed in multiple ways, requiring context or additional information to determine the correct analysis.",
+        "b": "Incorrect. Spelling errors are orthographic issues, not morphological ambiguity.",
+        "c": "Incorrect. Script differences are writing system issues, not morphological ambiguity.",
+        "d": "Incorrect. Sentence length is a syntactic consideration, not morphological ambiguity."
       },
-      "correctAnswer": "b",
+      "correctAnswer": "a",
       "difficulty": "advanced"
     },
     {
-      "question": "What is the role of the 'Show Answer' button in the learning process?",
+      "question": "How does morphological analysis contribute to machine translation quality?",
       "answers": {
-        "a": "It only shows the correct answer without explanation",
-        "b": "It provides a complete analysis of the word's features with explanations",
-        "c": "It automatically moves to the next word",
-        "d": "It resets all selected features"
+        "a": "By providing detailed grammatical information for accurate translation",
+        "b": "By making translation faster",
+        "c": "By reducing the need for dictionaries",
+        "d": "By eliminating the need for syntax analysis"
       },
       "explanations": {
-        "a": "Incorrect. The button provides detailed feature information.",
-        "b": "Correct! The 'Show Answer' button reveals the complete analysis of the word's features, helping users understand the correct grammatical properties.",
-        "c": "Incorrect. The button doesn't automatically advance the simulation.",
-        "d": "Incorrect. The button doesn't reset the current state."
+        "a": "Correct! Morphological analysis provides crucial grammatical information (tense, number, gender, case) that helps produce more accurate and grammatically correct translations.",
+        "b": "Incorrect. While it may help efficiency, the primary benefit is accuracy, not speed.",
+        "c": "Incorrect. Morphological analysis complements rather than replaces dictionary lookup.",
+        "d": "Incorrect. Morphological analysis works alongside syntax analysis, not instead of it."
       },
-      "correctAnswer": "b",
+      "correctAnswer": "a",
       "difficulty": "advanced"
     },
     {

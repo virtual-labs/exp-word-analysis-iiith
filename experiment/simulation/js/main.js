@@ -64,21 +64,14 @@ const showAnswerButton = document.getElementById('showAnswerButton');
 const feedbackContainer = document.getElementById('feedback');
 const answerContainer = document.getElementById('answer');
 
-// Common feature values for distractors
-const commonFeatures = {
-    gender: ['male', 'female', 'N/A'],
-    number: ['singular', 'plural'],
-    person: ['first', 'second', 'third', 'N/A'],
-    category: ['noun', 'verb', 'adjective', 'adverb', 'pronoun', 'preposition', 'conjunction'],
-    case: ['Direct', 'Oblique', 'N/A'],
-    script: ['devanagari', 'Roman']
-};
-
-// Store all unique tenses from features.txt
+// Store all unique values from features.txt
 let allTenses = new Set();
-
-// Store all unique categories from features.txt
 let allCategories = new Set();
+let allGendersByLang = {};
+let allPersonsByLang = {};
+let allNumbersByLang = {};
+let allScriptsByLang = {};
+let allCasesByLang = {};
 
 // Track if user previously submitted an incorrect answer
 let previouslyIncorrect = false;
@@ -149,31 +142,140 @@ function processFeaturesData(text) {
         
         const wordInfo = wordData.get(word);
         
+        // Initialize language-specific sets if they don't exist
+        if (!allGendersByLang[lang]) allGendersByLang[lang] = new Set();
+        if (!allPersonsByLang[lang]) allPersonsByLang[lang] = new Set();
+        if (!allNumbersByLang[lang]) allNumbersByLang[lang] = new Set();
+        if (!allScriptsByLang[lang]) allScriptsByLang[lang] = new Set();
+        if (!allCasesByLang[lang]) allCasesByLang[lang] = new Set();
+        
+        // Normalize values to handle inconsistencies
+        const normalizeValue = (val) => {
+            if (!val || val.toLowerCase() === 'na' || val.toLowerCase() === 'n/a') return 'N/A';
+            if (val.toLowerCase() === 'roman') return 'Roman';
+            if (val.toLowerCase() === 'devanagari') return 'Devanagari';
+            if (val.toLowerCase() === 'direct') return 'Direct';
+            if (val.toLowerCase() === 'oblique') return 'Oblique';
+            return val.toLowerCase();
+        };
+
         // Only add non-N/A values
         if (root && root !== 'N/A') wordInfo.root.add(root);
-        if (category && category !== 'N/A' && category !== 'na') allCategories.add(category);
-        if (gender && gender !== 'N/A') wordInfo.gender.add(gender);
-        if (number && number !== 'N/A') wordInfo.number.add(number);
-        if (person && person !== 'N/A') wordInfo.person.add(person);
-        if (script && script !== 'N/A') wordInfo.script.add(script);
-        if (tense && tense !== 'N/A') {
-            wordInfo.tense.add(tense);
-            allTenses.add(tense);
+        if (category && category !== 'N/A' && category !== 'na') allCategories.add(category.toLowerCase());
+        if (gender) {
+            const normalizedGender = normalizeValue(gender);
+            if (normalizedGender !== 'N/A') {
+                wordInfo.gender.add(normalizedGender);
+                allGendersByLang[lang].add(normalizedGender);
+            }
         }
-        // No case info in data, so just add N/A by default
-        wordInfo.case.add('N/A');
+        if (number) {
+            const normalizedNumber = normalizeValue(number);
+            if (normalizedNumber !== 'N/A') {
+                wordInfo.number.add(normalizedNumber);
+                allNumbersByLang[lang].add(normalizedNumber);
+            }
+        }
+        if (person) {
+            const normalizedPerson = normalizeValue(person);
+            if (normalizedPerson !== 'N/A') {
+                wordInfo.person.add(normalizedPerson);
+                allPersonsByLang[lang].add(normalizedPerson);
+            }
+        }
+        if (script) {
+            const normalizedScript = normalizeValue(script);
+            if (normalizedScript !== 'N/A') {
+                wordInfo.script.add(normalizedScript);
+                allScriptsByLang[lang].add(normalizedScript);
+            }
+        }
+        if (case_) {
+            const normalizedCase = normalizeValue(case_);
+            if (normalizedCase !== 'N/A') {
+                wordInfo.case.add(normalizedCase);
+                allCasesByLang[lang].add(normalizedCase);
+            }
+        }
+        if (tense) {
+            const normalizedTense = normalizeValue(tense);
+            if (normalizedTense !== 'N/A') {
+                wordInfo.tense.add(normalizedTense);
+                allTenses.add(normalizedTense);
+            }
+        }
         
+        // Store normalized values in features
         wordInfo.features.push({
-            root: root !== 'N/A' ? root : '',
-            category: category !== 'N/A' ? category : '',
-            gender: gender !== 'N/A' ? gender : '',
-            number: number !== 'N/A' ? number : '',
-            person: person !== 'N/A' ? person : '',
-            script: script !== 'N/A' ? script : '',
-            case: 'N/A',
-            tense: tense !== 'N/A' ? tense : ''
+            root: normalizeValue(root),
+            category: normalizeValue(category),
+            gender: normalizeValue(gender),
+            number: normalizeValue(number),
+            person: normalizeValue(person),
+            script: normalizeValue(script),
+            case: normalizeValue(case_),
+            tense: normalizeValue(tense)
         });
     });
+    
+    // Set language-specific required options based on what's actually in the data
+    // but ensure users can try different options for learning purposes
+    for (const lang in allScriptsByLang) {
+        if (lang === 'hi') {
+            // Hindi can have both scripts for learning purposes
+            allScriptsByLang[lang].add('Devanagari');
+            allScriptsByLang[lang].add('Roman');
+            // Hindi can have both cases
+            allCasesByLang[lang].add('Direct');
+            allCasesByLang[lang].add('Oblique');
+        } else if (lang === 'en') {
+            // English primarily uses Roman script, but allow Devanagari for learning
+            allScriptsByLang[lang].add('Roman');
+            allScriptsByLang[lang].add('Devanagari'); // Allow for educational purposes
+            // English can have Direct case, and allow Oblique for learning
+            allCasesByLang[lang].add('Direct');
+            allCasesByLang[lang].add('Oblique'); // Allow for educational purposes
+        }
+    }
+    
+    // Add N/A options where appropriate
+    for (const lang in allGendersByLang) {
+        // Gender N/A for both languages
+        allGendersByLang[lang].add('N/A');
+        
+        // Person N/A for both languages
+        allPersonsByLang[lang].add('N/A');
+        
+        // Number N/A for both languages
+        allNumbersByLang[lang].add('N/A');
+        
+        // Case N/A for both languages
+        allCasesByLang[lang].add('N/A');
+        
+        // Script N/A for both languages
+        allScriptsByLang[lang].add('N/A');
+    }
+    
+    // Add N/A to tenses and remove any erroneous values
+    allTenses.add('N/A');
+    // Remove 'roman' if it accidentally got added to tenses
+    allTenses.delete('roman');
+    allTenses.delete('Roman');
+    
+    // Log the loaded options for verification
+    console.log('Loaded options for English:');
+    console.log('Script:', Array.from(allScriptsByLang['en'] || []).sort());
+    console.log('Case:', Array.from(allCasesByLang['en'] || []).sort());
+    console.log('Gender:', Array.from(allGendersByLang['en'] || []).sort());
+    console.log('Number:', Array.from(allNumbersByLang['en'] || []).sort());
+    console.log('Person:', Array.from(allPersonsByLang['en'] || []).sort());
+    console.log('Loaded options for Hindi:');
+    console.log('Script:', Array.from(allScriptsByLang['hi'] || []).sort());
+    console.log('Case:', Array.from(allCasesByLang['hi'] || []).sort());
+    console.log('Gender:', Array.from(allGendersByLang['hi'] || []).sort());
+    console.log('Number:', Array.from(allNumbersByLang['hi'] || []).sort());
+    console.log('Person:', Array.from(allPersonsByLang['hi'] || []).sort());
+    console.log('All Tenses:', Array.from(allTenses).sort());
     
     populateLanguageSelect();
     populateWordSelect();
@@ -266,10 +368,16 @@ function capitalizeFirst(str) {
 function populateFeatureSelect(select, values, featureType) {
     select.innerHTML = '<option value="">Select...</option>';
     let valueArr = Array.from(values).filter(v => v && v.toLowerCase() !== 'na');
-    // Always add N/A for gender, person, tense, and case
-    if (["gender", "person", "tense", "case"].includes(featureType)) {
-        if (!valueArr.includes('N/A')) valueArr.push('N/A');
-    }
+    
+    // Sort values in a consistent order
+    valueArr.sort((a, b) => {
+        // Put N/A at the end
+        if (a === 'N/A') return 1;
+        if (b === 'N/A') return -1;
+        return a.localeCompare(b);
+    });
+
+    // Handle special cases
     if (featureType === 'root') {
         valueArr.forEach(val => {
             if (val && val !== 'N/A') {
@@ -281,50 +389,16 @@ function populateFeatureSelect(select, values, featureType) {
         });
         return;
     }
-    if (featureType === 'case') {
-        ['Direct', 'Oblique', 'N/A'].forEach(val => {
-            const option = document.createElement('option');
-            option.value = val;
-            option.textContent = val;
-            select.appendChild(option);
-        });
-        return;
-    }
-    if (featureType === 'script') {
-        ['devanagari', 'Roman'].forEach(val => {
-            const option = document.createElement('option');
-            option.value = val;
-            option.textContent = val.charAt(0).toUpperCase() + val.slice(1);
-            select.appendChild(option);
-        });
-        return;
-    }
-    if (featureType === 'tense') {
-        Array.from(allTenses).sort().forEach(val => {
-            if (val && val !== 'N/A' && val.toLowerCase() !== 'na' && val.toLowerCase() !== 'roman') {
-                const option = document.createElement('option');
-                option.value = val;
-                option.textContent = capitalizeFirst(val);
-                select.appendChild(option);
-            }
-        });
-        // Add N/A as an option (not default)
-        const naOption = document.createElement('option');
-        naOption.value = 'N/A';
-        naOption.textContent = 'N/A';
-        select.appendChild(naOption);
-        // Always set default to empty (Select...)
-        select.value = '';
-        return;
-    }
-    // Add correct and distractor options for other features
+
+    // Add options for all features
     valueArr.forEach(value => {
         const option = document.createElement('option');
         option.value = value;
         option.textContent = capitalizeFirst(value);
         select.appendChild(option);
     });
-    // Always set default to empty (Select...) for all feature dropdowns
+
+    // Always set default to empty (Select...)
     select.value = '';
 }
 
@@ -337,60 +411,46 @@ function handleWordChange() {
     }
     currentWord = selectedWord;
     const wordInfo = wordData.get(selectedWord);
-    // --- NEW LOGIC: Find all similar/related word forms for the selected word ---
+    const lang = wordInfo.language;
+
+    // Find all similar/related word forms
     let similarForms = new Set();
     if (wordInfo) {
-        // Get the language of the selected word
-        const lang = wordInfo.language;
-        // For Hindi: collect all surface forms (the first column in features.txt) that share the same root as the selected word
-        if (lang === 'hi') {
-            // Get the root(s) for the selected word
-            const selectedRoots = Array.from(wordInfo.root);
-            wordData.forEach((info, word) => {
-                // If this word shares a root with the selected word, add its surface form
+        const selectedRoots = Array.from(wordInfo.root);
+        wordData.forEach((info, word) => {
+            if (info.language === lang) {
                 for (const r of info.root) {
                     if (selectedRoots.includes(r)) {
                         similarForms.add(word);
                     }
                 }
-            });
-        } else if (lang === 'en') {
-            // For English: collect all surface forms (the first column) that share the same root as the selected word
-            const selectedRoots = Array.from(wordInfo.root);
-            wordData.forEach((info, word) => {
-                for (const r of info.root) {
-                    if (selectedRoots.includes(r)) {
-                        similarForms.add(word);
-                    }
-                }
-            });
-        } else {
-            // Fallback: just use the current word's root(s)
-            wordInfo.root.forEach(r => similarForms.add(r));
-        }
+            }
+        });
     }
+    
     // If no similar forms found, fallback to the current word's root(s)
     if (similarForms.size === 0 && wordInfo) {
         wordInfo.root.forEach(r => similarForms.add(r));
     }
-    // Always use the correct sets for each feature
+
+    // Populate all feature dropdowns using language-specific sets
     populateFeatureSelect(rootSelect, similarForms, 'root');
-    // Use allCategories for the category dropdown
     populateFeatureSelect(categorySelect, allCategories, 'category');
-    populateFeatureSelect(genderSelect, wordInfo.gender, 'gender');
-    populateFeatureSelect(numberSelect, wordInfo.number, 'number');
-    populateFeatureSelect(personSelect, wordInfo.person, 'person');
-    populateFeatureSelect(scriptSelect, wordInfo.script, 'script');
-    populateFeatureSelect(caseSelect, wordInfo.case, 'case');
-    populateFeatureSelect(tenseSelect, wordInfo.tense, 'tense');
+    populateFeatureSelect(genderSelect, allGendersByLang[lang], 'gender');
+    populateFeatureSelect(numberSelect, allNumbersByLang[lang], 'number');
+    populateFeatureSelect(personSelect, allPersonsByLang[lang], 'person');
+    populateFeatureSelect(scriptSelect, allScriptsByLang[lang], 'script');
+    populateFeatureSelect(caseSelect, allCasesByLang[lang], 'case');
+    populateFeatureSelect(tenseSelect, allTenses, 'tense');
+
+    // Enable all dropdowns
     [rootSelect, categorySelect, genderSelect, numberSelect, personSelect, scriptSelect, caseSelect, tenseSelect].forEach(select => {
         select.disabled = false;
     });
+    
     checkButton.style.display = '';
     checkButton.disabled = false;
     showAnswerButton.disabled = false;
-    clearFeedback();
-    previouslyIncorrect = false;
 }
 
 // Handle feature selection change
@@ -495,27 +555,33 @@ function showAnswer() {
     feedbackContainer.className = 'feedback-container';
     const wordInfo = wordData.get(currentWord);
     const firstFeature = wordInfo.features[0];
-    // Always show the correct features from the data, not from the dropdowns
-    function displayCase(val) {
-        if (!val || val === 'N/A') return 'N/A';
-        if (val.toLowerCase() === 'devanagari') return 'Devanagari';
-        if (val.toLowerCase() === 'roman') return 'Roman';
-        return capitalizeCamelCase(val);
-    }
+    
+    // Normalize display values
+    const normalizeDisplayValue = (val) => {
+        if (!val || val === '') return 'N/A';
+        if (val.toLowerCase() === 'na' || val.toLowerCase() === 'n/a') return 'N/A';
+        if (val === 'devanagari') return 'Devanagari';
+        if (val === 'roman') return 'Roman';
+        if (val === 'direct') return 'Direct';
+        if (val === 'oblique') return 'Oblique';
+        return val.charAt(0).toUpperCase() + val.slice(1).toLowerCase();
+    };
+
     const answerHTML = `
         <h3>Correct Features for "${currentWord}":</h3>
-        <div><strong>Root:</strong> ${capitalizeCamelCase(firstFeature.root) || 'N/A'}</div>
-        <div><strong>Category:</strong> ${capitalizeCamelCase(firstFeature.category) || 'N/A'}</div>
-        <div><strong>Gender:</strong> ${capitalizeCamelCase(firstFeature.gender) || 'N/A'}</div>
-        <div><strong>Number:</strong> ${capitalizeCamelCase(firstFeature.number) || 'N/A'}</div>
-        <div><strong>Person:</strong> ${capitalizeCamelCase(firstFeature.person) || 'N/A'}</div>
-        <div><strong>Script:</strong> ${capitalizeCamelCase(firstFeature.script) || 'N/A'}</div>
-        <div><strong>Case:</strong> ${displayCase(firstFeature.case)}</div>
-        <div><strong>Tense:</strong> ${capitalizeCamelCase(firstFeature.tense) || 'N/A'}</div>
+        <div><strong>Root:</strong> ${normalizeDisplayValue(firstFeature.root)}</div>
+        <div><strong>Category:</strong> ${normalizeDisplayValue(firstFeature.category)}</div>
+        <div><strong>Gender:</strong> ${normalizeDisplayValue(firstFeature.gender)}</div>
+        <div><strong>Number:</strong> ${normalizeDisplayValue(firstFeature.number)}</div>
+        <div><strong>Person:</strong> ${normalizeDisplayValue(firstFeature.person)}</div>
+        <div><strong>Script:</strong> ${normalizeDisplayValue(firstFeature.script)}</div>
+        <div><strong>Case:</strong> ${normalizeDisplayValue(firstFeature.case)}</div>
+        <div><strong>Tense:</strong> ${normalizeDisplayValue(firstFeature.tense)}</div>
     `;
     answerContainer.innerHTML = answerHTML;
     answerContainer.classList.add('show');
-    // Optionally, highlight incorrect dropdowns for user clarity
+    
+    // Highlight incorrect dropdowns
     const userAnswer = {
         root: rootSelect.value,
         category: categorySelect.value,
@@ -526,6 +592,7 @@ function showAnswer() {
         case: caseSelect.value,
         tense: tenseSelect.value
     };
+    
     [
         {el: rootSelect, key: 'root'},
         {el: categorySelect, key: 'category'},
@@ -536,7 +603,9 @@ function showAnswer() {
         {el: caseSelect, key: 'case'},
         {el: tenseSelect, key: 'tense'}
     ].forEach(({el, key}) => {
-        if ((firstFeature[key] || '').toLowerCase() !== (userAnswer[key] || '').toLowerCase()) {
+        const correctVal = normalizeDisplayValue(firstFeature[key]);
+        const userVal = normalizeDisplayValue(userAnswer[key]);
+        if (correctVal !== userVal) {
             el.classList.add('highlight-incorrect');
         } else {
             el.classList.remove('highlight-incorrect');
