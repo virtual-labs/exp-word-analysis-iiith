@@ -71,17 +71,17 @@
       "unit-type": "task",
       "content-type": "text"
     },
-    {
-      "target": "references.html",
-      "source": "references.md",
-      "label": "References",
+   {
+      "target": "glossary.html",
+      "source": "glossary.md",
+      "label": "Glossary",
       "unit-type": "task",
       "content-type": "text"
     },
     {
-      "target": "glossary.html",
-      "source": "glossary.md",
-      "label": "Glossary",
+      "target": "references.html",
+      "source": "references.md",
+      "label": "References",
       "unit-type": "task",
       "content-type": "text"
     }
