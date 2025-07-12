@@ -283,23 +283,34 @@ h3 {
 }
 .instructions-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
-    background: linear-gradient(90deg, var(--color-secondary-light) 0%, var(--color-primary-light) 100%);
-    border-bottom: 1px solid var(--color-neutral-200);
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
     cursor: pointer;
-    transition: background 0.2s;
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    transition: background-color 0.3s ease;
 }
+
+.instructions-header .arrow-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: #2a1a6e;
+}
+
+.instructions-header:not(.collapsed) .arrow-icon {
+    transform: rotate(180deg);
+}
+
 .instructions-header:hover {
-    background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    background-color: var(--color-primary-dark);
 }
+
 .instructions-header h3 {
-    margin: 0 0 0 0.5rem;
-    color: var(--color-primary-dark);
-    flex-grow: 1;
-    font-weight: 700;
-    font-size: 1.15em;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 .toggle-btn {
     background: none;
@@ -317,25 +328,22 @@ h3 {
     transform: translateY(-1px);
 }
 .instructions-content {
-    padding: 0.7rem 0.5rem;
-    max-width: 100%;
-    width: 100%;
-    box-sizing: border-box;
-    background: var(--color-neutral-100);
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid var(--color-neutral-200);
+    border-top: none;
     border-radius: 0 0 var(--radius-md) var(--radius-md);
-    box-shadow: 0 2px 8px rgba(67,97,238,0.04);
-    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.35s cubic-bezier(0.4,0,0.2,1);
-    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: 500px;
     opacity: 1;
-    max-height: 400px;
+    overflow: hidden;
 }
 .instructions-content.collapsed {
-    display: block;
-    opacity: 0;
     max-height: 0;
+    opacity: 0;
     padding-top: 0;
     padding-bottom: 0;
-    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.35s cubic-bezier(0.4,0,0.2,1);
+    border-bottom: none;
 }
 
 .instructions-list {
@@ -809,3 +817,201 @@ h3 {
     box-shadow: 0 0 0 2px #f4433622;
     transition: border 0.2s, background 0.2s;
 } 
+
+/* --- Begin merged styles from styles.css --- */
+/* Base styles */
+:root {
+    --primary-color: #2196F3;
+    --error-color: #f44336;
+    --success-color: #4CAF50;
+    --text-color: #333;
+    --border-color: #ddd;
+    --hover-color: #e9ecef;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    padding: 20px;
+}
+
+/* Container */
+.simulation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Instructions */
+.instructions {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.instructions h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* Feature sections */
+.language-section,
+.word-section,
+.features-section {
+    margin-bottom: 20px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.feature-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form elements */
+label {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+}
+
+select:disabled {
+    background-color: var(--hover-color);
+    cursor: not-allowed;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+/* Buttons */
+.button-group {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#check-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#check-button:hover:not(:disabled) {
+    background-color: #1976D2;
+}
+
+#find-answer-button {
+    background-color: #757575;
+    color: white;
+}
+
+#find-answer-button:hover:not(:disabled) {
+    background-color: #616161;
+}
+
+/* Feedback */
+.feedback {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.feedback.error {
+    background-color: #ffebee;
+    color: var(--error-color);
+}
+
+.feedback.success {
+    background-color: #e8f5e9;
+    color: var(--success-color);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .simulation-container {
+        padding: 10px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* Tablet Layout */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Print styles */
+@media print {
+    .simulation-container {
+        padding: 0;
+    }
+
+    button {
+        display: none;
+    }
+
+    select {
+        border: 1px solid #999;
+    }
+
+    .feedback {
+        border: 1px solid currentColor;
+    }
+} 
+/* --- End merged styles from styles.css --- */ 

@@ -44,9 +44,242 @@ var index;
         ga('create', 'UA-67558473-1', 'auto');
         ga('send', 'pageview');
 
-// Data structure to store word features
-let wordData = new Map();
-let currentWord = null;
+// Data Management Class
+class FeaturesManager {
+    constructor() {
+        this.wordData = new Map();
+        this.allTenses = new Set();
+        this.allCategories = new Set();
+        this.allGendersByLang = {};
+        this.allPersonsByLang = {};
+        this.allNumbersByLang = {};
+        this.allScriptsByLang = {};
+        this.allCasesByLang = {};
+        this.currentWord = null;
+        this.isLoaded = false;
+    }
+
+    async loadFeatures() {
+        try {
+            const response = await fetch('features.txt');
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const text = await response.text();
+            if (!text || text.trim().length === 0) throw new Error('Loaded file is empty');
+            
+            const lines = text.split('\n').filter(line => line.trim());
+            this.processFeatures(lines);
+            
+            this.isLoaded = true;
+            console.log('✅ Features loaded successfully');
+            this.logLoadedOptions();
+        } catch (error) {
+            console.error('❌ Failed to load features:', error);
+            this.isLoaded = false;
+        }
+    }
+
+    processFeatures(lines) {
+        lines.forEach(line => {
+            if (!line.trim()) return;
+            
+            const [word, root, category, gender, number, case_, person, lang, script, tense] = line.split('\t');
+            
+            if (!word || !lang || lang === 'N/A') return;
+            
+            if (!this.wordData.has(word)) {
+                this.wordData.set(word, {
+                    root: new Set(),
+                    category: new Set(),
+                    gender: new Set(),
+                    number: new Set(),
+                    person: new Set(),
+                    script: new Set(),
+                    case: new Set(),
+                    tense: new Set(),
+                    language: lang,
+                    features: []
+                });
+            }
+            
+            const wordInfo = this.wordData.get(word);
+            
+            if (!this.allGendersByLang[lang]) this.allGendersByLang[lang] = new Set();
+            if (!this.allPersonsByLang[lang]) this.allPersonsByLang[lang] = new Set();
+            if (!this.allNumbersByLang[lang]) this.allNumbersByLang[lang] = new Set();
+            if (!this.allScriptsByLang[lang]) this.allScriptsByLang[lang] = new Set();
+            if (!this.allCasesByLang[lang]) this.allCasesByLang[lang] = new Set();
+            
+            const normalizeValue = (val) => {
+                if (!val || val.toLowerCase() === 'na' || val.toLowerCase() === 'n/a') return 'N/A';
+                if (val.toLowerCase() === 'roman') return 'Roman';
+                if (val.toLowerCase() === 'devanagari') return 'Devanagari';
+                if (val.toLowerCase() === 'direct') return 'Direct';
+                if (val.toLowerCase() === 'oblique') return 'Oblique';
+                return val.toLowerCase();
+            };
+
+            if (root && root !== 'N/A') wordInfo.root.add(root);
+            if (category && category !== 'N/A' && category !== 'na') this.allCategories.add(category.toLowerCase());
+            
+            const normalizedGender = normalizeValue(gender);
+            const normalizedNumber = normalizeValue(number);
+            const normalizedPerson = normalizeValue(person);
+            const normalizedScript = normalizeValue(script);
+            const normalizedCase = normalizeValue(case_);
+            const normalizedTense = normalizeValue(tense);
+
+            if (normalizedGender !== 'N/A') {
+                wordInfo.gender.add(normalizedGender);
+                this.allGendersByLang[lang].add(normalizedGender);
+            }
+            if (normalizedNumber !== 'N/A') {
+                wordInfo.number.add(normalizedNumber);
+                this.allNumbersByLang[lang].add(normalizedNumber);
+            }
+            if (normalizedPerson !== 'N/A') {
+                wordInfo.person.add(normalizedPerson);
+                this.allPersonsByLang[lang].add(normalizedPerson);
+            }
+            if (normalizedScript !== 'N/A') {
+                wordInfo.script.add(normalizedScript);
+                this.allScriptsByLang[lang].add(normalizedScript);
+            }
+            if (normalizedCase !== 'N/A') {
+                wordInfo.case.add(normalizedCase);
+                this.allCasesByLang[lang].add(normalizedCase);
+            }
+            if (normalizedTense !== 'N/A') {
+                wordInfo.tense.add(normalizedTense);
+                this.allTenses.add(normalizedTense);
+            }
+            
+            wordInfo.features.push({
+                root: normalizeValue(root),
+                category: normalizeValue(category),
+                gender: normalizeValue(gender),
+                number: normalizeValue(number),
+                person: normalizeValue(person),
+                script: normalizeValue(script),
+                case: normalizeValue(case_),
+                tense: normalizeValue(tense)
+            });
+        });
+
+        for (const lang in this.allScriptsByLang) {
+            if (lang === 'hi') {
+                this.allScriptsByLang[lang].add('Devanagari');
+                this.allScriptsByLang[lang].add('Roman');
+                this.allCasesByLang[lang].add('Direct');
+                this.allCasesByLang[lang].add('Oblique');
+            } else if (lang === 'en') {
+                this.allScriptsByLang[lang].add('Roman');
+                this.allScriptsByLang[lang].add('Devanagari');
+                this.allCasesByLang[lang].add('Direct');
+                this.allCasesByLang[lang].add('Oblique');
+            }
+        }
+        
+        for (const lang in this.allGendersByLang) {
+            this.allGendersByLang[lang].add('N/A');
+            this.allPersonsByLang[lang].add('N/A');
+            this.allNumbersByLang[lang].add('N/A');
+            this.allCasesByLang[lang].add('N/A');
+            this.allScriptsByLang[lang].add('N/A');
+        }
+        
+        this.allTenses.add('N/A');
+        this.allTenses.delete('roman');
+        this.allTenses.delete('Roman');
+    }
+
+    logLoadedOptions() {
+        console.log('Loaded options for English:');
+        console.log('Script:', Array.from(this.allScriptsByLang['en'] || []).sort());
+        console.log('Case:', Array.from(this.allCasesByLang['en'] || []).sort());
+        console.log('Gender:', Array.from(this.allGendersByLang['en'] || []).sort());
+        console.log('Number:', Array.from(this.allNumbersByLang['en'] || []).sort());
+        console.log('Person:', Array.from(this.allPersonsByLang['en'] || []).sort());
+        console.log('Loaded options for Hindi:');
+        console.log('Script:', Array.from(this.allScriptsByLang['hi'] || []).sort());
+        console.log('Case:', Array.from(this.allCasesByLang['hi'] || []).sort());
+        console.log('Gender:', Array.from(this.allGendersByLang['hi'] || []).sort());
+        console.log('Number:', Array.from(this.allNumbersByLang['hi'] || []).sort());
+        console.log('Person:', Array.from(this.allPersonsByLang['hi'] || []).sort());
+        console.log('All Tenses:', Array.from(this.allTenses).sort());
+    }
+
+    getWordsForLanguage(lang) {
+        const words = [];
+        this.wordData.forEach((info, word) => {
+            if (info.language === lang) {
+                words.push(word);
+            }
+        });
+        return words.sort();
+    }
+
+    getSimilarForms(word) {
+        if (!this.wordData.has(word)) return new Set();
+        const wordInfo = this.wordData.get(word);
+        const lang = wordInfo.language;
+        const similarForms = new Set();
+        
+        const selectedRoots = Array.from(wordInfo.root);
+        this.wordData.forEach((info, w) => {
+            if (info.language === lang) {
+                for (const r of info.root) {
+                    if (selectedRoots.includes(r)) {
+                        similarForms.add(w);
+                    }
+                }
+            }
+        });
+        
+        if (similarForms.size === 0) {
+            wordInfo.root.forEach(r => similarForms.add(r));
+        }
+        
+        return similarForms;
+    }
+
+    validateFeatures(word, selectedFeatures) {
+        if (!this.wordData.has(word)) return false;
+        const wordInfo = this.wordData.get(word);
+        
+        for (const feature of wordInfo.features) {
+            let allMatch = true;
+            for (const [key, value] of Object.entries(selectedFeatures)) {
+                const featureValue = feature[key];
+                if (featureValue !== value) {
+                    allMatch = false;
+                    break;
+                }
+            }
+            if (allMatch) return true;
+        }
+        return false;
+    }
+
+    getFeatureOptions(word) {
+        if (!this.wordData.has(word)) return null;
+        const wordInfo = this.wordData.get(word);
+        const lang = wordInfo.language;
+        
+        return {
+            root: this.getSimilarForms(word),
+            category: this.allCategories,
+            gender: this.allGendersByLang[lang] || new Set(),
+            number: this.allNumbersByLang[lang] || new Set(),
+            person: this.allPersonsByLang[lang] || new Set(),
+            script: this.allScriptsByLang[lang] || new Set(),
+            case: this.allCasesByLang[lang] || new Set(),
+            tense: this.allTenses
+        };
+    }
+}
+
+// Global instance
+const featuresManager = new FeaturesManager();
 
 // DOM Elements
 const languageSelect = document.getElementById('language');
@@ -64,15 +297,6 @@ const showAnswerButton = document.getElementById('showAnswerButton');
 const feedbackContainer = document.getElementById('feedback');
 const answerContainer = document.getElementById('answer');
 
-// Store all unique values from features.txt
-let allTenses = new Set();
-let allCategories = new Set();
-let allGendersByLang = {};
-let allPersonsByLang = {};
-let allNumbersByLang = {};
-let allScriptsByLang = {};
-let allCasesByLang = {};
-
 // Track if user previously submitted an incorrect answer
 let previouslyIncorrect = false;
 
@@ -86,13 +310,13 @@ function getDistractors(featureType, correctValue, count = 3) {
 // Function to generate root distractors (now: all word forms sharing the same root and language)
 function getRootDistractors(selectedWord) {
     // Get the word info for the selected word
-    const wordInfo = wordData.get(selectedWord);
+    const wordInfo = featuresManager.wordData.get(selectedWord);
     if (!wordInfo) return [];
     const root = Array.from(wordInfo.root)[0];
     const lang = wordInfo.language;
     if (!root || !lang) return [];
     // Find all words in wordData that share this root and language
-    const similarWords = Array.from(wordData.entries())
+    const similarWords = Array.from(featuresManager.wordData.entries())
         .filter(([word, info]) => info.language === lang && info.root.has(root))
         .map(([word, _]) => word)
         .filter(word => word && word !== 'N/A');
@@ -103,9 +327,7 @@ function getRootDistractors(selectedWord) {
 // Initialize the application
 async function init() {
     try {
-        const response = await fetch('features.txt');
-        const text = await response.text();
-        processFeaturesData(text);
+        await featuresManager.loadFeatures();
         setupEventListeners();
         setupInstructionsPanel();
     } catch (error) {
@@ -284,7 +506,7 @@ function processFeaturesData(text) {
 // Populate the language select dropdown
 function populateLanguageSelect() {
     const languages = new Set();
-    wordData.forEach((info, word) => {
+    featuresManager.wordData.forEach((info, word) => {
         if (info.language && info.language !== 'N/A' && info.language !== 'na') {
             languages.add(info.language);
         }
@@ -308,10 +530,7 @@ function populateWordSelect() {
         return;
     }
     
-    const words = Array.from(wordData.entries())
-        .filter(([_, info]) => info.language === selectedLang)
-        .map(([word, _]) => word)
-        .sort();
+    const words = featuresManager.getWordsForLanguage(selectedLang);
     
     wordSelect.innerHTML = '<option value="">Select a word...</option>';
     words.forEach(word => {
@@ -409,15 +628,15 @@ function handleWordChange() {
         clearAllFeatures();
         return;
     }
-    currentWord = selectedWord;
-    const wordInfo = wordData.get(selectedWord);
+    featuresManager.currentWord = selectedWord;
+    const wordInfo = featuresManager.wordData.get(selectedWord);
     const lang = wordInfo.language;
 
     // Find all similar/related word forms
     let similarForms = new Set();
     if (wordInfo) {
         const selectedRoots = Array.from(wordInfo.root);
-        wordData.forEach((info, word) => {
+        featuresManager.wordData.forEach((info, word) => {
             if (info.language === lang) {
                 for (const r of info.root) {
                     if (selectedRoots.includes(r)) {
@@ -435,13 +654,13 @@ function handleWordChange() {
 
     // Populate all feature dropdowns using language-specific sets
     populateFeatureSelect(rootSelect, similarForms, 'root');
-    populateFeatureSelect(categorySelect, allCategories, 'category');
-    populateFeatureSelect(genderSelect, allGendersByLang[lang], 'gender');
-    populateFeatureSelect(numberSelect, allNumbersByLang[lang], 'number');
-    populateFeatureSelect(personSelect, allPersonsByLang[lang], 'person');
-    populateFeatureSelect(scriptSelect, allScriptsByLang[lang], 'script');
-    populateFeatureSelect(caseSelect, allCasesByLang[lang], 'case');
-    populateFeatureSelect(tenseSelect, allTenses, 'tense');
+    populateFeatureSelect(categorySelect, featuresManager.allCategories, 'category');
+    populateFeatureSelect(genderSelect, featuresManager.allGendersByLang[lang], 'gender');
+    populateFeatureSelect(numberSelect, featuresManager.allNumbersByLang[lang], 'number');
+    populateFeatureSelect(personSelect, featuresManager.allPersonsByLang[lang], 'person');
+    populateFeatureSelect(scriptSelect, featuresManager.allScriptsByLang[lang], 'script');
+    populateFeatureSelect(caseSelect, featuresManager.allCasesByLang[lang], 'case');
+    populateFeatureSelect(tenseSelect, featuresManager.allTenses, 'tense');
 
     // Enable all dropdowns
     [rootSelect, categorySelect, genderSelect, numberSelect, personSelect, scriptSelect, caseSelect, tenseSelect].forEach(select => {
@@ -460,7 +679,7 @@ function handleFeatureChange() {
 
 // Check the user's answer
 function checkAnswer() {
-    if (!currentWord) return;
+    if (!featuresManager.currentWord) return;
     const userAnswer = {
         root: rootSelect.value,
         category: categorySelect.value,
@@ -471,7 +690,7 @@ function checkAnswer() {
         case: caseSelect.value,
         tense: tenseSelect.value
     };
-    const wordInfo = wordData.get(currentWord);
+    const wordInfo = featuresManager.wordData.get(featuresManager.currentWord);
     let incorrectFeatures = [];
     let foundMatch = false;
     for (const feature of wordInfo.features) {
@@ -524,7 +743,7 @@ function checkAnswer() {
             return capitalizeCamelCase(val);
         }
         const answerHTML = `
-            <h3>Correct Features for "${currentWord}":</h3>
+            <h3>Correct Features for "${featuresManager.currentWord}":</h3>
             <div><strong>Root:</strong> ${capitalizeCamelCase(correct.root) || 'N/A'}</div>
             <div><strong>Category:</strong> ${capitalizeCamelCase(correct.category) || 'N/A'}</div>
             <div><strong>Gender:</strong> ${capitalizeCamelCase(correct.gender) || 'N/A'}</div>
@@ -549,11 +768,11 @@ function checkAnswer() {
 
 // Show the correct answer
 function showAnswer() {
-    if (!currentWord) return;
+    if (!featuresManager.currentWord) return;
     clearFeedback();
     feedbackContainer.textContent = '';
     feedbackContainer.className = 'feedback-container';
-    const wordInfo = wordData.get(currentWord);
+    const wordInfo = featuresManager.wordData.get(featuresManager.currentWord);
     const firstFeature = wordInfo.features[0];
     
     // Normalize display values
@@ -568,7 +787,7 @@ function showAnswer() {
     };
 
     const answerHTML = `
-        <h3>Correct Features for "${currentWord}":</h3>
+        <h3>Correct Features for "${featuresManager.currentWord}":</h3>
         <div><strong>Root:</strong> ${normalizeDisplayValue(firstFeature.root)}</div>
         <div><strong>Category:</strong> ${normalizeDisplayValue(firstFeature.category)}</div>
         <div><strong>Gender:</strong> ${normalizeDisplayValue(firstFeature.gender)}</div>
@@ -632,12 +851,16 @@ function setupInstructionsPanel() {
     if (tab && instructionsContent) {
         // Collapsed by default
         instructionsContent.classList.add('collapsed');
+        tab.classList.add('collapsed');
+        
         tab.addEventListener('click', () => {
             const isCollapsed = instructionsContent.classList.contains('collapsed');
             if (isCollapsed) {
                 instructionsContent.classList.remove('collapsed');
+                tab.classList.remove('collapsed');
             } else {
                 instructionsContent.classList.add('collapsed');
+                tab.classList.add('collapsed');
             }
         });
     }
@@ -672,7 +895,7 @@ function resetSimulation() {
     showAnswerButton.disabled = true;
     checkButton.style.display = '';
     // Reset current word
-    currentWord = null;
+    featuresManager.currentWord = null;
     // Reset instructions panel to collapsed
     const instructionsContent = document.getElementById('instructionsContent');
     const tab = document.getElementById('instructionsTab');
