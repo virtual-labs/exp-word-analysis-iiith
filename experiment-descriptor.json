@@ -2,9 +2,24 @@
   "unit-type": "lu",
   "label": "",
   "basedir": ".",
+  "LaTeXinMD": true,
+  "code-assessment": {
+    "include": false,
+    "languages": ["javascript"],
+    "position": 5
+  },
+  "services": [],
+  "service-worker": "/path/to/service-worker.js",
   "units": [
     {
       "unit-type": "aim"
+    },
+    {
+      "target": "objective.html",
+      "source": "objective.md",
+      "label": "Objective",
+      "unit-type": "task",
+      "content-type": "text"
     },
     {
       "target": "theory.html",
@@ -14,11 +29,11 @@
       "content-type": "text"
     },
     {
-      "target": "objective.html",
-      "source": "objective.md",
-      "label": "Objective",
+      "target": "pretest.html",
+      "source": "pretest.json",
+      "label": "Pretest",
       "unit-type": "task",
-      "content-type": "text"
+      "content-type": "assesment"
     },
     {
       "target": "procedure.html",
@@ -32,12 +47,34 @@
       "source": "simulation/index.html",
       "label": "Simulation",
       "unit-type": "task",
-      "content-type": "simulation"
+      "content-type": "simulation",
+      "additional-sources": []
     },
     {
-      "target": "assignment.html",
-      "source": "assignment.md",
-      "label": "Assignment",
+      "target": "posttest.html",
+      "source": "posttest.json",
+      "label": "Posttest",
+      "unit-type": "task",
+      "content-type": "assesment"
+    },
+    {
+      "target": "trivia.html",
+      "source": "trivia.md",
+      "label": "Trivia",
+      "unit-type": "task",
+      "content-type": "text"
+    },
+    {
+      "target": "extended-study.html",
+      "source": "extended-study.md",
+      "label": "Extended Study",
+      "unit-type": "task",
+      "content-type": "text"
+    },
+   {
+      "target": "glossary.html",
+      "source": "glossary.md",
+      "label": "Glossary",
       "unit-type": "task",
       "content-type": "text"
     },
@@ -50,4 +87,3 @@
     }
   ]
 }
-

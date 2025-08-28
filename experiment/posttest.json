@@ -1,0 +1,260 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "What is a morpheme in linguistics?",
+      "answers": {
+        "a": "A complete sentence",
+        "b": "The smallest meaningful unit of language",
+        "c": "A type of grammar rule",
+        "d": "A writing system"
+      },
+      "explanations": {
+        "a": "Incorrect. A sentence is made up of many morphemes.",
+        "b": "Correct! A morpheme is the smallest meaningful unit of language that cannot be divided further while retaining meaning.",
+        "c": "Incorrect. Grammar rules govern how morphemes combine, but are not morphemes themselves.",
+        "d": "Incorrect. Writing systems represent morphemes but are not morphemes themselves."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In the word 'cats', how many morphemes are there?",
+      "answers": {
+        "a": "One",
+        "b": "Two",
+        "c": "Three",
+        "d": "Four"
+      },
+      "explanations": {
+        "a": "Incorrect. 'Cats' contains more than one meaningful unit.",
+        "b": "Correct! 'Cats' has two morphemes: 'cat' (the root) and '-s' (the plural marker).",
+        "c": "Incorrect. There are only two meaningful units in 'cats'.",
+        "d": "Incorrect. 'Cats' does not contain four morphemes."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the root of the word 'unhappiness'?",
+      "answers": {
+        "a": "un-",
+        "b": "happy",
+        "c": "-ness",
+        "d": "unhappy"
+      },
+      "explanations": {
+        "a": "Incorrect. 'un-' is a prefix, not the root.",
+        "b": "Correct! 'Happy' is the root word that carries the core meaning, with 'un-' as prefix and '-ness' as suffix.",
+        "c": "Incorrect. '-ness' is a suffix that creates nouns from adjectives.",
+        "d": "Incorrect. 'Unhappy' includes the prefix 'un-' and is not the root."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following demonstrates inflectional morphology?",
+      "answers": {
+        "a": "happy → happiness",
+        "b": "walk → walked",
+        "c": "teach → teacher",
+        "d": "kind → kindness"
+      },
+      "explanations": {
+        "a": "Incorrect. This is derivational morphology as it changes the word class from adjective to noun.",
+        "b": "Correct! Adding '-ed' to 'walk' shows inflectional morphology as it changes the tense without changing the word class.",
+        "c": "Incorrect. This is derivational morphology as it creates a new word with a different meaning and class.",
+        "d": "Incorrect. This is derivational morphology as it changes the word class from adjective to noun."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In Hindi, what does the case marker 'को' (ko) typically indicate?",
+      "answers": {
+        "a": "Subject of the sentence",
+        "b": "Direct object or goal",
+        "c": "Possessive relationship",
+        "d": "Location"
+      },
+      "explanations": {
+        "a": "Incorrect. Subjects in Hindi typically don't take the 'को' marker.",
+        "b": "Correct! 'को' (ko) is used to mark direct objects, goals, or recipients in Hindi sentences.",
+        "c": "Incorrect. Possessive relationships are marked by 'का/की/के' (ka/ki/ke).",
+        "d": "Incorrect. Location is typically marked by 'में' (mein) or other locative markers."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the difference between free and bound morphemes?",
+      "answers": {
+        "a": "Free morphemes can stand alone, bound morphemes cannot",
+        "b": "Free morphemes are longer than bound morphemes",
+        "c": "Bound morphemes are always prefixes",
+        "d": "There is no difference between them"
+      },
+      "explanations": {
+        "a": "Correct! Free morphemes can function as independent words (like 'cat'), while bound morphemes must attach to other morphemes (like '-s' in 'cats').",
+        "b": "Incorrect. Length is not the distinguishing factor between free and bound morphemes.",
+        "c": "Incorrect. Bound morphemes can be prefixes, suffixes, or infixes.",
+        "d": "Incorrect. There is a clear distinction between free and bound morphemes."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In agglutinative languages like Turkish, morphological analysis is particularly challenging because:",
+      "answers": {
+        "a": "Words have no internal structure",
+        "b": "Multiple morphemes can be chained together in a single word",
+        "c": "All words are monosyllabic",
+        "d": "There are no grammatical rules"
+      },
+      "explanations": {
+        "a": "Incorrect. Agglutinative languages have complex internal word structure.",
+        "b": "Correct! Agglutinative languages allow extensive morpheme chaining, creating words with many grammatical markers that must be analyzed separately.",
+        "c": "Incorrect. Agglutinative languages often have polysyllabic words due to morpheme chaining.",
+        "d": "Incorrect. Agglutinative languages have systematic grammatical rules for morpheme combination."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "What is morphological ambiguity and why is it problematic for NLP systems?",
+      "answers": {
+        "a": "When a word has multiple possible morphological analyses",
+        "b": "When words are spelled incorrectly",
+        "c": "When languages use different scripts",
+        "d": "When sentences are too long"
+      },
+      "explanations": {
+        "a": "Correct! Morphological ambiguity occurs when a word form can be analyzed in multiple ways, requiring context or additional information to determine the correct analysis.",
+        "b": "Incorrect. Spelling errors are orthographic issues, not morphological ambiguity.",
+        "c": "Incorrect. Script differences are writing system issues, not morphological ambiguity.",
+        "d": "Incorrect. Sentence length is a syntactic consideration, not morphological ambiguity."
+      },
+      "correctAnswer": "a",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "How does morphological analysis contribute to machine translation quality?",
+      "answers": {
+        "a": "By providing detailed grammatical information for accurate translation",
+        "b": "By making translation faster",
+        "c": "By reducing the need for dictionaries",
+        "d": "By eliminating the need for syntax analysis"
+      },
+      "explanations": {
+        "a": "Correct! Morphological analysis provides crucial grammatical information (tense, number, gender, case) that helps produce more accurate and grammatically correct translations.",
+        "b": "Incorrect. While it may help efficiency, the primary benefit is accuracy, not speed.",
+        "c": "Incorrect. Morphological analysis complements rather than replaces dictionary lookup.",
+        "d": "Incorrect. Morphological analysis works alongside syntax analysis, not instead of it."
+      },
+      "correctAnswer": "a",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "Why is morphological analysis important in natural language processing?",
+      "answers": {
+        "a": "It helps in understanding word structure and meaning",
+        "b": "It is only used for translation tasks",
+        "c": "It is not relevant for computational linguistics",
+        "d": "It is only useful for English language analysis"
+    },
+      "explanations": {
+        "a": "Correct! Morphological analysis is crucial for understanding how words are formed and how they function in sentences, which is essential for many NLP tasks.",
+        "b": "Incorrect. While translation is one application, morphological analysis is broadly useful in NLP.",
+        "c": "Incorrect. It is a core part of computational linguistics.",
+        "d": "Incorrect. Morphological analysis is important for many languages, not just English."
+      },
+      "correctAnswer": "a",
+      "difficulty": "theory"
+    },
+    {
+      "question": "What is the difference between inflectional and derivational morphology?",
+      "answers": {
+        "a": "Inflectional changes grammatical features, derivational creates new words",
+        "b": "Both are the same",
+        "c": "Derivational is only for verbs",
+        "d": "Inflectional is only for nouns"
+      },
+      "explanations": {
+        "a": "Correct! Inflectional morphology changes grammatical features (like tense, number), while derivational morphology creates new words or changes the word class.",
+        "b": "Incorrect. They serve different linguistic functions.",
+        "c": "Incorrect. Derivational morphology applies to many word classes.",
+        "d": "Incorrect. Inflectional morphology applies to various word classes."
+      },
+      "correctAnswer": "a",
+      "difficulty": "theory"
+    },
+    {
+      "question": "Which of the following is an example of a morphologically rich language?",
+      "answers": {
+        "a": "Hindi",
+        "b": "English",
+        "c": "Chinese",
+        "d": "All of the above"
+      },
+      "explanations": {
+        "a": "Correct! Hindi is considered morphologically rich due to its extensive inflectional system.",
+        "b": "Incorrect. English is less morphologically rich compared to Hindi.",
+        "c": "Incorrect. Chinese is considered morphologically poor.",
+        "d": "Incorrect. Only Hindi fits the description."
+      },
+      "correctAnswer": "a",
+      "difficulty": "theory"
+    },
+    {
+      "question": "How does morphological analysis help in machine translation?",
+      "answers": {
+        "a": "By providing information about word structure and grammatical features",
+        "b": "By ignoring word endings",
+        "c": "By focusing only on syntax",
+        "d": "By translating word-for-word without context"
+      },
+      "explanations": {
+        "a": "Correct! Morphological analysis helps machine translation systems understand the structure and features of words, leading to more accurate translations.",
+        "b": "Incorrect. Word endings are important in many languages.",
+        "c": "Incorrect. Syntax is important, but morphology provides crucial information.",
+        "d": "Incorrect. Context and morphology are both important for accurate translation."
+      },
+      "correctAnswer": "a",
+      "difficulty": "conceptual"
+    },
+    {
+      "question": "What is the role of case marking in Hindi?",
+      "answers": {
+        "a": "It indicates the grammatical function of nouns in a sentence",
+        "b": "It changes the meaning of verbs",
+        "c": "It is only used in poetry",
+        "d": "It is not important for understanding sentences"
+      },
+      "explanations": {
+        "a": "Correct! Case marking in Hindi shows the grammatical role of nouns (subject, object, etc.) in a sentence.",
+        "b": "Incorrect. Case marking does not change verb meaning.",
+        "c": "Incorrect. It is used in all types of language, not just poetry.",
+        "d": "Incorrect. Case marking is crucial for understanding sentence structure."
+      },
+      "correctAnswer": "a",
+      "difficulty": "conceptual"
+    },
+    {
+      "question": "Why is it important to identify the root of a word in NLP tasks?",
+      "answers": {
+        "a": "Because it helps in grouping related word forms and understanding meaning",
+        "b": "Because it is only needed for spelling correction",
+        "c": "Because roots are always verbs",
+        "d": "Because it is not important"
+      },
+      "explanations": {
+        "a": "Correct! Identifying the root helps in grouping word forms, understanding meaning, and improving NLP applications like search and translation.",
+        "b": "Incorrect. Root identification is useful for many NLP tasks, not just spelling correction.",
+        "c": "Incorrect. Roots can be of any word class.",
+        "d": "Incorrect. Root identification is fundamental in NLP."
+      },
+      "correctAnswer": "a",
+      "difficulty": "conceptual"
+    }
+  ]
+}
