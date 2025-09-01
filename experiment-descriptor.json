@@ -2,7 +2,7 @@
   "unit-type": "lu",
   "label": "",
   "basedir": ".",
-  "LaTeXinMD": true,
+  "LaTeXinMD": "true",
   "code-assessment": {
     "include": false,
     "languages": ["javascript"],
@@ -58,6 +58,13 @@
       "content-type": "assesment"
     },
     {
+      "target": "assignment.html",
+      "source": "assignment.md",
+      "label": "Assignment",
+      "unit-type": "task",
+      "content-type": "text"
+    },
+    {
       "target": "trivia.html",
       "source": "trivia.md",
       "label": "Trivia",
@@ -71,7 +78,7 @@
       "unit-type": "task",
       "content-type": "text"
     },
-   {
+    {
       "target": "glossary.html",
       "source": "glossary.md",
       "label": "Glossary",
