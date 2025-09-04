@@ -2,7 +2,7 @@ Morphological analysis is a foundational task in Natural Language Processing (NL
 
 ---
 
-#### 1. Morphological Analysis
+### 1. Morphological Analysis
 
 Morphological analysis involves breaking a word into its root and affix(es). Identifying the root of a word is a fundamental step in many NLP tasks.
 
@@ -20,13 +20,13 @@ Morphological analysis involves breaking a word into its root and affix(es). Ide
 
 ---
 
-#### 2. Morphological Richness
+### 2. Morphological Richness
 
 The number of forms a root word can take varies across languages. Indian languages are generally considered _morphologically rich_, meaning words can have many forms due to inflections and derivations.
 
 ---
 
-#### 3. Types of Morphology
+### 3. Types of Morphology
 
 #### **Inflectional Morphology**
 
@@ -40,7 +40,7 @@ The number of forms a root word can take varies across languages. Indian languag
 
 ---
 
-#### 4. Morphological Features
+### 4. Morphological Features
 
 During morphological analysis, each word is assigned a _lexical category_ and may take suffixes for features such as gender, number, person, case, tense, aspect, and modality.
 
@@ -52,8 +52,8 @@ During morphological analysis, each word is assigned a _lexical category_ and ma
 
 | Language | Input Word       | Output Analysis                                   |
 | -------- | ---------------- | ------------------------------------------------- |
-| Hindi    | लड़के (ladake)    | rt=लड़का(ladakaa), cat=n, gen=m, num=sg, case=obl |
-| Hindi    | लड़के (ladake)    | rt=लड़का(ladakaa), cat=n, gen=m, num=pl, case=dir |
+| Hindi    | लड़के (ladake)   | rt=लड़का(ladakaa), cat=n, gen=m, num=sg, case=obl |
+| Hindi    | लड़के (ladake)   | rt=लड़का(ladakaa), cat=n, gen=m, num=pl, case=dir |
 | Hindi    | लड़कों (ladakoM) | rt=लड़का(ladakaa), cat=n, gen=m, num=pl, case=obl |
 | English  | boy              | rt=boy, cat=n, gen=m, num=sg                      |
 | English  | boys             | rt=boy, cat=n, gen=m, num=pl                      |
@@ -71,7 +71,7 @@ During morphological analysis, each word is assigned a _lexical category_ and ma
 
 ---
 
-#### 5. Feature References
+### 5. Feature References
 
 - **rt**: root
 - **cat**: lexical category (noun, verb, adjective, pronoun, adverb, preposition)
@@ -89,6 +89,6 @@ During morphological analysis, each word is assigned a _lexical category_ and ma
 
 ---
 
-#### 6. Summary
+### 6. Summary
 
 Morphological analysis is crucial for understanding and processing natural language, especially in morphologically rich languages like Hindi and Telugu. By breaking words into their roots and features, we can better analyze, translate, and generate language computationally.

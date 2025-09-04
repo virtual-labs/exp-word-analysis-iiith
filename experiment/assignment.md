@@ -31,10 +31,10 @@
 
 5. **Identify root and suffix in the following words:**
 
-   ```
+   <pre>
    kissed
    stronger
    goodness
    teacher
    achievement
-   ```
+   </pre>
