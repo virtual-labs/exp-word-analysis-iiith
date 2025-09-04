@@ -1,0 +1,70 @@
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/js/main.js
+    1:5   warning  'index' is defined but never used                         no-unused-vars
+    3:10  warning  'getSelectedValue' is defined but never used              no-unused-vars
+   14:3   warning  '$' is not defined                                        no-undef
+   22:5   warning  'src' is defined but never used                           no-unused-vars
+   24:10  warning  'getOption' is defined but never used                     no-unused-vars
+   25:3   warning  'temp1' is not defined                                    no-undef
+   26:10  warning  'temp1' is not defined                                    no-undef
+   27:3   warning  'scr' is not defined                                      no-undef
+   27:9   warning  'temp1' is not defined                                    no-undef
+   35:3   warning  '$' is not defined                                        no-undef
+   35:64  warning  'scr' is not defined                                      no-undef
+   51:1   warning  'ga' is not defined                                       no-undef
+   52:1   warning  'ga' is not defined                                       no-undef
+  347:5   warning  'previouslyIncorrect' is assigned a value but never used  no-unused-vars
+  350:10  warning  'getDistractors' is defined but never used                no-unused-vars
+  351:21  warning  'commonFeatures' is not defined                           no-undef
+  359:10  warning  'getRootDistractors' is defined but never used            no-unused-vars
+  368:15  warning  'word' is defined but never used                          no-unused-vars
+  369:18  warning  '_' is defined but never used                             no-unused-vars
+  388:10  warning  'processFeaturesData' is defined but never used           no-unused-vars
+  409:10  warning  'wordData' is not defined                                 no-undef
+  410:7   warning  'wordData' is not defined                                 no-undef
+  424:22  warning  'wordData' is not defined                                 no-undef
+  427:10  warning  'allGendersByLang' is not defined                         no-undef
+  427:34  warning  'allGendersByLang' is not defined                         no-undef
+  428:10  warning  'allPersonsByLang' is not defined                         no-undef
+  428:34  warning  'allPersonsByLang' is not defined                         no-undef
+  429:10  warning  'allNumbersByLang' is not defined                         no-undef
+  429:34  warning  'allNumbersByLang' is not defined                         no-undef
+  430:10  warning  'allScriptsByLang' is not defined                         no-undef
+  430:34  warning  'allScriptsByLang' is not defined                         no-undef
+  431:10  warning  'allCasesByLang' is not defined                           no-undef
+  431:32  warning  'allCasesByLang' is not defined                           no-undef
+  447:7   warning  'allCategories' is not defined                            no-undef
+  452:9   warning  'allGendersByLang' is not defined                         no-undef
+  459:9   warning  'allNumbersByLang' is not defined                         no-undef
+  466:9   warning  'allPersonsByLang' is not defined                         no-undef
+  473:9   warning  'allScriptsByLang' is not defined                         no-undef
+  480:9   warning  'allCasesByLang' is not defined                           no-undef
+  487:9   warning  'allTenses' is not defined                                no-undef
+  506:22  warning  'allScriptsByLang' is not defined                         no-undef
+  509:7   warning  'allScriptsByLang' is not defined                         no-undef
+  510:7   warning  'allScriptsByLang' is not defined                         no-undef
+  512:7   warning  'allCasesByLang' is not defined                           no-undef
+  513:7   warning  'allCasesByLang' is not defined                           no-undef
+  516:7   warning  'allScriptsByLang' is not defined                         no-undef
+  517:7   warning  'allScriptsByLang' is not defined                         no-undef
+  519:7   warning  'allCasesByLang' is not defined                           no-undef
+  520:7   warning  'allCasesByLang' is not defined                           no-undef
+  525:22  warning  'allGendersByLang' is not defined                         no-undef
+  527:5   warning  'allGendersByLang' is not defined                         no-undef
+  530:5   warning  'allPersonsByLang' is not defined                         no-undef
+  533:5   warning  'allNumbersByLang' is not defined                         no-undef
+  536:5   warning  'allCasesByLang' is not defined                           no-undef
+  539:5   warning  'allScriptsByLang' is not defined                         no-undef
+  543:3   warning  'allTenses' is not defined                                no-undef
+  545:3   warning  'allTenses' is not defined                                no-undef
+  546:3   warning  'allTenses' is not defined                                no-undef
+  570:43  warning  'word' is defined but never used                          no-unused-vars
+  860:5   warning  Move function declaration to function body root           no-inner-declarations
+
+/home/runner/work/exp-word-analysis-iiith/exp-word-analysis-iiith/experiment/simulation/js/mobile-detection.js
+  283:7   warning  'mobileDetection' is assigned a value but never used  no-unused-vars
+  286:38  warning  'module' is not defined                               no-undef
+  287:3   warning  'module' is not defined                               no-undef
+
+✖ 63 problems (0 errors, 63 warnings)
+
