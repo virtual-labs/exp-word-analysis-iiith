@@ -1015,3 +1015,143 @@ button:disabled {
     }
 } 
 /* --- End merged styles from styles.css --- */ 
+
+/* ===== MOBILE DETECTION OVERLAY STYLES ===== */
+#mobile-warning-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+}
+
+.mobile-overlay-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mobile-overlay-content {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 400px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.mobile-overlay-icon {
+    margin: 0 auto 16px;
+    width: 48px;
+    height: 48px;
+}
+
+.mobile-overlay-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.mobile-overlay-description {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 16px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.mobile-overlay-list {
+    text-align: left;
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 20px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.mobile-overlay-list li {
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.mobile-overlay-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.mobile-overlay-btn {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.mobile-overlay-btn-primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.mobile-overlay-btn-primary:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+}
+
+.mobile-overlay-btn-secondary {
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.mobile-overlay-btn-secondary:hover {
+    background: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+.mobile-overlay-footer {
+    font-size: 12px;
+    color: #9ca3af;
+    line-height: 1.4;
+}
+
+/* Mobile overlay animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+} 
