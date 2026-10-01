@@ -1,0 +1,158 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "What is the primary purpose of word analysis in natural language processing?",
+      "answers": {
+        "a": "To translate words between languages",
+        "b": "To understand the grammatical and morphological features of words",
+        "c": "To count the number of words in a text",
+        "d": "To arrange words alphabetically"
+      },
+      "explanations": {
+        "a": "Incorrect. While translation is a use case, word analysis focuses on understanding word structure and features.",
+        "b": "Correct! Word analysis helps identify grammatical categories, morphological features, and word relationships.",
+        "c": "Incorrect. Word counting is a simple task that doesn't require detailed word analysis.",
+        "d": "Incorrect. Alphabetical arrangement is a basic sorting task, not the purpose of word analysis."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following is NOT a common feature analyzed in word analysis?",
+      "answers": {
+        "a": "Gender",
+        "b": "Font size",
+        "c": "Number",
+        "d": "Case"
+      },
+      "explanations": {
+        "a": "Incorrect. Gender is an important grammatical feature analyzed in many languages.",
+        "b": "Correct! Font size is a visual presentation feature, not a linguistic feature of words.",
+        "c": "Incorrect. Number (singular/plural) is a fundamental grammatical feature.",
+        "d": "Incorrect. Case is a crucial grammatical feature in many languages."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the difference between 'root' and 'stem' in word analysis?",
+      "answers": {
+        "a": "They are exactly the same thing",
+        "b": "Root is the basic form, while stem includes additional affixes",
+        "c": "Root is always longer than stem",
+        "d": "Stem is always in present tense"
+      },
+      "explanations": {
+        "a": "Incorrect. While related, root and stem have distinct linguistic definitions.",
+        "b": "Correct! The root is the basic form of a word, while the stem is the root plus any derivational affixes.",
+        "c": "Incorrect. Length is not a defining characteristic of either root or stem.",
+        "d": "Incorrect. Tense is not a defining feature of stems."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In the context of word analysis, what is the significance of the 'script' feature?",
+      "answers": {
+        "a": "It determines the font style of the word",
+        "b": "It indicates the writing system used (e.g., roman, devanagari)",
+        "c": "It specifies the word's pronunciation",
+        "d": "It shows the word's origin"
+      },
+      "explanations": {
+        "a": "Incorrect. Script is not about font styling but about the writing system.",
+        "b": "Correct! Script indicates the writing system used, such as roman for English or devanagari for Hindi.",
+        "c": "Incorrect. Pronunciation is handled by phonetics, not script.",
+        "d": "Incorrect. Word origin is studied in etymology, not script analysis."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "How does gender affect word analysis in languages like Hindi?",
+      "answers": {
+        "a": "It only affects pronouns",
+        "b": "It influences agreement patterns with verbs and adjectives",
+        "c": "It only matters in formal writing",
+        "d": "It's only relevant for plural forms"
+      },
+      "explanations": {
+        "a": "Incorrect. Gender affects many parts of speech, not just pronouns.",
+        "b": "Correct! Gender influences how words agree with other elements in the sentence, affecting verbs, adjectives, and other modifiers.",
+        "c": "Incorrect. Gender is a fundamental grammatical feature that applies in all contexts.",
+        "d": "Incorrect. Gender affects both singular and plural forms."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "What is the relationship between tense and aspect in word analysis?",
+      "answers": {
+        "a": "They are the same thing",
+        "b": "Tense indicates when an action occurs, while aspect shows how it unfolds over time",
+        "c": "Tense is only for verbs, aspect is for nouns",
+        "d": "Aspect is more important than tense"
+      },
+      "explanations": {
+        "a": "Incorrect. Tense and aspect are distinct grammatical categories.",
+        "b": "Correct! Tense locates an action in time, while aspect describes its temporal structure or flow.",
+        "c": "Incorrect. Both tense and aspect primarily apply to verbs.",
+        "d": "Incorrect. Both are equally important in different contexts."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "In word analysis, what is the significance of case marking in languages like Hindi?",
+      "answers": {
+        "a": "It only affects word order",
+        "b": "It indicates the grammatical function of words in a sentence",
+        "c": "It's only used in formal writing",
+        "d": "It's the same as gender marking"
+      },
+      "explanations": {
+        "a": "Incorrect. Case marking affects more than just word order.",
+        "b": "Correct! Case marking shows the grammatical role of words (subject, object, etc.) in the sentence.",
+        "c": "Incorrect. Case marking is a fundamental grammatical feature used in all contexts.",
+        "d": "Incorrect. Case and gender are distinct grammatical categories."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "How does the concept of 'person' in word analysis differ between English and Hindi?",
+      "answers": {
+        "a": "It's exactly the same in both languages",
+        "b": "Hindi has more complex person marking that interacts with gender and number",
+        "c": "English doesn't use person marking",
+        "d": "Person marking is only for pronouns"
+      },
+      "explanations": {
+        "a": "Incorrect. The two languages handle person marking differently.",
+        "b": "Correct! Hindi's person marking is more complex, interacting with gender and number in verb agreement.",
+        "c": "Incorrect. English does use person marking, particularly in verbs.",
+        "d": "Incorrect. Person marking affects verbs and other parts of speech."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    },
+    {
+      "question": "What is the role of 'number' in word analysis across different languages?",
+      "answers": {
+        "a": "It only affects nouns",
+        "b": "It influences agreement patterns across multiple word classes",
+        "c": "It's only relevant for counting",
+        "d": "It's the same in all languages"
+      },
+      "explanations": {
+        "a": "Incorrect. Number affects verbs, adjectives, and other parts of speech.",
+        "b": "Correct! Number influences agreement patterns across nouns, verbs, adjectives, and other word classes.",
+        "c": "Incorrect. Number is a grammatical feature, not just about counting.",
+        "d": "Incorrect. Different languages handle number marking differently."
+      },
+      "correctAnswer": "b",
+      "difficulty": "advanced"
+    }
+  ]
+}
